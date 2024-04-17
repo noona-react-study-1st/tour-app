@@ -1,19 +1,30 @@
-import React from "react";
-import "./EventCard.style.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './EventCard.style.css';
 
 const EventCard = ({ event }) => {
-  console.log("image", event.firstimage); 
-  
+  const navigate = useNavigate();
+
+  const moveToDetailPage = () => {
+    navigate(`/detailIntro1?&contentId=${event?.contentid}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div
-      style={{
-        backgroundImage:
-          "url(" +
-          `${event?.firstimage}` + 
-          ")",
-      }}
-      className="event-card"
-    >
+    <div className='event-card' onClick={moveToDetailPage}>
+      <div
+        style={{
+          backgroundImage: 'url(' + `${event?.firstimage}` + ')',
+        }}
+        className='event-img'
+      ></div>
+      <div className='event-info'>
+        <div>{event.title}</div>
+        <div>
+          {event.eventstartdate} ~ {event.eventenddate}
+        </div>
+        <div>{event.addr1}</div>
+      </div>
     </div>
   );
 };
