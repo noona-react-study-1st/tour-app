@@ -1,8 +1,8 @@
-import { api } from '../utils/http';
+import { tourApi } from '../utils/http';
 import { useQuery } from '@tanstack/react-query';
 
 function fetchInfoByArea() {
-  return api.get('/areaBasedList1');
+  return tourApi.get('/areaBasedList1');
   // return response.data;
 }
 

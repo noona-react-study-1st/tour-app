@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './pages/Root';
 import HomePage from './pages/Home';
 import ThemePage from './pages/Theme';
-import AreaPage from './pages/Area';
+import AreaPage from './pages/Area/Area';
 import EventsPage from './pages/Events';
 import DetailPage from './pages/Detail';
 
