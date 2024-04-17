@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 
 function fetchInfoByArea() {
   return tourApi.get('/areaBasedList1');
-  // return response.data;
 }
 
 export function useFetchInfoByAreaQuery() {

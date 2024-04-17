@@ -3,6 +3,7 @@ import { cities } from '../../constants/area';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './CarouselSection.style.css';
+import { useAreaStore } from '../../store/area';
 
 const responsive = {
   desktop: {
@@ -23,29 +24,37 @@ const responsive = {
 };
 
 export default function CarouselSection() {
-  // console.log(cities[0].areaImg);
+  const { setAreaCode } = useAreaStore();
 
   return (
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      showDots={true}
-      responsive={responsive}
-      // ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      keyBoardControl={true}
-      containerClass='carousel-container'
-      dotListClass='custom-dot-list-style'
-      itemClass='carousel-item-padding-40-px'
-    >
-      {cities.map((city, index) => {
-        return (
-          <div className='image-container' key={index}>
-            <Image src={city.areaImg} rounded />
-            <span>{city.name}</span>
-          </div>
-        );
-      })}
-    </Carousel>
+    <section>
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        showDots={true}
+        responsive={responsive}
+        // ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        keyBoardControl={true}
+        containerClass='carousel-container'
+        dotListClass='custom-dot-list-style'
+        itemClass='carousel-item-padding-40-px'
+      >
+        {cities.map((city, index) => {
+          return (
+            <div
+              className='image-container'
+              key={index}
+              onClick={() =>
+                setAreaCode(city.areaCode, city.name, city.totalCount)
+              }
+            >
+              <Image src={city.areaImg} rounded />
+              <span>{city.name}</span>
+            </div>
+          );
+        })}
+      </Carousel>
+    </section>
   );
 }
