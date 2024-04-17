@@ -1,44 +1,77 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col, Container, Pagination } from 'react-bootstrap';
+import { Row, Col, Container, Pagination, Button } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
+import EventSearch from '../Events/components/EventSearch/EventSearch';
 import EventCard from '../Events/components/EventCard/EventCard';
 import './Events.style.css';
 
 export default function EventsPage() {
   let eventStartDate = '20230101';
   const { data } = useFetchEventQuery({ eventStartDate });
-  const displayData = data?.items.item;
 
-  // 페이지네이션을 위한 상태 변수
+  const [sortedLatestData, setSortedLatestData] = useState(null);
+  const [sortedEarliestData, setSortedEarliestData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 6;
 
-  // 현재 페이지에 표시할 이벤트 카드 계산
+  useEffect(() => {
+    if (data && data.items && data.items.item) {
+      const sortedLatestData = [...data.items.item].sort(
+        (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
+      );
+      setSortedLatestData(sortedLatestData);
+      setCurrentPage(1);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortedLatestData, sortedEarliestData]);
+
+  const handleSortLatest = () => {
+    const sortedLatestData = [...data?.items.item].sort(
+      (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
+    );
+    console.log('Sorted Latest Data:', sortedLatestData);
+    setSortedLatestData(sortedLatestData);
+    setSortedEarliestData(null);
+    setCurrentPage(1);
+  };
+
+  const handleSortEarliest = () => {
+    const sortedEarliestData = [...data?.items.item].sort(
+      (a, b) => new Date(a.eventstartdate) - new Date(b.eventstartdate)
+    );
+    console.log('Sorted Earliest Data:', sortedEarliestData);
+    setSortedEarliestData(sortedEarliestData);
+    setSortedLatestData(null);
+    setCurrentPage(1);
+  };
+
+  const displayData =
+    sortedLatestData || sortedEarliestData || data?.items.item;
+
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
   const currentEvents = displayData?.slice(indexOfFirstEvent, indexOfLastEvent);
 
   console.log('datatest2', currentEvents);
 
-  // 페이지 변경 핸들러
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <Container>
       <Row>
-        <div className='search-area'>
-          <div>시기</div>
-          <div>지역</div>
-          <div>카테고리</div>
-          <div>리셋</div>
-          <div>검색</div>
-        </div>
-        <div className='sort-area'>
-          <div>최신순</div>
-          <div>인기순</div>
-        </div>
+        <EventSearch />
+        <Col>
+          <Button variant='danger' onClick={handleSortLatest}>
+            최신순
+          </Button>
+          <Button variant='danger' onClick={handleSortEarliest}>
+            오래된순
+          </Button>
+        </Col>
       </Row>
       <Row className='card-area'>
         {currentEvents &&
@@ -48,32 +81,43 @@ export default function EventsPage() {
             </Col>
           ))}
       </Row>
-      <Pagination>
-        {displayData && (
-          <Pagination.Prev
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          />
-        )}
-        {displayData &&
-          Array.from({ length: Math.ceil(displayData.length / eventsPerPage) }).map((_, index) => (
-            <Pagination.Item
-              key={index}
-              active={index + 1 === currentPage}
-              onClick={() => paginate(index + 1)}
-            >
-              {index + 1}
-            </Pagination.Item>
-          ))}
-        {displayData && (
-          <Pagination.Next
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, Math.ceil(displayData.length / eventsPerPage)))
-            }
-            disabled={currentPage === Math.ceil(displayData.length / eventsPerPage)}
-          />
-        )}
-      </Pagination>
+      <Row className='pagination-area'>
+        <Pagination className='justify-content-center'>
+          {displayData && (
+            <Pagination.Prev
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            />
+          )}
+          {displayData &&
+            Array.from({
+              length: Math.ceil(displayData.length / eventsPerPage),
+            }).map((_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === currentPage}
+                onClick={() => paginate(index + 1)}
+              >
+                {index + 1}
+              </Pagination.Item>
+            ))}
+          {displayData && (
+            <Pagination.Next
+              onClick={() =>
+                setCurrentPage((prev) =>
+                  Math.min(
+                    prev + 1,
+                    Math.ceil(displayData.length / eventsPerPage)
+                  )
+                )
+              }
+              disabled={
+                currentPage === Math.ceil(displayData.length / eventsPerPage)
+              }
+            />
+          )}
+        </Pagination>
+      </Row>
     </Container>
   );
 }
