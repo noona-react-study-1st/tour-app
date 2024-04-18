@@ -14,4 +14,12 @@ export const api = axios.create({
   },
 });
 
-// export const api2 = fetch();
+export const tourApi = axios.create({
+  baseURL: 'http://apis.data.go.kr/B551011/KorService1',
+  params: {
+    serviceKey: TOUR_API_KEY,
+    MobileOS: 'ETC',
+    MobileApp: 'TourApp',
+    _type: 'json',
+  },
+});
