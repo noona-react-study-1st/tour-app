@@ -28,7 +28,7 @@ export default function DetailPage() {
     content3Ref.current?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
   };
   const {contentId} = useParams();
-  console.log(contentId);
+  // console.log(contentId);
   const {
     data: commonData,
     isLoading: commonLoading,
@@ -57,8 +57,8 @@ export default function DetailPage() {
     // error: imageError,
   } = useFetchDetailImageQuery(contentId);
 
-  console.log(' commonData -', commonData, ' introData-', introData, ' infoData -', infoData, ' imageData-', imageData);
-  console.log(commonData && commonData[0].contenttypeid);
+  // console.log(' commonData -', commonData, ' introData-', introData, ' infoData -', infoData, ' imageData-', imageData);
+  // console.log(commonData && commonData[0].contenttypeid);
 
   const [modalShow, setModalShow] = useState(false);
 

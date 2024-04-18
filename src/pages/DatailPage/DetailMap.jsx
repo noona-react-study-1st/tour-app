@@ -1,6 +1,5 @@
 import {Map, MapMarker} from 'react-kakao-maps-sdk';
 import useKakaoLoader from '../../hooks/useKakaoLoader';
-import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 const DetailMap = ({coordX, coordY, title}) => {

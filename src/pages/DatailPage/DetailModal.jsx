@@ -1,5 +1,4 @@
 import {Modal} from 'react-bootstrap';
-import DetailBanner from './DetailBanner';
 
 const DetailModal = (props) => {
   return (
