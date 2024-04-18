@@ -6,7 +6,7 @@ const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
   const moveToDetailPage = () => {
-    navigate(`/detailIntro1?&contentId=${event?.contentid}`);
+    navigate(`/detail/:${event?.contentid}`);
     window.scrollTo(0, 0);
   };
 

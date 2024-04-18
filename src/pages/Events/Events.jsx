@@ -7,8 +7,9 @@ import EventCard from '../Events/components/EventCard/EventCard';
 import './Events.style.css';
 
 export default function EventsPage() {
-  let eventStartDate = '20230101';
-  const { data } = useFetchEventQuery({ eventStartDate });
+  let eventStartDate = '20200101';
+  const [pageNo, setPageNo] = useState(1);
+  const { data } = useFetchEventQuery({ eventStartDate, pageNo });
 
   const [sortedLatestData, setSortedLatestData] = useState(null);
   const [sortedEarliestData, setSortedEarliestData] = useState(null);
@@ -16,8 +17,8 @@ export default function EventsPage() {
   const eventsPerPage = 6;
 
   useEffect(() => {
-    if (data && data.items && data.items.item) {
-      const sortedLatestData = [...data.items.item].sort(
+    if (data && data.response && data.response.body && data.response.body.items && data.response.body.items.item) {
+      const sortedLatestData = [...data.response.body.items.item].sort(
         (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
       );
       setSortedLatestData(sortedLatestData);
@@ -30,33 +31,33 @@ export default function EventsPage() {
   }, [sortedLatestData, sortedEarliestData]);
 
   const handleSortLatest = () => {
-    const sortedLatestData = [...data?.items.item].sort(
-      (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
-    );
-    console.log('Sorted Latest Data:', sortedLatestData);
-    setSortedLatestData(sortedLatestData);
-    setSortedEarliestData(null);
-    setCurrentPage(1);
+    if (data && data.response && data.response.body && data.response.body.items && data.response.body.items.item) {
+      const sortedData = [...data.response.body.items.item].sort(
+        (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
+      );
+      setSortedLatestData(sortedData);
+      setSortedEarliestData(null);
+      setCurrentPage(1);
+    }
   };
 
   const handleSortEarliest = () => {
-    const sortedEarliestData = [...data?.items.item].sort(
-      (a, b) => new Date(a.eventstartdate) - new Date(b.eventstartdate)
-    );
-    console.log('Sorted Earliest Data:', sortedEarliestData);
-    setSortedEarliestData(sortedEarliestData);
-    setSortedLatestData(null);
-    setCurrentPage(1);
+    if (data && data.response && data.response.body && data.response.body.items && data.response.body.items.item) {
+      const sortedData = [...data.response.body.items.item].sort(
+        (a, b) => new Date(a.eventstartdate) - new Date(b.eventstartdate)
+      );
+      setSortedEarliestData(sortedData);
+      setSortedLatestData(null);
+      setCurrentPage(1);
+    }
   };
 
   const displayData =
-    sortedLatestData || sortedEarliestData || data?.items.item;
+    sortedLatestData || sortedEarliestData || (data && data.response && data.response.body && data.response.body.items && data.response.body.items.item);
 
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
   const currentEvents = displayData?.slice(indexOfFirstEvent, indexOfLastEvent);
-
-  console.log('datatest2', currentEvents);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 

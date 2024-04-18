@@ -1,14 +1,14 @@
 import { api } from '../utils/http';
 import { useQuery } from '@tanstack/react-query';
 
-function fetchEvent(eventStartDate) {
-  return api.get(`/searchFestival1?&eventStartDate=${eventStartDate}`);
+function fetchEvent(eventStartDate, pageNo) {
+  return api.get(`/searchFestival1?&pageNo=${pageNo}&eventStartDate=${eventStartDate}&numOfRows=100`);
 }
 
-export function useFetchEventQuery({eventStartDate}) {
+export function useFetchEventQuery({eventStartDate, pageNo}) {
   return useQuery({
-    queryKey: ['event', eventStartDate],
-    queryFn: () => fetchEvent(eventStartDate),
-    select: (results) => results.data.response.body,
+    queryKey: ['event', {eventStartDate, pageNo}],
+    queryFn: () => fetchEvent(eventStartDate, pageNo),
+    select: (results) => results.data,
   });
 }
