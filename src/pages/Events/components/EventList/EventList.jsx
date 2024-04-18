@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './EventCard.style.css';
+import './EventList.style.css';
 
-const EventCard = ({ event }) => {
+const EventList = ({ event }) => {
   const navigate = useNavigate();
 
   const moveToDetailPage = () => {
@@ -29,4 +29,4 @@ const EventCard = ({ event }) => {
   );
 };
 
-export default EventCard;
+export default EventList;
