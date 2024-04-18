@@ -1,29 +1,38 @@
+.detailNav {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9.8);
+  li {
+    list-style: none;
+    text-align: center;
+    flex: 1;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+  }
+}
 .detailBannerItem {
   width: 100%;
   height: 466px;
   .image {
-    width: 699px;
+    // width: 699px;
+    width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   width: 100%;
-    //   height: 100%;
-    //   top: 0;
-    //   left: 0;
-    //   background: linear-gradient(to top, black, 30%, transparent);
-    //   z-index: 1;
-    // }
   }
 }
-pre {
-  font-family: pretendard;
-  background-color: #e6e6fa;
-  padding: 10px;
-  overflow: auto;
-  white-space: pre-wrap;
+.introWrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  li {
+    width: 50%;
+    list-style: none;
+  }
 }

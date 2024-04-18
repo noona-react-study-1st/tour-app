@@ -1,14 +1,14 @@
-import { api } from "../utils/http";
-import { useQuery } from "@tanstack/react-query";
+import {api} from '../utils/http';
+import {useQuery} from '@tanstack/react-query';
 
-function fetchDetailIntro(contentId) {
-  return api.get(`/detailIntro1?contentTypeId=12&contentId=${contentId}`);
+function fetchDetailIntro(contentId, contentTypeId) {
+    return api.get(`/detailIntro1?contentId=${contentId}&contentTypeId=${contentTypeId}`);
 }
 
-export function useFetchDetailIntroQuery(contentId) {
-  return useQuery({
-    queryKey: ["detail-intro", contentId],
-    queryFn: () => fetchDetailIntro(contentId),
-    select: (results) => results.data.response.body.items.item,
-  });
+export function useFetchDetailIntroQuery(contentId, contentTypeId) {
+    return useQuery({
+        queryKey: ['detail-intro', contentId, contentTypeId],
+        queryFn: () => fetchDetailIntro(contentId, contentTypeId),
+        select: (results) => results.data.response.body.items.item,
+    });
 }
