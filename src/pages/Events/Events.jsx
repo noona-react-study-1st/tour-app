@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col, Container, Pagination, Button } from 'react-bootstrap';
+import { Row, Col, Container, Pagination } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
 import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
-import EventSearch from '../Events/components/EventSearch/EventSearch';
 import EventCard from '../Events/components/EventCard/EventCard';
 import './Events.style.css';
 
@@ -12,79 +11,51 @@ export default function EventsPage() {
   let eventStartDate = '20200101';
   const eventsPerPage = 6;
 
-  const [pageNo, setPageNo] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [sortedLatestData, setSortedLatestData] = useState(null);
-  const [sortedEarliestData, setSortedEarliestData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [arrange, setArrange] = useState('O');
 
-  const { data, isLoading } = useFetchEventQuery({ eventStartDate, pageNo });
-  const { data : images , isLoading : imgIsLoading } = useFetchEventCarouselQuery({ eventStartDate });
+  const { data, isLoading } = useFetchEventQuery({ eventStartDate, arrange });
+  const { data: images, isLoading: imgIsLoading } = useFetchEventCarouselQuery({
+    eventStartDate,
+  });
 
-  const handleSortLatest = () => {
-    if (
-      data &&
-      data.response &&
-      data.response.body &&
-      data.response.body.items &&
-      data.response.body.items.item
-    ) {
-      const sortedData = [...data.response.body.items.item].sort(
-        (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
-      );
-      setSortedLatestData(sortedData);
-      setSortedEarliestData(null);
-      setCurrentPage(1);
-    }
+  const handleNameSort = () => {
+    setArrange('O');
+    console.log('O');
   };
 
-  const handleSortEarliest = () => {
-    if (
-      data &&
-      data.response &&
-      data.response.body &&
-      data.response.body.items &&
-      data.response.body.items.item
-    ) {
-      const sortedData = [...data.response.body.items.item].sort(
-        (a, b) => new Date(a.eventstartdate) - new Date(b.eventstartdate)
-      );
-      setSortedEarliestData(sortedData);
-      setSortedLatestData(null);
-      setCurrentPage(1);
-    }
+  const handleLatestSort = () => {
+    setArrange('Q');
+    console.log('Q');
   };
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  useEffect(() => {
-    if (
-      data &&
-      data.response &&
-      data.response.body &&
-      data.response.body.items &&
-      data.response.body.items.item
-    ) {
-      const sortedLatestData = [...data.response.body.items.item].sort(
-        (a, b) => new Date(b.eventstartdate) - new Date(a.eventstartdate)
-      );
-      setSortedLatestData(sortedLatestData);
-      setCurrentPage(1);
-    }
-  }, [data]);
+  const handleOldestSort = () => {
+    setArrange('R');
+    console.log('R');
+  };
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [sortedLatestData, sortedEarliestData]);
+  }, [arrange]);
+
+  useEffect(() => {
+    // arrangeData가 비어 있는 경우 데이터를 다시 가져옴
+    if (!data) {
+    }
+  }, [data]);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  console.log('arr', data);
 
   const displayData =
-    sortedLatestData ||
-    sortedEarliestData ||
-    (data &&
-      data.response &&
-      data.response.body &&
-      data.response.body.items &&
-      data.response.body.items.item);
+    data &&
+    data.response &&
+    data.response.body &&
+    data.response.body.items &&
+    data.response.body.items.item;
+
+  console.log('display', displayData);
 
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -100,15 +71,11 @@ export default function EventsPage() {
         <EventCarousel images={images} />
       </Row>
       <Row>
-        <EventSearch />
-        <Col>
-          <Button variant='danger' onClick={handleSortLatest}>
-            최신순
-          </Button>
-          <Button variant='danger' onClick={handleSortEarliest}>
-            오래된순
-          </Button>
-        </Col>
+        <div className='arrange-area'>
+          <div onClick={handleNameSort}>이름순</div>
+          <div onClick={handleLatestSort}>최신순</div>
+          <div onClick={handleOldestSort}>오래된순</div>
+        </div>
       </Row>
       <Row className='card-area'>
         {currentEvents &&
