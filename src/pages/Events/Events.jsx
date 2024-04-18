@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col, Container, Pagination } from 'react-bootstrap';
+import { Row, Col, Container, Pagination, Spinner, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
 import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
@@ -17,8 +17,15 @@ const EventsPage = () => {
   const [arrange, setArrange] = useState('O');
   const [selectedMenu, setSelectedMenu] = useState('축제');
 
-  const { data, isLoading } = useFetchEventQuery({ eventStartDate, arrange });
-  const { data: images, isLoading: isImgLoading } = useFetchEventCarouselQuery({
+  const { data, isLoading, isError, error } = useFetchEventQuery({
+    eventStartDate,
+    arrange,
+  });
+  const {
+    data: images,
+    isLoading: isImgLoading,
+    isError: isImgError,
+  } = useFetchEventCarouselQuery({
     eventStartDate,
   });
 
@@ -145,7 +152,22 @@ const EventsPage = () => {
   };
 
   if (isLoading || isImgLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className='loading-box'>
+        <Spinner animation='border' role='status'>
+          <span className='visually-hidden'>Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+  if (isError || isImgError)  {
+    return (
+      <div className='loading-box'>
+        <Alert variant='dark' bg='dark' data-bs-theme='dark'>
+          {error.message}
+        </Alert>
+      </div>
+    );
   }
 
   return (

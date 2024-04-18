@@ -11,7 +11,7 @@ const EventList = ({ event }) => {
   };
 
   return (
-    <div className='event-card' onClick={moveToDetailPage}>
+    <div className='event-list' onClick={moveToDetailPage}>
       <div
         style={{
           backgroundImage: 'url(' + `${event?.firstimage}` + ')',

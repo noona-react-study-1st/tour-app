@@ -1,5 +1,6 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import './EventCarousel.style.css';
 
 const EventCarousel = ({ images }) => {
 console.log("img",images)
