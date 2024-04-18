@@ -1,5 +1,5 @@
-import {api} from '../utils/http';
-import {useQuery} from '@tanstack/react-query';
+import { api } from "../utils/http";
+import { useQuery } from "@tanstack/react-query";
 
 function fetchDetailInfo(contentId) {
   return api.get(`/detailInfo1?contentTypeId=12&contentId=${contentId}`);
@@ -7,8 +7,8 @@ function fetchDetailInfo(contentId) {
 
 export function useFetchDetailInfoQuery(contentId) {
   return useQuery({
-    queryKey: ['detail-info', contentId],
+    queryKey: ["detail-info", contentId],
     queryFn: () => fetchDetailInfo(contentId),
-    select: (results) => results.data,
+    select: (results) => results.data.response.body.items.item,
   });
 }

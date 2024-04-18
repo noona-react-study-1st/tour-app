@@ -1,5 +1,5 @@
-import {api} from '../utils/http';
-import {useQuery} from '@tanstack/react-query';
+import { api } from "../utils/http";
+import { useQuery } from "@tanstack/react-query";
 
 function fetchDetailCommon(contentId) {
   return api.get(
@@ -9,8 +9,8 @@ function fetchDetailCommon(contentId) {
 
 export function useFetchDetailCommonQuery(contentId) {
   return useQuery({
-    queryKey: ['detail-common', contentId],
+    queryKey: ["detail-common", contentId],
     queryFn: () => fetchDetailCommon(contentId),
-    select: (results) => results.data,
+    select: (results) => results.data.response.body.items.item,
   });
 }
