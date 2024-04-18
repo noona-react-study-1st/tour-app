@@ -1,0 +1,39 @@
+.detailNav {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.98);
+}
+.detailNav li {
+  list-style: none;
+  text-align: center;
+  flex: 1;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+}
+
+.detailBannerItem {
+  width: 100%;
+  height: 466px;
+}
+.detailBannerItem .image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.introWrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+.introWrap li {
+  width: 50%;
+  list-style: none;
+}
