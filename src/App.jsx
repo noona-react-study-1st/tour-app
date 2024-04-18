@@ -15,9 +15,9 @@ function App() {
       element: <RootLayout />,
       children: [
         {index: true, element: <HomePage />},
-        {path: 'theme', element: <ThemePage />},
-        {path: 'area', element: <AreaPage />},
-        {path: 'events', element: <EventsPage />},
+        {path: '/theme', element: <ThemePage />},
+        {path: '/area', element: <AreaPage />},
+        {path: '/events', element: <EventsPage />},
         {path: 'detail/:contentId', element: <DetailPage />},
       ],
     },
