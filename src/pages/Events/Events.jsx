@@ -5,6 +5,7 @@ import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
 import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
 import EventCard from '../Events/components/EventCard/EventCard';
+import EventList from '../Events/components/EventList/EventList';
 import './Events.style.css';
 
 export default function EventsPage() {
@@ -15,7 +16,7 @@ export default function EventsPage() {
   const [arrange, setArrange] = useState('O');
 
   const { data, isLoading } = useFetchEventQuery({ eventStartDate, arrange });
-  const { data: images, isLoading: imgIsLoading } = useFetchEventCarouselQuery({
+  const { data: images, isLoading: isImgLoading } = useFetchEventCarouselQuery({
     eventStartDate,
   });
 
@@ -59,9 +60,16 @@ export default function EventsPage() {
 
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = displayData?.slice(indexOfFirstEvent, indexOfLastEvent);
 
-  if (isLoading || imgIsLoading) {
+  const currentFestivals = displayData
+  ? displayData.filter((event) => event.cat2 === 'A0207').slice(indexOfFirstEvent, indexOfLastEvent)
+  : [];
+
+  const currentEvents = displayData
+  ? displayData.filter((event) => event.cat2 === 'A0208').slice(indexOfFirstEvent, indexOfLastEvent)
+  : [];
+
+  if (isLoading || isImgLoading) {
     return <div>Loading...</div>;
   }
 
@@ -78,13 +86,21 @@ export default function EventsPage() {
         </div>
       </Row>
       <Row className='card-area'>
-        {currentEvents &&
-          currentEvents.map((event) => (
-            <Col key={event.contentid} lg={4} md={6} xs={12}>
-              <EventCard event={event} />
-            </Col>
-          ))}
+        {currentFestivals.map((event) => (
+          <Col key={event.contentid} lg={4} md={6} xs={12}>
+            <EventCard event={event} />
+          </Col>
+        ))}
       </Row>
+
+      <Row className='list-area'>
+        {currentEvents.map((event) => (
+          <Col key={event.contentid} lg={4} md={6} xs={12}>
+            <EventList event={event} />
+          </Col>
+        ))}
+      </Row>
+
       <Row className='pagination-area'>
         <Pagination className='justify-content-center'>
           {displayData && (
