@@ -10,5 +10,6 @@ export function useFetchAreaCodeQuery(areaCode, totalCount) {
     queryKey: ['areaCode', { areaCode }],
     queryFn: () => fetchAreaCode(areaCode, totalCount),
     select: (results) => results.data,
+    staleTime: 10 * 60 * 1000,
   });
 }

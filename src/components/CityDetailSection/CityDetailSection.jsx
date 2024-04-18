@@ -1,14 +1,15 @@
+import { useEffect, useState } from 'react';
 import { useAreaStore } from '../../store/area';
 import { useFetchAreaCodeQuery } from '../../hooks/useFetchAreaCode';
 import { Spinner, Button } from 'react-bootstrap';
-import './CityDetailSection.style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import './CityDetailSection.style.css';
 
 export default function CityDetailSection() {
   const [isOpen, setIsOpen] = useState(false);
   const { area, setSigunguCode } = useAreaStore();
+  const isMobileOrTablet = window.innerWidth <= 768;
 
   const { data, isLoading, isError, error } = useFetchAreaCodeQuery(
     area.areaCode,
@@ -43,7 +44,8 @@ export default function CityDetailSection() {
         <div className='city-detail-btn'>
           <h3>{area.name}</h3>
           <span>
-            {area.totalCount > 10 && (
+            {((area.totalCount > 10 && !isMobileOrTablet) ||
+              (area.totalCount > 5 && isMobileOrTablet)) && (
               <Button
                 variant='outline-dark'
                 onClick={() => setIsOpen((prev) => !prev)}
@@ -61,7 +63,11 @@ export default function CityDetailSection() {
           {data.response.body.items.item.map((city) => {
             return (
               <li
-                className={`${city.rnum > 10 && !isOpen ? 'hidden' : ''}`}
+                className={`${
+                  !isMobileOrTablet && city.rnum > 10 && !isOpen ? 'hidden' : ''
+                }${
+                  isMobileOrTablet && city.rnum > 5 && !isOpen ? 'hidden' : ''
+                }`}
                 key={city.rnum}
                 onClick={() => setSigunguCode(city.code)}
               >

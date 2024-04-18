@@ -131,3 +131,14 @@ export const cities = [
   },
   { rnum: 17, areaCode: 39, areaImg: jejuImg, name: '제주', totalCount: 4 },
 ];
+
+export const contentTypeId = {
+  tour: 12,
+  culture: 14,
+  events: 15,
+  travelCourse: 25,
+  leisureSports: 28,
+  sleep: 32,
+  shopping: 38,
+  food: 39,
+};
