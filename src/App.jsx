@@ -5,7 +5,7 @@ import RootLayout from './pages/Root';
 import HomePage from './pages/Home';
 import ThemePage from './pages/Theme';
 import AreaPage from './pages/Area';
-import EventsPage from './pages/Events';
+import EventsPage from './pages/Events/Events';
 import DetailPage from './pages/Detail';
 
 function App() {
