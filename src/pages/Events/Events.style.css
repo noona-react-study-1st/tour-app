@@ -1,0 +1,14 @@
+.search-area {
+  display: flex;
+}
+
+.sort-area {
+  display: flex;
+}
+
+.card-area {
+}
+
+.pagination-area {
+  margin-top: 30px;
+}
