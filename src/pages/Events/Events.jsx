@@ -12,7 +12,8 @@ export default function EventsPage() {
   let eventStartDate = '20200101';
   const eventsPerPage = 6;
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [cardCurrentPage, setCardCurrentPage] = useState(1);
+  const [listCurrentPage, setListCurrentPage] = useState(1);
   const [arrange, setArrange] = useState('O');
 
   const { data, isLoading } = useFetchEventQuery({ eventStartDate, arrange });
@@ -36,7 +37,8 @@ export default function EventsPage() {
   };
 
   useEffect(() => {
-    setCurrentPage(1);
+    setCardCurrentPage(1);
+    setListCurrentPage(1);
   }, [arrange]);
 
   useEffect(() => {
@@ -45,7 +47,8 @@ export default function EventsPage() {
     }
   }, [data]);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handleCardPaginate = (pageNumber) => setCardCurrentPage(pageNumber);
+  const handleListPaginate = (pageNumber) => setListCurrentPage(pageNumber);
 
   console.log('arr', data);
 
@@ -58,16 +61,19 @@ export default function EventsPage() {
 
   console.log('display', displayData);
 
-  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfLastFestival = cardCurrentPage * eventsPerPage;
+  const indexOfFirstFestival = indexOfLastFestival - eventsPerPage;
+
+  const indexOfLastEvent = listCurrentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
 
   const currentFestivals = displayData
-  ? displayData.filter((event) => event.cat2 === 'A0207').slice(indexOfFirstEvent, indexOfLastEvent)
-  : [];
+    ? displayData.filter((event) => event.cat2 === 'A0207').slice(indexOfFirstFestival, indexOfLastFestival)
+    : [];
 
   const currentEvents = displayData
-  ? displayData.filter((event) => event.cat2 === 'A0208').slice(indexOfFirstEvent, indexOfLastEvent)
-  : [];
+    ? displayData.filter((event) => event.cat2 === 'A0208').slice(indexOfFirstEvent, indexOfLastEvent)
+    : [];
 
   if (isLoading || isImgLoading) {
     return <div>Loading...</div>;
@@ -91,22 +97,11 @@ export default function EventsPage() {
             <EventCard event={event} />
           </Col>
         ))}
-      </Row>
-
-      <Row className='list-area'>
-        {currentEvents.map((event) => (
-          <Col key={event.contentid} lg={4} md={6} xs={12}>
-            <EventList event={event} />
-          </Col>
-        ))}
-      </Row>
-
-      <Row className='pagination-area'>
         <Pagination className='justify-content-center'>
           {displayData && (
             <Pagination.Prev
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
+              onClick={() => handleCardPaginate(Math.max(cardCurrentPage - 1, 1))}
+              disabled={cardCurrentPage === 1}
             />
           )}
           {displayData &&
@@ -115,8 +110,8 @@ export default function EventsPage() {
             }).map((_, index) => (
               <Pagination.Item
                 key={index}
-                active={index + 1 === currentPage}
-                onClick={() => paginate(index + 1)}
+                active={index + 1 === cardCurrentPage}
+                onClick={() => handleCardPaginate(index + 1)}
               >
                 {index + 1}
               </Pagination.Item>
@@ -124,16 +119,45 @@ export default function EventsPage() {
           {displayData && (
             <Pagination.Next
               onClick={() =>
-                setCurrentPage((prev) =>
-                  Math.min(
-                    prev + 1,
-                    Math.ceil(displayData.length / eventsPerPage)
-                  )
-                )
+                handleCardPaginate(Math.min(cardCurrentPage + 1, Math.ceil(displayData.length / eventsPerPage)))
               }
-              disabled={
-                currentPage === Math.ceil(displayData.length / eventsPerPage)
+              disabled={cardCurrentPage === Math.ceil(displayData.length / eventsPerPage)}
+            />
+          )}
+        </Pagination>
+      </Row>
+
+      <Row className='list-area'>
+        {currentEvents.map((event) => (
+          <Col key={event.contentid} lg={4} md={6} xs={12}>
+            <EventList event={event} />
+          </Col>
+        ))}
+        <Pagination className='justify-content-center'>
+          {displayData && (
+            <Pagination.Prev
+              onClick={() => handleListPaginate(Math.max(listCurrentPage - 1, 1))}
+              disabled={listCurrentPage === 1}
+            />
+          )}
+          {displayData &&
+            Array.from({
+              length: Math.ceil(displayData.length / eventsPerPage),
+            }).map((_, index) => (
+              <Pagination.Item
+                key={index}
+                active={index + 1 === listCurrentPage}
+                onClick={() => handleListPaginate(index + 1)}
+              >
+                {index + 1}
+              </Pagination.Item>
+            ))}
+          {displayData && (
+            <Pagination.Next
+              onClick={() =>
+                handleListPaginate(Math.min(listCurrentPage + 1, Math.ceil(displayData.length / eventsPerPage)))
               }
+              disabled={listCurrentPage === Math.ceil(displayData.length / eventsPerPage)}
             />
           )}
         </Pagination>
