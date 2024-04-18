@@ -2,7 +2,7 @@ import { api } from '../utils/http';
 import { useQuery } from '@tanstack/react-query';
 
 function fetchEventCarousel(eventStartDate) {
-  return api.get(`/searchFestival1?&eventStartDate=${eventStartDate}&numOfRows=3`);
+  return api.get(`/searchFestival1?&eventStartDate=${eventStartDate}&arrange=Q&numOfRows=3`);
 }
 
 export function useFetchEventCarouselQuery({eventStartDate}) {
