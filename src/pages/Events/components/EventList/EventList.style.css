@@ -1,24 +1,21 @@
-.event-list {
+.list {
   cursor: pointer;
   margin-bottom: 30px;
 }
 
-.event-img {
-  width: 300px;
+.list-img {
+  width: 200px;
   height: 250px;
   background-size: cover;
   background-repeat: no-repeat;
   transition: 0.4s;
-  border-radius: 15px;
 }
 
-.event-img:hover {
+.list-img:hover {
   transform: scale(1.2) translateZ(20px);
   z-index: 2;
 }
 
-.event-info {
-}
 
 /* 태블릿 */
 @media (max-width: 768px) {

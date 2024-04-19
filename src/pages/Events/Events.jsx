@@ -5,8 +5,8 @@ import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
 import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
 import EventCard from '../Events/components/EventCard/EventCard';
-import EventList from '../Events/components/EventList/EventList';
 import renderPagination from '../Events/components/EventPagination/renderPagination'; 
+import EventBookTourSlide from '../Events/components/EventSlider/EventBookTourSlide'
 import './Events.style.css';
 
 const EventsPage = () => {
@@ -172,10 +172,10 @@ const EventsPage = () => {
         </div>
       ) : (
         <div>
-          <Row className='list-area'>
+          <Row className='card-area'>
             {currentEvents.map((event) => (
               <Col key={event.contentid} lg={4} md={6} xs={12}>
-                <EventList event={event} />
+                <EventCard event={event} />
               </Col>
             ))}
           </Row>
@@ -187,6 +187,7 @@ const EventsPage = () => {
           )}
         </div>
       )}
+      <EventBookTourSlide/>
     </Container>
   );
 };

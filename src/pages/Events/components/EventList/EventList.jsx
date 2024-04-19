@@ -11,14 +11,14 @@ const EventList = ({ event }) => {
   };
 
   return (
-    <div className='event-list' onClick={moveToDetailPage}>
+    <div className='list' onClick={moveToDetailPage}>
       <div
         style={{
           backgroundImage: 'url(' + `${event?.firstimage}` + ')',
         }}
-        className='event-img'
+        className='list-img'
       ></div>
-      <div className='event-info'>
+      <div className='list-info'>
         <div>{event.title}</div>
         <div>
           {event.eventstartdate} ~ {event.eventenddate}
