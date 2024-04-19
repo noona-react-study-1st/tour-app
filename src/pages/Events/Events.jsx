@@ -7,6 +7,7 @@ import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
 import EventCard from '../Events/components/EventCard/EventCard';
 import renderPagination from '../Events/components/EventPagination/renderPagination'; 
 import EventBookTourSlide from '../Events/components/EventSlider/EventBookTourSlide'
+import ScrollToTopButton from "../../common/ScrollToTop/ScrollToTopButton"
 import './Events.style.css';
 
 const EventsPage = () => {
@@ -188,6 +189,7 @@ const EventsPage = () => {
         </div>
       )}
       <EventBookTourSlide/>
+      <ScrollToTopButton/>
     </Container>
   );
 };
