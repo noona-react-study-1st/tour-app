@@ -23,3 +23,12 @@ export const tourApi = axios.create({
     _type: 'json',
   },
 });
+
+export const weatherApi = axios.create({
+  baseURL: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0',
+  params: {
+    serviceKey: TOUR_API_KEY,
+    dataType: 'JSON',
+    numOfRows: 1000,
+  },
+});
