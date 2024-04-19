@@ -1,4 +1,5 @@
-// import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,6 +8,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import './MainNavigation.style.css';
 
 export default function MainNavigation() {
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    if (keyword.trim() !== "") {
+      navigate(`/search?q=${keyword}`);
+    }
+  };
+
   return (
     <Navbar expand='lg' className='nav-area' sticky='top'>
       <Container>
@@ -24,14 +35,16 @@ export default function MainNavigation() {
             <Nav.Link href='/area'>지역</Nav.Link>
             <Nav.Link href='/events'>행사</Nav.Link>
           </Nav>
-          <Form className='d-flex'>
+          <Form className='d-flex' onSubmit={searchByKeyword}>
             <Form.Control
               type='search'
               placeholder='어떤 여행을 원하시나요?'
               className='search-input'
               aria-label='Search'
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
             />
-            <Button className='search-btn'>Search</Button>
+            <Button className='search-btn' type="submit">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
