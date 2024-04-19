@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col, Container, Pagination } from 'react-bootstrap';
+import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
 import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
 import EventCard from '../Events/components/EventCard/EventCard';
-import EventList from '../Events/components/EventList/EventList';
+import renderPagination from '../Events/components/EventPagination/renderPagination'; 
+import EventBookTourSlide from '../Events/components/EventSlider/EventBookTourSlide'
 import './Events.style.css';
 
 const EventsPage = () => {
@@ -17,8 +18,17 @@ const EventsPage = () => {
   const [arrange, setArrange] = useState('O');
   const [selectedMenu, setSelectedMenu] = useState('축제');
 
-  const { data, isLoading } = useFetchEventQuery({ eventStartDate, arrange });
-  const { data: images, isLoading: isImgLoading } = useFetchEventCarouselQuery({ eventStartDate });
+  const { data, isLoading, isError, error } = useFetchEventQuery({
+    eventStartDate,
+    arrange,
+  });
+  const {
+    data: images,
+    isLoading: isImgLoading,
+    isError: isImgError,
+  } = useFetchEventCarouselQuery({
+    eventStartDate,
+  });
 
   const handleNameSort = () => {
     setArrange('O');
@@ -67,41 +77,38 @@ const EventsPage = () => {
   const currentFestivals = displayData
     ? displayData
         .filter((event) => event.cat2 === 'A0207')
-        .slice((cardCurrentPage - 1) * eventsPerPage, cardCurrentPage * eventsPerPage)
+        .slice(
+          (cardCurrentPage - 1) * eventsPerPage,
+          cardCurrentPage * eventsPerPage
+        )
     : [];
 
   const currentEvents = displayData
     ? displayData
         .filter((event) => event.cat2 === 'A0208')
-        .slice((listCurrentPage - 1) * eventsPerPage, listCurrentPage * eventsPerPage)
+        .slice(
+          (listCurrentPage - 1) * eventsPerPage,
+          listCurrentPage * eventsPerPage
+        )
     : [];
 
-  const renderPagination = (currentPage, handlePaginate, totalItems) => {
-    return (
-      <Pagination className='justify-content-center'>
-        <Pagination.Prev
-          onClick={() => handlePaginate(Math.max(currentPage - 1, 1))}
-          disabled={currentPage === 1}
-        />
-        {Array.from({ length: Math.ceil(totalItems / eventsPerPage) }).map((_, index) => (
-          <Pagination.Item
-            key={index}
-            active={index + 1 === currentPage}
-            onClick={() => handlePaginate(index + 1)}
-          >
-            {index + 1}
-          </Pagination.Item>
-        ))}
-        <Pagination.Next
-          onClick={() => handlePaginate(Math.min(currentPage + 1, Math.ceil(totalItems / eventsPerPage)))}
-          disabled={currentPage === Math.ceil(totalItems / eventsPerPage)}
-        />
-      </Pagination>
-    );
-  };
-
   if (isLoading || isImgLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className='loading-box'>
+        <Spinner animation='border' role='status'>
+          <span className='visually-hidden'>Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+  if (isError || isImgError)  {
+    return (
+      <div className='loading-box'>
+        <Alert variant='dark' bg='dark' data-bs-theme='dark'>
+          {error.message}
+        </Alert>
+      </div>
+    );
   }
 
   return (
@@ -127,13 +134,22 @@ const EventsPage = () => {
       </Row>
       <Row>
         <div className='arrange-area'>
-          <div className={arrange === 'O' ? 'selected-sort' : ''} onClick={handleNameSort}>
+          <div
+            className={arrange === 'O' ? 'selected-sort' : ''}
+            onClick={handleNameSort}
+          >
             이름순
           </div>
-          <div className={arrange === 'Q' ? 'selected-sort' : ''} onClick={handleLatestSort}>
+          <div
+            className={arrange === 'Q' ? 'selected-sort' : ''}
+            onClick={handleLatestSort}
+          >
             최신순
           </div>
-          <div className={arrange === 'R' ? 'selected-sort' : ''} onClick={handleOldestSort}>
+          <div
+            className={arrange === 'R' ? 'selected-sort' : ''}
+            onClick={handleOldestSort}
+          >
             오래된순
           </div>
         </div>
@@ -147,20 +163,31 @@ const EventsPage = () => {
               </Col>
             ))}
           </Row>
-          {renderPagination(cardCurrentPage, handleCardPaginate, displayData.length)}
+          {renderPagination(
+            cardCurrentPage,
+            handleCardPaginate,
+            displayData.filter((event) => event.cat2 === 'A0207').length,
+            eventsPerPage
+          )}
         </div>
       ) : (
         <div>
-          <Row className='list-area'>
+          <Row className='card-area'>
             {currentEvents.map((event) => (
               <Col key={event.contentid} lg={4} md={6} xs={12}>
-                <EventList event={event} />
+                <EventCard event={event} />
               </Col>
             ))}
           </Row>
-          {renderPagination(listCurrentPage, handleListPaginate, displayData.length)}
+          {renderPagination(
+            listCurrentPage,
+            handleListPaginate,
+            displayData.filter((event) => event.cat2 === 'A0208').length,
+            eventsPerPage
+          )}
         </div>
       )}
+      <EventBookTourSlide/>
     </Container>
   );
 };

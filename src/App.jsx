@@ -7,6 +7,7 @@ import ThemePage from './pages/Theme';
 import AreaPage from './pages/Area/Area';
 import EventsPage from './pages/Events/Events';
 import DetailPage from './pages/Detail';
+import SearchPage from './pages/Search'
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,7 @@ function App() {
         {path: '/area', element: <AreaPage />},
         {path: '/events', element: <EventsPage />},
         {path: 'detail/:contentId', element: <DetailPage />},
+        {path: '/search', element: <SearchPage />},
       ],
     },
   ]);
@@ -33,3 +35,4 @@ function App() {
 }
 
 export default App;
+

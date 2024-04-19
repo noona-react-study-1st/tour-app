@@ -1,0 +1,28 @@
+.nav-area {
+  padding: 1.5em;
+  background-color: white;
+}
+.logo {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-right: 2em;
+}
+.search-input {
+  margin-right: 1em;
+}
+.form-control::placeholder {
+  color: rgb(189, 189, 189);
+}
+.form-control:focus {
+  border-color: white;
+}
+.search-btn {
+  background-color: #3f51b5;
+}
+.search-btn:hover {
+  background-color: #3f51b5;
+}
+.nav {
+  font-size: 1.3em;
+  gap: 2em;
+}
