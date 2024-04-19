@@ -1,0 +1,38 @@
+.title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-top: 3em;
+  margin-bottom: 1em;
+}
+.events-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-top: 2em;
+}
+.events-sub-title {
+  font-size: 1em;
+}
+.events-card {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 2em;
+}
+.events-card::before {
+  content: "";
+  background: linear-gradient(to top, black, transparent);
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 20vh;
+  width: 250px;
+  border-radius: 10px;
+}
+.text-events{
+    position: absolute;
+    bottom: 15px;
+    color: white;
+    padding: 1em;
+}
