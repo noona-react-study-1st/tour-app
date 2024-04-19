@@ -2,7 +2,7 @@
   font-size: 1.5em;
   font-weight: 700;
   margin-top: 3em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 .area-title {
   font-size: 1.3em;
@@ -12,15 +12,28 @@
 .area-sub-title {
   font-size: 1em;
 }
+.carousel-item-padding-40-px {
+  margin: 0.3em;
+}
 .area-card {
   width: 250px;
   height: 350px;
-  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 10px;
+  position: relative;
   margin-right: 2em;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
+/* .area-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.2s;
+  z-index: 2;
+} */
 .area-card::before {
-  content: "";
+  content: '';
   background: linear-gradient(to top, black, transparent);
   opacity: 0.6;
   position: absolute;
@@ -30,9 +43,14 @@
   width: 250px;
   border-radius: 10px;
 }
-.text-area{
-    position: absolute;
-    bottom: 15px;
-    color: white;
-    padding: 1em;
+.text-area {
+  position: absolute;
+  bottom: 15px;
+  color: white;
+  padding: 1em;
+}
+@media (max-width: 800px) {
+  .carousel-item-padding-40-px {
+    margin: 2.5em;
+  }
 }

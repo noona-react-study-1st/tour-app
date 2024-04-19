@@ -2,18 +2,25 @@ import React from 'react';
 import './MainAreaSlide.style.css';
 import 'react-multi-carousel/lib/styles.css';
 import Container from 'react-bootstrap/Container';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useFetchAreaLatelyQuery } from '../../hooks/useFetchAreaLately';
+import Carousel from 'react-multi-carousel';
 import { responsive } from '../../constants/MainResponsive';
+import { useNavigate } from 'react-router-dom';
 
 const MainAreaSlide = () => {
   const { data } = useFetchAreaLatelyQuery();
   const itemList = data?.response.body.items.item;
   console.log('area', itemList);
 
+  const navigate = useNavigate();
+  const moveToDetailPage = (contentid) => {
+    navigate(`/detail/${contentid}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <Container>
+    <Container className='area-bg'>
       <div className='title'>지역별 여행 추천</div>
       {itemList && (
         <Carousel
@@ -32,6 +39,7 @@ const MainAreaSlide = () => {
               }}
               className='area-card'
               key={index}
+              onClick={() => moveToDetailPage(item?.contentid)}
             >
               <div className='text-area'>
                 <div className='area-title'>{item?.title}</div>

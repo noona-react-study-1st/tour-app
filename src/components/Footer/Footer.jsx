@@ -4,8 +4,23 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Footer.style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
+  const footerMenuList = [
+    '개인정보처리방침',
+    '이용약관',
+    '저작권정책',
+    '고객서비스 현장',
+    '전자우편무단수집거부',
+    'Q&A',
+    '찾아오시는 길',
+  ];
+
   return (
     <div className='footer'>
       <Navbar expand='lg' className='footer-nav'>
@@ -17,14 +32,24 @@ const Footer = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='me-auto'>
               <NavDropdown title='관광정보' id='basic-nav-dropdown'>
-                <NavDropdown.Item href='https://api.visitkorea.or.kr/#/' target='_blank'>
+                <NavDropdown.Item
+                  href='https://api.visitkorea.or.kr/#/'
+                  target='_blank'
+                >
                   TourAPI4.0
                 </NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3' target='_blank'>카카오맵</NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3' target='_blank'>날씨</NavDropdown.Item>
+                <NavDropdown.Item href='#action/3.3' target='_blank'>
+                  카카오맵
+                </NavDropdown.Item>
+                <NavDropdown.Item href='#action/3.3' target='_blank'>
+                  날씨
+                </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title='유관기관' id='basic-nav-dropdown'>
-                <NavDropdown.Item href='https://www.youtube.com/channel/UCfBvs0ZJdTA43NQrnI9imGA' target='_blank'>
+                <NavDropdown.Item
+                  href='https://www.youtube.com/channel/UCfBvs0ZJdTA43NQrnI9imGA'
+                  target='_blank'
+                >
                   코딩알려주는누나
                 </NavDropdown.Item>
               </NavDropdown>
@@ -34,12 +59,25 @@ const Footer = () => {
       </Navbar>
       <Container className='footer-bottom'>
         <div className='sns-area'>
-          sns icon 네이버 페이스북 카카오 인스타 유튜브
+          <div>
+            {' '}
+            <FontAwesomeIcon icon={faYoutube} size='xl' />{' '}
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faInstagram} size='xl' />
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faTiktok} size='xl' />
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faFacebook} size='xl' />
+          </div>
         </div>
-        <div className='footer-menu'>
-          개인정보처리방침 이용약관 저작권정책 고객서비스 현장
-          전자우편무단수집거부
-        </div>
+        <ul className='footer-menu-list'>
+          {footerMenuList.map((menu) => (
+            <li>{menu}</li>
+          ))}
+        </ul>
         <div className='footer-info'></div>
         <div className='copyrights'>ⓒ관광알려주는누나</div>
       </Container>
