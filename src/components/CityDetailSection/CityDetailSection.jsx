@@ -5,10 +5,12 @@ import { Spinner, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './CityDetailSection.style.css';
+import { useWeatherStore } from '../../store/weather';
 
 export default function CityDetailSection() {
   const [isOpen, setIsOpen] = useState(false);
   const { area, setSigunguCode } = useAreaStore();
+  const { setSigungu } = useWeatherStore();
   const isMobileOrTablet = window.innerWidth <= 768;
 
   const { data, isLoading, isError, error } = useFetchAreaCodeQuery(
@@ -69,7 +71,10 @@ export default function CityDetailSection() {
                   isMobileOrTablet && city.rnum > 5 && !isOpen ? 'hidden' : ''
                 }`}
                 key={city.rnum}
-                onClick={() => setSigunguCode(city.code)}
+                onClick={() => {
+                  setSigunguCode(city.code);
+                  setSigungu(city.name);
+                }}
               >
                 {city.name}
               </li>

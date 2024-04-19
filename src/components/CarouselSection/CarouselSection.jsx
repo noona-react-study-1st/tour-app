@@ -4,6 +4,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './CarouselSection.style.css';
 import { useAreaStore } from '../../store/area';
+import { useWeatherStore } from '../../store/weather';
 
 const responsive = {
   desktop: {
@@ -25,6 +26,7 @@ const responsive = {
 
 export default function CarouselSection() {
   const { setAreaCode } = useAreaStore();
+  const { setCity } = useWeatherStore();
 
   return (
     <section>
@@ -45,9 +47,10 @@ export default function CarouselSection() {
             <div
               className='image-container'
               key={index}
-              onClick={() =>
-                setAreaCode(city.areaCode, city.name, city.totalCount)
-              }
+              onClick={() => {
+                setAreaCode(city.areaCode, city.name, city.totalCount);
+                setCity(city.name);
+              }}
             >
               <Image src={city.areaImg} rounded />
               <span>{city.name}</span>
