@@ -1,0 +1,49 @@
+.sub-menu {
+  display: flex;
+}
+
+.sub-menu div {
+  display: flex;
+  height: 60px;
+  font-size: x-large;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.selected-sub-menu {
+  border-bottom: 2.5px solid #757de8;
+  font-weight: 600 !important;
+}
+
+.arrange-area {
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  text-align: center;
+  align-items: flex-end;
+}
+
+.arrange-area div {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.selected-sort {
+  font-weight: 600;
+}
+
+.card-area {
+  margin-top: 80px;
+}
+
+.list-area {
+  margin-top: 80px;
+}
+
+.pagination {
+  margin-top: 50px;
+}
