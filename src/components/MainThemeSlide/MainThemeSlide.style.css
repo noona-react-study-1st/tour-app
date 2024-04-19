@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 4em;
 }
 
 /*slider div view "one of 3 slides"*/
@@ -29,18 +30,18 @@
   height: 9vmin;
   text-align: center;
 }
-.slider .python {
-  background-color: #3F51B5;
+.slider .a01 {
+  background-color: #3f51b5;
   animation: change-slider 5s linear infinite;
   margin-top: 1em;
   cursor: pointer;
 }
-.slider .react {
-  background-color: #2196F3;
+.slider .a05 {
+  background-color: #2196f3;
   cursor: pointer;
 }
-.slider .rest-api {
-  background-color: #003F8F;
+.slider .a03 {
+  background-color: #003f8f;
   cursor: pointer;
 }
 .slider div h2 {
@@ -73,24 +74,37 @@
   } /*delay*/
 }
 
-@media (max-width: 800px){
-    .wrap {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-      .slider {
-        width: 70vmin;
-        height: 20vmin;
-        margin: 1 auto;
-        overflow: hidden;
-        text-align: center;
-      }
-      .slider .slide {
-        padding: 6%;
-        margin-bottom: 9vmin;
-        height: 20vmin;
-        text-align: center;
-      }
+.nature-card {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 2em;
+}
+.nature-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-top: 2em;
+}
+
+@media (max-width: 800px) {
+  .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .slider {
+    width: 70vmin;
+    height: 20vmin;
+    margin: 1 auto;
+    overflow: hidden;
+    text-align: center;
+  }
+  .slider .slide {
+    padding: 6%;
+    margin-bottom: 9vmin;
+    height: 20vmin;
+    text-align: center;
+  }
 }
