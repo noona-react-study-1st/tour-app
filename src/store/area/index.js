@@ -11,7 +11,7 @@ export const useAreaStore = create((set) => ({
   area: initialArea,
   setAreaCode: (areaCode, name, totalCount) =>
     set(
-      (state) => (state.area = { ...state.area, areaCode, name, totalCount })
+      (state) => (state.area = { areaCode, name, sigunguCode: '1', totalCount })
     ),
   setSigunguCode: (sigunguCode) =>
     set((state) => (state.area = { ...state.area, sigunguCode })),
