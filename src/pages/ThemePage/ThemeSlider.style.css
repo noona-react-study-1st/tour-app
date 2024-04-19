@@ -1,0 +1,22 @@
+.theme-slider {
+  margin: 20px 0;
+  position: relative;
+  padding: 0 50px;
+}
+
+.carousel-container {
+  padding: 15px 0;
+}
+
+.movie-slider {
+  padding: 10px;
+}
+
+.carousel .slide {
+  transition: transform 300ms ease-in-out;
+}
+
+.carousel-container .react-multi-carousel-track {
+  display: flex;
+  align-items: center;
+}
