@@ -1,4 +1,4 @@
-import {IntroType} from '../../constants/IntroType';
+import {IntroType} from '../../constants/detail/IntroType';
 
 const DetailIntro = ({introData}) => {
   console.log(introData);
@@ -13,7 +13,7 @@ const DetailIntro = ({introData}) => {
 
     return null;
   }
-  const contentTypeId = introData?.contenttypeid;
+  const contentTypeId = introData?.[0].contenttypeid;
   const introTypeTitle = getIntroTypeTitle(contentTypeId);
   console.log(contentTypeId, introTypeTitle);
 

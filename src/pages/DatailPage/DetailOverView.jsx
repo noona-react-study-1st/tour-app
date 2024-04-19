@@ -1,3 +1,5 @@
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 
 const DetailOverView = ({commonData}) => {
@@ -14,20 +16,27 @@ const DetailOverView = ({commonData}) => {
     }
     return null;
   }
-  const homepageUrl = extractUrl(commonData?.homepage);
+  const homepageUrl = extractUrl(commonData.homepage);
   // console.log(homepageUrl);
   return (
-    <div>
-      <div>
-        <Link to={homepageUrl} target='_blank'>
-          홈페이지 바로가기
-        </Link>
+    <>
+      <h2>{commonData.title}</h2>
+      <div className='py-4'>
+        {homepageUrl !== '' && (
+          <div>
+            <Link to={homepageUrl} target='_blank' className='gohome'>
+              홈페이지 바로가기 <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+            </Link>
+          </div>
+        )}
+
+        <div>{`${commonData.overview}`}</div>
+        <div>
+          {commonData.telname !== '' && commonData.telname}
+          {commonData.tel !== '' && `(${commonData.tel})`}
+        </div>
       </div>
-      <div>{commonData.overview}</div>
-      <div>
-        {commonData.telname} ({commonData.tel})
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import InfoType from '../../constants/InfoType';
+import {InfoType} from '../../constants/detail/InfoType';
 
 const DetailInfo = ({infoData}) => {
   console.log(infoData);
@@ -13,18 +13,18 @@ const DetailInfo = ({infoData}) => {
 
     return null;
   }
-  const contentTypeId = infoData?.contenttypeid;
+  const contentTypeId = infoData?.[0].contenttypeid;
   const infoTypeTitle = getInfoTypeTitle(contentTypeId);
   console.log(contentTypeId, infoTypeTitle);
 
   return (
     <ul className='introWrap'>
-      {infoTypeTitle &&
+      {/* {infoTypeTitle &&
         Object.keys(infoTypeTitle).map((title, index) => (
           <li key={index} className='px-2'>
-            {infoTypeTitle[title]} : {infoData[title] === '' ? '-' : infoData[title]}
+            {infoTypeTitle[title]} : {[infoData][title] === '' ? '-' : infoData[title]}
           </li>
-        ))}
+        ))} */}
     </ul>
   );
 };

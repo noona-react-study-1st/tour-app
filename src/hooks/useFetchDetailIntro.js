@@ -9,6 +9,6 @@ export function useFetchDetailIntroQuery(contentId, contentTypeId) {
   return useQuery({
     queryKey: ['detail-intro', contentId, contentTypeId],
     queryFn: () => fetchDetailIntro(contentId, contentTypeId),
-    select: (results) => results.data.response.body.items.item,
+    select: (results) => results.data,
   });
 }

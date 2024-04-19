@@ -11,6 +11,6 @@ export function useFetchDetailCommonQuery(contentId) {
   return useQuery({
     queryKey: ['detail-common', contentId],
     queryFn: () => fetchDetailCommon(contentId),
-    select: (results) => results.data.response.body.items.item,
+    select: (results) => results.data,
   });
 }
