@@ -21,7 +21,7 @@ const MainAreaSlide = () => {
 
   return (
     <Container className='area-bg'>
-      <div className='title'>지역별 여행 추천</div>
+      <div className='main-area-banner-title'>지역별 여행 추천</div>
       {itemList && (
         <Carousel
           infinite={true}

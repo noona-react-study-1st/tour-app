@@ -1,18 +1,25 @@
 import { useFetchWeatherInfoQuery } from '../../../hooks/useFetchWeatherInfo';
 import { useWeatherStore } from '../../../store/weather';
-import { useAreaStore } from '../../../store/area';
 import { cities } from '../../../constants/area';
 import {
   skyType,
   rainType as precipitationType,
+  getWeatherIconClass,
 } from '../../../constants/weather';
 import './MainWeatherSummary.style.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import weatherIcon from '../../../assets/weather/Weather-Icons.jpg';
 
 export default function WeatherSection() {
-  const { weatherArea } = useWeatherStore();
+  const { weatherArea, setCity } = useWeatherStore();
   const { baseDate, baseTime, nX, nY } = weatherArea;
 
-  const { data } = useFetchWeatherInfoQuery({ baseDate, baseTime, nX, nY });
+  const { data } = useFetchWeatherInfoQuery({
+    baseDate,
+    baseTime,
+    nX,
+    nY,
+  });
 
   const currDate = new Date();
   const currHHMM = currDate.getHours() * 100 + currDate.getMinutes();
@@ -53,38 +60,56 @@ export default function WeatherSection() {
     }
 
     content = (
-      <>
-        <div>기온 {tmpData[startIndex].fcstValue}°C</div>
-        <div>
-          {Math.round(maxTemp[0].fcstValue)}°C /{' '}
-          {Math.round(minTemp[0].fcstValue)}°C
-        </div>
-        <div>{weatherState}</div>
-        <div>{windData[startIndex].fcstValue} m/s</div>
-        <div>{rainProb[startIndex].fcstValue}%</div>
-      </>
+      <Container>
+        <Row className='align-items-center'>
+          <Col className='weather-icon-area' lg={6} xs={6}>
+            {' '}
+            <div
+              className={`weather-icon ${getWeatherIconClass(weatherState)}`}
+              style={{
+                backgroundImage: `url("${weatherIcon}")`,
+              }}
+            />
+          </Col>
+          <Col lg={6} xs={6}>
+            <div className='temp-title'>
+              {weatherState} {tmpData[startIndex].fcstValue}°C
+            </div>
+            <div>
+              {Math.round(maxTemp[0].fcstValue)}°C /{' '}
+              {Math.round(minTemp[0].fcstValue)}°C
+            </div>
+            <div>풍속{windData[startIndex].fcstValue} m/s</div>
+            <div>습도{rainProb[startIndex].fcstValue}%</div>
+            <div>미세먼지 정보 추가</div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 
-  const { setAreaCode } = useAreaStore();
-  const { setCity } = useWeatherStore();
-
   return (
     <div className='weather-summary-box'>
-      <div>
-      {cities.map((city, index) => {
-        return (
-          <div
-            href='https://api.visitkorea.or.kr/#/'
-            target='_blank'
-            key={index}
-          >
-            {city.name}
+      <Row className='align-items-center'>
+        <Col lg={4} xs={12}>
+          <div>
+            {cities.map((city, index) => {
+              return (
+                <button
+                  className='city-btn'
+                  key={index}
+                  onClick={() => setCity(city.name)}
+                >
+                  {city.name}
+                </button>
+              );
+            })}
           </div>
-        );
-      })}
-      </div>
-      <div className='weather-info'>{content}</div>
+        </Col>
+        <Col lg={8} xs={12}>
+          <div className='weather-info'>{content}</div>
+        </Col>
+      </Row>
     </div>
   );
 }
