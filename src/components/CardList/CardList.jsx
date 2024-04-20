@@ -128,7 +128,10 @@ export default function CardList({ contentTypeId }) {
       <li key={item.contentid}>
         <Card onClick={() => navigate(`/detail/${item.contentid}`)}>
           {item.firstimage2 ? (
-            <Card.Img src={item.firstimage2} />
+            <>
+              <Card.Img src={item.firstimage2} />
+              <div className='shadow' />
+            </>
           ) : (
             <div className='img-skeleton' />
           )}
