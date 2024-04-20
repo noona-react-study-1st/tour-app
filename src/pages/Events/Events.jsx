@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
+import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import EventCard from '../Events/components/EventCard/EventCard';
-import renderPagination from '../Events/components/EventPagination/renderPagination'; 
-import EventRecommendSlide from '../Events/components/EventSlider/EventRecommendSlide'
-import ScrollToTopButton from "../../common/ScrollToTop/ScrollToTopButton"
+import renderPagination from '../Events/components/EventPagination/renderPagination';
+import EventRecommendSlide from '../Events/components/EventSlider/EventRecommendSlide';
+import ScrollToTopButton from '../../common/ScrollToTop/ScrollToTopButton';
 import './Events.style.css';
 
 const EventsPage = () => {
@@ -85,15 +86,9 @@ const EventsPage = () => {
     : [];
 
   if (isLoading) {
-    return (
-      <div className='loading-box'>
-        <Spinner animation='border' role='status'>
-          <span className='visually-hidden'>Loading...</span>
-        </Spinner>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
-  if (isError)  {
+  if (isError) {
     return (
       <div className='loading-box'>
         <Alert variant='dark' bg='dark' data-bs-theme='dark'>
@@ -106,7 +101,7 @@ const EventsPage = () => {
   return (
     <Container>
       <Row>
-      <EventRecommendSlide/>
+        <EventRecommendSlide />
       </Row>
       <Row>
         <div className='sub-menu'>
@@ -179,7 +174,7 @@ const EventsPage = () => {
           )}
         </div>
       )}
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </Container>
   );
 };
