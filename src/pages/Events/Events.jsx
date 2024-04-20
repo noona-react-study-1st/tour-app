@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
-import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
-import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
 import EventCard from '../Events/components/EventCard/EventCard';
 import renderPagination from '../Events/components/EventPagination/renderPagination'; 
 import EventRecommendSlide from '../Events/components/EventSlider/EventRecommendSlide'
@@ -22,13 +20,6 @@ const EventsPage = () => {
   const { data, isLoading, isError, error } = useFetchEventQuery({
     eventStartDate,
     arrange,
-  });
-  const {
-    data: images,
-    isLoading: isImgLoading,
-    isError: isImgError,
-  } = useFetchEventCarouselQuery({
-    eventStartDate,
   });
 
   const handleNameSort = () => {
@@ -93,7 +84,7 @@ const EventsPage = () => {
         )
     : [];
 
-  if (isLoading || isImgLoading) {
+  if (isLoading) {
     return (
       <div className='loading-box'>
         <Spinner animation='border' role='status'>
@@ -102,7 +93,7 @@ const EventsPage = () => {
       </div>
     );
   }
-  if (isError || isImgError)  {
+  if (isError)  {
     return (
       <div className='loading-box'>
         <Alert variant='dark' bg='dark' data-bs-theme='dark'>
@@ -111,8 +102,6 @@ const EventsPage = () => {
       </div>
     );
   }
-
-  //<EventCarousel images={images} />
 
   return (
     <Container>
