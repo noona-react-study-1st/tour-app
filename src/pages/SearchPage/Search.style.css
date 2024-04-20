@@ -1,0 +1,21 @@
+.no-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  height: 100%;
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.no-result img {
+  height: 180px;
+  width: 180px;
+}
+
+.no-result p {
+  margin-top: 40px;
+  font-size: x-large;
+}
