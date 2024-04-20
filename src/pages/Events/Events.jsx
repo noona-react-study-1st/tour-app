@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
-import { useFetchEventCarouselQuery } from '../../hooks/useFetchEventCarousel';
-import EventCarousel from '../Events/components/EventCarousel/EventCarousel';
+import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import EventCard from '../Events/components/EventCard/EventCard';
-import renderPagination from '../Events/components/EventPagination/renderPagination'; 
-import EventRecommendSlide from '../Events/components/EventSlider/EventRecommendSlide'
-import ScrollToTopButton from "../../common/ScrollToTop/ScrollToTopButton"
+import renderPagination from '../Events/components/EventPagination/renderPagination';
+import EventRecommendSlide from '../Events/components/EventSlider/EventRecommendSlide';
+import ScrollToTopButton from '../../common/ScrollToTop/ScrollToTopButton';
 import './Events.style.css';
 
 const EventsPage = () => {
@@ -22,13 +21,6 @@ const EventsPage = () => {
   const { data, isLoading, isError, error } = useFetchEventQuery({
     eventStartDate,
     arrange,
-  });
-  const {
-    data: images,
-    isLoading: isImgLoading,
-    isError: isImgError,
-  } = useFetchEventCarouselQuery({
-    eventStartDate,
   });
 
   const handleNameSort = () => {
@@ -93,16 +85,10 @@ const EventsPage = () => {
         )
     : [];
 
-  if (isLoading || isImgLoading) {
-    return (
-      <div className='loading-box'>
-        <Spinner animation='border' role='status'>
-          <span className='visually-hidden'>Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
-  if (isError || isImgError)  {
+  if (isError) {
     return (
       <div className='loading-box'>
         <Alert variant='dark' bg='dark' data-bs-theme='dark'>
@@ -115,7 +101,7 @@ const EventsPage = () => {
   return (
     <Container>
       <Row>
-        <EventCarousel images={images} />
+        <EventRecommendSlide />
       </Row>
       <Row>
         <div className='sub-menu'>
@@ -188,8 +174,7 @@ const EventsPage = () => {
           )}
         </div>
       )}
-      <EventRecommendSlide/>
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </Container>
   );
 };

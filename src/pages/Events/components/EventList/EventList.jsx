@@ -17,13 +17,9 @@ const EventList = ({ event }) => {
           backgroundImage: 'url(' + `${event?.firstimage}` + ')',
         }}
         className='list-img'
-      ></div>
-      <div className='list-info'>
-        <div>{event.title}</div>
-        <div>
-          {event.eventstartdate} ~ {event.eventenddate}
-        </div>
-        <div>{event.addr1}</div>
+      >
+        <div className='list-info'>{event.title}</div>
+        <div className='list-info-hover'></div>
       </div>
     </div>
   );

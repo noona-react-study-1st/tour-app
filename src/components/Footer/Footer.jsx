@@ -28,7 +28,10 @@ const Footer = () => {
           <Navbar.Brand href='#home' className='footer-notice'>
             관광 알려주는 누나
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Toggle
+            aria-controls='basic-navbar-nav'
+            className='mo-toggle-btn'
+          />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='me-auto'>
               <NavDropdown title='관광정보' id='basic-nav-dropdown'>

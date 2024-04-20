@@ -15,6 +15,11 @@
   position: absolute;
   bottom: 30vh;
 }
+.banner-text-area h1 {
+  width: 400px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
 .banner-img-area {
   width: 600px;
   height: 500px;
@@ -24,14 +29,21 @@
   overflow: hidden;
   position: absolute;
   top: 50%;
-  right: 9%;
+  right: 10%;
   transform: translateY(-50%);
+  border-radius: 20px;
 }
 .img-area {
   width: 120%;
   height: 120%;
   object-fit: cover;
 }
+.detail-btn {
+  border: 0;
+  background-color: transparent;
+  border-bottom: 1px solid gray;
+}
+
 @media (max-width: 800px) {
   .banner-area {
     width: 100%;
@@ -60,5 +72,10 @@
   }
   .carousel-item-padding-40-px {
     margin: 20em;
+  }
+  .banner-text-area h1 {
+    width: 80%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
   }
 }

@@ -69,7 +69,7 @@ const MainBanner = () => {
               </div>
               <div className='banner-text-area'>
                 <h1>{itemList?.item[5].title}</h1>
-                <button onClick={() => moveToDetailPage(itemList?.item[5].contentid)}>자세히보기</button>
+                <button className='detail-btn' onClick={() => moveToDetailPage(itemList?.item[5].contentid)}>자세히보기</button>
               </div>
             </Container>
           </div>
@@ -87,7 +87,7 @@ const MainBanner = () => {
               </div>
               <div className='banner-text-area'>
                 <h1>{itemList?.item[4].title}</h1>
-                <button onClick={() => moveToDetailPage(itemList?.item[4].contentid)}>자세히보기</button>
+                <button className='detail-btn' onClick={() => moveToDetailPage(itemList?.item[4].contentid)}>자세히보기</button>
               </div>
             </Container>
           </div>
@@ -105,7 +105,7 @@ const MainBanner = () => {
               </div>
               <div className='banner-text-area'>
                 <h1>{itemList?.item[2].title}</h1>
-                <button onClick={() => moveToDetailPage(itemList?.item[2].contentid)}>자세히보기</button>
+                <button className='detail-btn' onClick={() => moveToDetailPage(itemList?.item[2].contentid)}>자세히보기</button>
               </div>
             </Container>
           </div>

@@ -1,0 +1,6 @@
+.weather-summary-box{
+    background-color: aliceblue;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}

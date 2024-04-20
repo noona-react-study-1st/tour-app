@@ -5,15 +5,16 @@
   margin-bottom: 1.5em;
 }
 .area-title {
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: 700;
   margin-top: 2em;
+  line-height: 1.3em;
 }
 .area-sub-title {
   font-size: 1em;
 }
 .carousel-item-padding-40-px {
-  margin: 0.3em;
+  margin: 3px;
 }
 .area-card {
   width: 250px;
@@ -25,13 +26,13 @@
   position: relative;
   margin-right: 2em;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.5s;
 }
-/* .area-card:hover {
-  transform: translateY(-5px);
-  transition: transform 0.2s;
+.area-card:hover {
+  transform: translateY(-15px);
+  transition: transform 0.5s;
   z-index: 2;
-} */
+}
 .area-card::before {
   content: '';
   background: linear-gradient(to top, black, transparent);
