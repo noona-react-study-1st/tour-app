@@ -7,7 +7,7 @@ import './EventSlider.style.css';
 const EventSlider = ({ title, events, responsive }) => {
   return (
     <div>
-      <h3>{title}</h3>
+      <div className='image-bg'>{title}</div>
       <Carousel
         infinite={true}
         centerMode={true}

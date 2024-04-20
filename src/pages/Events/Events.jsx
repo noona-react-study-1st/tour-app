@@ -112,10 +112,12 @@ const EventsPage = () => {
     );
   }
 
+  //<EventCarousel images={images} />
+
   return (
     <Container>
       <Row>
-        <EventCarousel images={images} />
+      <EventRecommendSlide/>
       </Row>
       <Row>
         <div className='sub-menu'>
@@ -188,7 +190,6 @@ const EventsPage = () => {
           )}
         </div>
       )}
-      <EventRecommendSlide/>
       <ScrollToTopButton/>
     </Container>
   );
