@@ -26,15 +26,17 @@ const DetailShareModal = (props) => {
 
   return (
     <Modal
+      className="shareModalWrap"
       {...props}
       size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">공유하기</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <p>공유하기</p>
         <ul className="shareItem">
           <li
             onClick={() =>

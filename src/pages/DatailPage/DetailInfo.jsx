@@ -65,19 +65,3 @@ const DetailInfo = ({ contentTypeId }) => {
   );
 };
 export default DetailInfo;
-
-//  {infoData !== undefined &&
-//    Object.keys(infoTypeTitle).map((title) => {
-//      return infoData.map((info, index) => {
-//        const sanitizedString = removeTagsFromString(info[title]);
-//        return (
-//          <li key={index} className="px-2">
-//            {infoTypeTitle[title]} :{sanitizedString}
-//            {/* {infoTypeTitle[title]} : {info[title]} */}
-//            {/* {info[title].includes("<br>")
-//              ? info[title].replace(/<br\s*\/?>/gi, "")
-//              : info[title]} */}
-//          </li>
-//        );
-//      });
-//    })}

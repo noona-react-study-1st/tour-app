@@ -22,12 +22,10 @@ const MainAirStatus = ({ cityName }) => {
 
   console.log(data, airData, isLoading, isError);
 
-  // Return a loading message while data is loading
   if (isLoading) {
-    return <p>...</p>; // Add return statement here
+    return <p>...</p>;
   }
 
-  // Render AirItem component if airData exists
   return airData && <AirItem data={airData} />;
 };
 
