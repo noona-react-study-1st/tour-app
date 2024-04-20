@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { airApi } from "../utils/http";
 
 function fetchAirData(area) {
-  return airApi.get(`/getCtprvnRltmMesureDnsty?&sidoName=${area}`);
+  const processedArea = area === "서울특별시" ? "서울" : area;
+  return airApi.get(`/getCtprvnRltmMesureDnsty?&sidoName=${processedArea}`);
 }
 
 export function useFetchAirDataQuery(area) {

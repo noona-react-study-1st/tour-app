@@ -29,7 +29,7 @@ const WeatherBanner = ({ areaCode, lon, lat }) => {
 
   console.log(data, airData, isLoading, isError);
   if (isLoading) {
-    <p>isloading</p>;
+    <p>...</p>;
   }
   return (
     <div className="weatherBanner no-print">
