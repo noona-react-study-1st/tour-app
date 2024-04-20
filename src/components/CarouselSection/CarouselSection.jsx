@@ -1,10 +1,11 @@
-import { Image } from 'react-bootstrap';
 import { cities } from '../../constants/area';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './CarouselSection.style.css';
 import { useAreaStore } from '../../store/area';
 import { useWeatherStore } from '../../store/weather';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const responsive = {
   desktop: {
@@ -27,20 +28,23 @@ const responsive = {
 export default function CarouselSection() {
   const { setAreaCode } = useAreaStore();
   const { setCity } = useWeatherStore();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section>
+    <section className='area-carousel-section'>
       <Carousel
         swipeable={false}
         draggable={false}
         showDots={true}
         responsive={responsive}
         // ssr={true} // means to render carousel on server-side.
+        autoPlay
+        autoPlaySpeed={3000}
         infinite={true}
         keyBoardControl={true}
-        containerClass='carousel-container'
-        dotListClass='custom-dot-list-style'
-        itemClass='carousel-item-padding-40-px'
+        containerClass='area-carousel-container'
+        dotListClass='area-custom-dot-list-style'
+        itemClass='area-carousel-item-padding-40-px'
       >
         {cities.map((city, index) => {
           return (
@@ -51,9 +55,29 @@ export default function CarouselSection() {
                 setAreaCode(city.areaCode, city.name, city.totalCount);
                 setCity(city.name);
               }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
-              <Image src={city.areaImg} rounded />
-              <span>{city.name}</span>
+              <motion.img
+                src={city.areaImg}
+                whileHover={{ scale: 1.2, filter: 'brightness(0.4)' }}
+                whileTap={{ scale: 0.9 }}
+              />
+              <motion.span
+                initial={{ scale: 1, translateY: '0', color: 'white' }}
+                animate={
+                  isHovered
+                    ? {
+                        scale: 3.0,
+                        translateY: '-500%',
+                        color: '#dedeff',
+                      }
+                    : {}
+                }
+                transition={{ duration: 0.3 }}
+              >
+                {city.name}
+              </motion.span>
             </div>
           );
         })}
