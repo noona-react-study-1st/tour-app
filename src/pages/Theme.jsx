@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { api } from '../utils/http';
 import { useNavigate } from 'react-router-dom';
-import { Button, Row, Col } from 'react-bootstrap';
-import ThemeCard from './ThemePage/ThemeCard';
-import ThemeSlider from './ThemePage/ThemeSlider';
+import { Button, Row, Col, Container } from 'react-bootstrap';
+import ThemeCard from './Theme/ThemeCard';
+import ThemeSlider from './Theme/ThemeSlider';
+import './Theme/ThemePage.style.css';
 
 const ThemePage = () => {
   const [selectedCat2, setSelectedCat2] = useState(null);
@@ -98,57 +99,59 @@ const ThemePage = () => {
   // 산업관광 > 자동차 클릭 시 에러
 
   return (
-    <div>
-      <h1>ThemePage</h1>
+    <Container>
       <ThemeSlider />
-      <div>
-        <h2>중분류</h2>
-        {cate.map((category) => (
-          <Button
-            key={category.code}
-            onClick={() => handleCategoryClick(category.code)}
-          >
-            {category.name}
-          </Button>
-        ))}
-      </div>
-      {selectedCat2 && (
+      <div className='theme-bt-container'>
         <div>
-          <h2>소분류</h2>
-          {isLoadingSubCate ? (
-            <p>Loading 소분류...</p>
-          ) : (
-            subCate.map((subCategory) => (
-              <Button
-                key={subCategory.code}
-                onClick={() => handleSubCategoryClick(subCategory.code)}
-              >
-                {subCategory.name}
-              </Button>
-            ))
-          )}
+          {cate.map((category) => (
+            <Button
+              key={category.code}
+              onClick={() => handleCategoryClick(category.code)}
+              className='cate-bt'
+            >
+              {category.name}
+            </Button>
+          ))}
         </div>
-      )}
-      {selectedCat3 && (
-        <Row>
-          <h2>Details</h2>
-          {isLoadingItems ? (
-            <p>Loading 상세 리스트...</p>
-          ) : (
-            items.map((item) => (
-              <Col md={4} key={item.contentid}>
-                <ThemeCard
-                  image={item.firstimage}
-                  title={item.title}
-                  address={formatAddress(item.addr1)}
-                  onClick={() => handleDetailClick(item.contentid)}
-                />
-              </Col>
-            ))
-          )}
-        </Row>
-      )}
-    </div>
+        {selectedCat2 && (
+          <div>
+            {isLoadingSubCate ? (
+              <p>Loading 소분류...</p>
+            ) : (
+              subCate.map((subCategory) => (
+                <Button
+                  key={subCategory.code}
+                  onClick={() => handleSubCategoryClick(subCategory.code)}
+                  className='sub-cate-bt'
+                >
+                  {subCategory.name}
+                </Button>
+              ))
+            )}
+          </div>
+        )}
+      </div>
+      <div className='detail-div'>
+        {selectedCat3 && (
+          <Row>
+            {isLoadingItems ? (
+              <p>Loading 상세 리스트...</p>
+            ) : (
+              items.map((item) => (
+                <Col md={6} lg={4} key={item.contentid}>
+                  <ThemeCard
+                    image={item.firstimage}
+                    title={item.title}
+                    address={formatAddress(item.addr1)}
+                    onClick={() => handleDetailClick(item.contentid)}
+                  />
+                </Col>
+              ))
+            )}
+          </Row>
+        )}
+      </div>
+    </Container>
   );
 };
 

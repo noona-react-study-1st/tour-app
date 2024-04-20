@@ -1,0 +1,24 @@
+.theme-detail-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 100%;
+}
+
+.theme-detail-card .card-title,
+.theme-detail-card .card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 992px) {
+  .theme-detail-card {
+    max-width: 24rem;
+  }
+}
+
+#detail-card {
+  margin-bottom: 10px;
+}
