@@ -1,0 +1,16 @@
+.themeSlider {
+  position: relative;
+}
+
+.theme-carousel-container {
+  padding: 15px 0;
+}
+
+.theme-carousel-container .react-multi-carousel-track {
+  display: flex;
+  align-items: center;
+}
+
+.themeCarouselItem {
+  padding: 10px;
+}
