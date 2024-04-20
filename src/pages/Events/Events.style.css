@@ -22,7 +22,6 @@
 .arrange-area {
   display: flex;
   justify-content: flex-end;
-  height: 60px;
   text-align: center;
   align-items: flex-end;
 }
@@ -42,4 +41,99 @@
 
 .pagination {
   margin-top: 50px;
+}
+
+.article-banner {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.article-banner img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.title-img-area {
+  display: flex;
+}
+
+.title-area {
+  margin-top: 50px;
+}
+.title-area p {
+  font-size: x-large;
+  font-weight: 600;
+  margin-right: 30px;
+  border-bottom: 2.5px solid #757de8;
+}
+
+.title-box {
+  display: flex;
+}
+
+.hash-item {
+  padding: 5px 15px;
+  opacity: 0.85;
+  background-color: #757de8;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  margin: 0 5px 10px 0;
+  display: inline-flex; /* hash-item을 인라인 플렉스 박스로 설정 */
+  align-items: flex-start; /* 요소를 수직으로 상단에 정렬 */
+}
+
+@keyframes anime_textup {
+  0% {
+    top: 0;
+  }
+  20% {
+    top: -0.2rem;
+  }
+  40% {
+    top: 0;
+  }
+  60% {
+    top: 0;
+  }
+  80% {
+    top: 0;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.hash-tag {
+  display: inline-block; /* hash-tag를 인라인 블록 요소로 설정 */
+}
+
+.hash-tag span {
+  position: relative;
+  animation: anime_textup 1.5s infinite;
+}
+
+.hash-tag span:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.hash-tag span:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.hash-tag span:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+.hash-tag span:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.hash-tag span:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+
+.list-area {
+  margin-bottom:50px;
 }

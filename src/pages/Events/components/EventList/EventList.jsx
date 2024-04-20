@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './EventList.style.css';
 
 const EventList = ({ event }) => {
+  console.log("eventList", event)
   const navigate = useNavigate();
 
   const moveToDetailPage = () => {
