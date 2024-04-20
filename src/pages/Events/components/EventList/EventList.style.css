@@ -2,74 +2,61 @@
   cursor: pointer;
   margin-bottom: 30px;
 }
-.list:hover .list-info-hover {
-  display: flex;
-}
 
-.list-info-hover {
-  display: none;
-}
-
-.list:hover .list-info {
-  display: none;
-}
-
-.list-img:hover .list-info-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  color: var(--white);
-  background-color: rgba(117, 125, 232, 0.78); /* 투명한 배경색으로 수정 */
-  border-radius: 50%;
+.list-img {
+  width: 300px;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+  border-radius: 10px;
+  box-shadow: 0px -70px 50px 0 #00000093 inset;
+  position: relative;
 }
 
 .list-img:hover {
   z-index: 2;
 }
 
-.list {
-  position: relative;
-}
-
-.list-img {
-  width: 200px;
-  height: 200px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: 0.4s;
-  border-radius: 50%;
-  box-shadow: 0px -45px 25px 0 #00000093 inset;
-  position: relative; 
-}
-
 .list-info {
   position: absolute;
-  top: 50%;
+  bottom: 10px; 
   left: 50%;
-  font-weight:600;
-  font-size:medium;
-  transform: translate(-50%, 50%); 
+  transform: translateX(-50%);
+  font-size: medium;
   color: white;
-  z-index: 1; 
+  text-align: center;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 
 .list-info-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: none;
+  flex-flow: column;
+  justify-content: space-between;
+  color: var(--white);
+  background-color: rgba(117, 125, 232, 0.78); 
+  border-radius: 10px;
+}
+
+.list:hover .list-info {
+  display: none; /* hover 시에는 숨김 */
 }
 
 .list:hover .list-info-hover {
-  display: block; /* 호버 시 hover 클래스에 포함된 요소 보이기 */
+  display: flex; /* hover 시에만 보이도록 설정 */
 }
-
 
 /* 태블릿 */
 @media (max-width: 768px) {
 }
+
 /* 모바일 */
 @media (max-width: 430px) {
 }
