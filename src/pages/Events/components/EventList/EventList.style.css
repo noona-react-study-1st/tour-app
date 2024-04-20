@@ -24,6 +24,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: medium;
+  font-weight:500;
   color: white;
   text-align: center;
   white-space: nowrap; 
