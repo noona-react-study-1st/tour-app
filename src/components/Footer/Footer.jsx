@@ -25,7 +25,7 @@ const Footer = () => {
     <div className='footer'>
       <Navbar expand='lg' className='footer-nav'>
         <Container>
-          <Navbar.Brand href='#home' className='footer-notice'>
+          <Navbar.Brand href='./' className='footer-notice'>
             관광 알려주는 누나
           </Navbar.Brand>
           <Navbar.Toggle
@@ -41,10 +41,10 @@ const Footer = () => {
                 >
                   TourAPI4.0
                 </NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3' target='_blank'>
+                <NavDropdown.Item href='https://apis.map.kakao.com/web/' target='_blank'>
                   카카오맵
                 </NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3' target='_blank'>
+                <NavDropdown.Item href='https://www.data.go.kr/data/15084084/openapi.do' target='_blank'>
                   날씨
                 </NavDropdown.Item>
               </NavDropdown>

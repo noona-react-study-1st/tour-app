@@ -2,7 +2,6 @@ import MainBanner from '../components/MainBanner/MainBanner'
 import MainThemeSlide from '../components/MainThemeSlide/MainThemeSlide';
 import MainAreaSlide from '../components/MainAreaSlide/MainAreaSlide'
 import MainEventsSlide from '../components/MainEventsSlide/MainEventsSlide';
-import Footer from '../components/Footer/Footer';
 import MainWeather from '../components/MainWeather/MainWeather';
 import ScrollToTop from '../common/ScrollToTop/ScrollToTopButton'
 
@@ -14,7 +13,6 @@ export default function HomePage() {
   <MainAreaSlide/>
   <MainEventsSlide/>
   <MainWeather/>
-  <Footer/>
   <ScrollToTop/>
   </>;
 }
