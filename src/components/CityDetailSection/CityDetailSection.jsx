@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import './CityDetailSection.style.css';
 import { useWeatherStore } from '../../store/weather';
+import { motion } from 'framer-motion';
 
 export default function CityDetailSection() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState();
   const { area, setSigunguCode } = useAreaStore();
   const { setSigungu } = useWeatherStore();
   const isMobileOrTablet = window.innerWidth <= 768;
@@ -61,26 +63,30 @@ export default function CityDetailSection() {
             )}
           </span>
         </div>
-        <ul className='city-detail-list'>
-          {data.response.body.items.item.map((city) => {
+        <motion.ul layout className='city-detail-list'>
+          {data.response.body.items.item.map((city, index) => {
             return (
-              <li
+              <motion.li
+                layout
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className={`${
                   !isMobileOrTablet && city.rnum > 10 && !isOpen ? 'hidden' : ''
                 }${
                   isMobileOrTablet && city.rnum > 5 && !isOpen ? 'hidden' : ''
-                }`}
+                } ${activeIndex === index && 'active'}`}
                 key={city.rnum}
                 onClick={() => {
                   setSigunguCode(city.code);
                   setSigungu(city.name);
+                  setActiveIndex(index);
                 }}
               >
                 {city.name}
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
       </section>
     );
   }
