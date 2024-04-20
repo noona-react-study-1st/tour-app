@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetchAirDataQuery } from "../../hooks/useFetchAirData";
 import { cities } from "../../constants/area";
+import { useFetchWeatherDataQuery } from "../../hooks/useFetchWeatherData";
 
 const WeatherBanner = ({ areaCode }) => {
   let [isArea, setIsArea] = useState(false);
@@ -10,12 +11,16 @@ const WeatherBanner = ({ areaCode }) => {
       setAreaTxt(city.name);
       setIsArea(true);
     }
-    console.log(city.areaCode, areaCode, city.name);
+    // console.log(city.areaCode, areaCode, city.name);
   });
 
   const [airData, setAirData] = useState();
   const { data, isLoading, isError } = useFetchAirDataQuery(areaTxt);
-
+  const { data: weatherData, error } = useFetchWeatherDataQuery(
+    "37.5720618985",
+    "126.9763210635"
+  );
+  console.log("weatherData-", weatherData);
   const [pm10, setPm10] = useState();
   const [pm25, setPm25] = useState();
   const [o3, setO3] = useState();
@@ -33,9 +38,12 @@ const WeatherBanner = ({ areaCode }) => {
   return (
     <div className="weatherBanner">
       <div className="weatherInfo">
-        아이콘
+        <img
+          src={`https://openweathermap.org/img/wn/${weatherData?.weather[0].icon}.png`}
+          alt=""
+        />
         <br />
-        00℃
+        {weatherData?.main.temp}℃
       </div>
       <div className="airStatus">
         <ul>

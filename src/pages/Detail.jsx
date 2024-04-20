@@ -15,6 +15,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { RotatingSquare } from "react-loader-spinner";
 import WeatherBanner from "./DatailPage/WeatherBanner";
+import DetailIntro from "./DatailPage/DetailIntro";
+import DetailInfo from "./DatailPage/DetailInfo";
 
 export default function DetailPage() {
   const content1Ref = useRef(null);
@@ -116,12 +118,12 @@ export default function DetailPage() {
           </span>
         </li>
       </ul>
-      <div className="py-4">
+      <div ref={content2Ref} className="py-4">
         {commonData && <DetailOverView commonData={commonData} />}
       </div>
-      <div ref={content2Ref} className="py-4">
-        {/* {infoData && <DetailInfo infoData={infoData.response.body.items.item} />}
-        {introData && <DetailIntro introData={introData.response.body.items.item} />} */}
+      <div className="py-4">
+        {commonData && <DetailIntro contentTypeId={contentTypeId} />}
+        {commonData && <DetailInfo contentTypeId={contentTypeId} />}
       </div>
       <div ref={content3Ref} className="py-4">
         {commonData && (
