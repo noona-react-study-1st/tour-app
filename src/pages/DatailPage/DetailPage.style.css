@@ -288,11 +288,26 @@ pre {
 .shareModalWrap .modal-header {
   border-bottom: 0;
 }
-.shareModalWrap .modal-header p {
+.shareModalWrap .modal-body {
+  padding-top: 0;
+}
+
+.shareBox {
+  position: relative;
+  padding: 30px 10px 40px;
+  border: 3px solid #3f51b5;
+  border-radius: 10px;
+}
+.shareBox p {
   font-size: 18px !important;
   font-weight: 500 !important;
   text-align: center;
-  color: 0;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 10px;
+  background: #fff;
 }
 
 .shareItem {
@@ -301,7 +316,6 @@ pre {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 50px 0;
 }
 .shareItem li {
   list-style: none;
@@ -312,11 +326,30 @@ pre {
   flex: 1;
   text-align: center;
   cursor: pointer;
+  flex-direction: column;
 }
 
 .kakaoLogo {
   width: 30px;
   height: 30px;
+}
+
+.toastBox {
+  width: 150px;
+  border: 1px solid #3f51b5;
+  background: rgba(117, 125, 232, 0.3);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.toastBox.on {
+  display: block;
 }
 
 @page {
