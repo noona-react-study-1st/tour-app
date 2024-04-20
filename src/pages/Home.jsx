@@ -4,6 +4,7 @@ import MainAreaSlide from '../components/MainAreaSlide/MainAreaSlide'
 import MainEventsSlide from '../components/MainEventsSlide/MainEventsSlide';
 import Footer from '../components/Footer/Footer';
 import MainWeather from '../components/MainWeather/MainWeather';
+import ScrollToTop from '../common/ScrollToTop/ScrollToTopButton'
 
 export default function HomePage() {
   // 메인 페이지
@@ -14,5 +15,6 @@ export default function HomePage() {
   <MainEventsSlide/>
   <MainWeather/>
   <Footer/>
+  <ScrollToTop/>
   </>;
 }

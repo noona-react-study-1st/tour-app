@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainWeather.style.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import MainWeatherSummary from './MainWeatherSummary/MainWeatherSummary'
 
 const MainWeather = () => {
   return (
@@ -9,6 +10,7 @@ const MainWeather = () => {
       <Row className='wrap'>
         <Col lg={6} xs={12} className='info-box'>
           <div>여행지 날씨 정보</div>
+          <div><MainWeatherSummary/></div>
         </Col>
         <Col lg={6} xs={12} className='info-box'>
           <div>여행지 미세먼지 정보</div>
