@@ -20,6 +20,7 @@ import DetailInfo from "./DatailPage/DetailInfo";
 import AreaBasedSlide from "./DatailPage/AreaBasedSlide";
 import DetailShareModal from "./DatailPage/DetailShareModal";
 import DetailPetTour from "./DatailPage/DetailPetTour";
+import ScrollToTopButton from "../common/ScrollToTop/ScrollToTopButton";
 
 export default function DetailPage() {
   const content1Ref = useRef(null);
@@ -196,6 +197,7 @@ export default function DetailPage() {
         contentId={contentId}
         title={commonData?.title}
       />
+      <ScrollToTopButton />
     </Container>
   );
 }
