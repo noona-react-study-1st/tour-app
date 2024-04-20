@@ -17,6 +17,8 @@ import { RotatingSquare } from "react-loader-spinner";
 import WeatherBanner from "./DatailPage/WeatherBanner";
 import DetailIntro from "./DatailPage/DetailIntro";
 import DetailInfo from "./DatailPage/DetailInfo";
+import AreaBasedSlide from "./DatailPage/AreaBasedSlide";
+import DetailShareModal from "./DatailPage/DetailShareModal";
 
 export default function DetailPage() {
   const content1Ref = useRef(null);
@@ -50,7 +52,7 @@ export default function DetailPage() {
   const [contentTypeId, setContentTypeId] = useState();
 
   const [areaCode, setAreaCode] = useState();
-
+  const [sigungucode, setSigungucode] = useState();
   const { data, isLoading, isError } = useFetchDetailCommonQuery(contentId);
 
   useEffect(() => {
@@ -58,11 +60,13 @@ export default function DetailPage() {
       setCommonData(data.response.body.items.item?.[0]);
       setContentTypeId(data.response.body.items.item[0].contenttypeid);
       setAreaCode(data.response.body.items.item[0].areacode);
+      setSigungucode(data.response.body.items.item[0].sigungucode);
     }
   }, [data, isLoading, isError]);
   console.log("effect out", areaCode);
 
   const [modalShow, setModalShow] = useState(false);
+  const [shareModalShow, setShareModalShow] = useState(false);
 
   console.log("commonData : ", commonData, "contentTypeId", contentTypeId);
 
@@ -92,7 +96,13 @@ export default function DetailPage() {
   }
   return (
     <Container fluid="lg" className="py-4 detailPageWrap">
-      {commonData && <WeatherBanner areaCode={areaCode} />}
+      {commonData && (
+        <WeatherBanner
+          areaCode={areaCode}
+          lon={commonData.mapx}
+          lat={commonData.mapy}
+        />
+      )}
       <Row>
         <h2>{commonData?.title}</h2>
       </Row>
@@ -113,7 +123,7 @@ export default function DetailPage() {
           <span>
             <FontAwesomeIcon icon={faPrint} />
           </span>
-          <span>
+          <span onClick={() => setShareModalShow(true)}>
             <FontAwesomeIcon icon={faShareNodes} />
           </span>
         </li>
@@ -134,7 +144,16 @@ export default function DetailPage() {
           />
         )}
       </div>
+      <div>
+        {commonData && (
+          <AreaBasedSlide areaCode={areaCode} sigungucode={sigungucode} />
+        )}
+      </div>
       <DetailModal show={modalShow} onHide={() => setModalShow(false)} />
+      <DetailShareModal
+        show={shareModalShow}
+        onHide={() => setShareModalShow(false)}
+      />
     </Container>
   );
 }
