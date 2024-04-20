@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useFetchAirDataQuery } from "../../hooks/useFetchAirData";
-
-const AirItem = () => {
+import "./MainAirStatus.style.css";
+const AirItem = ({ cityName }) => {
   const [airData, setAirData] = useState({});
   const [pm10, setPm10] = useState();
   const [pm25, setPm25] = useState();
   const [o3, setO3] = useState();
 
-  const { data, isLoading, isError } = useFetchAirDataQuery("서울");
+  const { data, isLoading, isError } = useFetchAirDataQuery(cityName);
   useEffect(() => {
     if (!isLoading && !isError) {
       setAirData(data?.response.body.items[0]);
@@ -19,10 +19,10 @@ const AirItem = () => {
 
   console.log("airData", airData, pm10, pm25, o3);
   return (
-    <div>
+    <div className="airStatus">
       <ul>
         <li>
-          미세 :
+          <p>미세</p>
           {pm10 < 31 ? (
             <span className="good"> 좋음</span>
           ) : pm10 < 81 ? (
@@ -34,7 +34,7 @@ const AirItem = () => {
           )}
         </li>
         <li>
-          초미세
+          <p>초미세</p>
           {pm25 < 16 ? (
             <span className="good"> 좋음</span>
           ) : pm25 < 36 ? (
@@ -46,7 +46,7 @@ const AirItem = () => {
           )}
         </li>
         <li>
-          오존
+          <p>오존</p>
           {o3 < 3 ? (
             <span className="good"> 좋음</span>
           ) : o3 < 9 ? (
