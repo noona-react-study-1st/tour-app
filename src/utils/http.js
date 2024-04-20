@@ -36,7 +36,7 @@ export const airApi = axios.create({
   },
 });
 
-export const weatherApi = axios.create({
+export const openWeatherApi = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5",
   params: {
     appid: VITE_OPENWEATHER_API_KEY,
@@ -45,10 +45,10 @@ export const weatherApi = axios.create({
 });
 
 export const weatherApi = axios.create({
-  baseURL: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0',
+  baseURL: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0",
   params: {
     serviceKey: TOUR_API_KEY,
-    dataType: 'JSON',
+    dataType: "JSON",
     numOfRows: 1000,
   },
 });
