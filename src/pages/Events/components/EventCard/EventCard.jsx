@@ -19,11 +19,11 @@ const EventCard = ({ event }) => {
         className='event-img'
       ></div>
       <div className='event-info'>
-        <div>{event.title}</div>
+        <p>{event.title}</p>
         <div>
           {event.eventstartdate} ~ {event.eventenddate}
         </div>
-        <div>{event.addr1}</div>
+        <a>{event.addr1}</a>
       </div>
     </div>
   );
