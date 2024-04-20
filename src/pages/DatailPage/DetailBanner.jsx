@@ -58,7 +58,7 @@ const DetailBanner = () => {
   }
 
   return (
-    <div className="detailBannerItem">
+    <div className="detailBannerItem  no-print">
       {imgData ? (
         <Carousel
           infinite={true}

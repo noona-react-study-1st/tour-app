@@ -3,7 +3,7 @@ import { useFetchAirDataQuery } from "../../hooks/useFetchAirData";
 import { cities } from "../../constants/area";
 import { useFetchWeatherDataQuery } from "../../hooks/useFetchWeatherData";
 
-const WeatherBanner = ({ areaCode }) => {
+const WeatherBanner = ({ areaCode, lon, lat }) => {
   let [isArea, setIsArea] = useState(false);
   const [areaTxt, setAreaTxt] = useState();
   cities.forEach((city) => {
@@ -16,10 +16,7 @@ const WeatherBanner = ({ areaCode }) => {
 
   const [airData, setAirData] = useState();
   const { data, isLoading, isError } = useFetchAirDataQuery(areaTxt);
-  const { data: weatherData, error } = useFetchWeatherDataQuery(
-    "37.5720618985",
-    "126.9763210635"
-  );
+  const { data: weatherData } = useFetchWeatherDataQuery(lat, lon);
   console.log("weatherData-", weatherData);
   const [pm10, setPm10] = useState();
   const [pm25, setPm25] = useState();
@@ -36,7 +33,7 @@ const WeatherBanner = ({ areaCode }) => {
 
   console.log("airData", airData, areaTxt);
   return (
-    <div className="weatherBanner">
+    <div className="weatherBanner no-print">
       <div className="weatherInfo">
         <img
           src={`https://openweathermap.org/img/wn/${weatherData?.weather[0].icon}.png`}

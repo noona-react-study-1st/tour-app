@@ -76,3 +76,29 @@ export const rainType = {
   3: '눈/비',
   4: '눈',
 };
+
+export function getWeatherIconClass(weatherState) {
+  const currentDate = new Date();
+
+  const hours = currentDate.getHours();
+
+  if (weatherState === '흐림') return 'cloudy';
+  if (weatherState === '비') return 'rainy';
+  if (weatherState === '눈') return 'snow';
+  if (weatherState === '비/눈' || weatherState === '눈/비')
+    return 'rain-with-snow';
+  if (weatherState === '맑음') {
+    if (hours >= 18 || hours < 6) {
+      return 'moon';
+    } else {
+      return 'sunny';
+    }
+  }
+  if (weatherState === '구름 조금' || weatherState === '구름 많음') {
+    if (hours >= 18 || hours < 6) {
+      return 'moon-with-cloud';
+    } else {
+      return 'sun-with-cloud';
+    }
+  } else return '';
+}

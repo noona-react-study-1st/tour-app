@@ -7,7 +7,11 @@ import './EventSlider.style.css';
 const EventSlider = ({ title, events, responsive }) => {
   return (
     <div>
-      <h3>{title}</h3>
+      <div className='title-box'>
+        <div className='title-text'>
+          <h1>{title}</h1>
+        </div>
+      </div>
       <Carousel
         infinite={true}
         centerMode={true}
