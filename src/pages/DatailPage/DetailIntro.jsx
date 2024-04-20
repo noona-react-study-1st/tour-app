@@ -42,6 +42,7 @@ const DetailIntro = ({ contentTypeId }) => {
           if (introData[title] === "" || introData[title] === "0") {
             return false;
           } else {
+            // const sanitizedString = removeTagsFromString(introData[title]);
             return (
               <li key={index} className="px-2">
                 {introTypeTitle[title]}: {introData[title]}

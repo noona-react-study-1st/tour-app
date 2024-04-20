@@ -13,6 +13,17 @@ const DetailShareModal = (props) => {
     document.body.appendChild(script);
     return () => document.body.removeChild(script);
   }, []);
+
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+
+      console.log("복사 성공!");
+    } catch (error) {
+      alert("복사 실패!");
+    }
+  };
+
   return (
     <Modal
       {...props}
@@ -38,7 +49,13 @@ const DetailShareModal = (props) => {
               <img className="kakaoLogo" src={kakaoLogo} alt={"Kakao Logo"} />
             </span>
           </li>
-          <li>
+          <li
+            onClick={() =>
+              handleCopyClipBoard(
+                `http://localhost:5173/detail/${props.contentId}`
+              )
+            }
+          >
             url 복사
             <div>
               <FontAwesomeIcon icon={faCopy} />

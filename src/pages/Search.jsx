@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useLocation } from 'react-router-dom'; // useLocation import 추가
+import { useLocation } from 'react-router-dom'; 
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchSearchQuery } from '../hooks/useFetchSearch';
+import LoadingSpinner from '../common/LoadingSpinner/LoadingSpinner';
 import SearchCard from '../pages/SearchPage/SearchCard';
 
 const SearchPage = () => {
@@ -13,6 +14,10 @@ const SearchPage = () => {
   console.log('keyword', keyword);
 
   const { data, isLoading, isError, error } = useFetchSearchQuery(keyword);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <Container>

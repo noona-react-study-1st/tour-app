@@ -4,10 +4,11 @@ import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import EventCard from '../Events/components/EventCard/EventCard';
+import EventList from '../Events/components/EventList/EventList';
 import renderPagination from '../Events/components/EventPagination/renderPagination';
-import EventRecommendSlide from '../Events/components/EventSlider/EventRecommendSlide';
 import ScrollToTopButton from '../../common/ScrollToTop/ScrollToTopButton';
 import './Events.style.css';
+import moreEventImage from '../../assets/eventImage/서울문화포털.png';
 
 const EventsPage = () => {
   const eventStartDate = '20200101';
@@ -67,6 +68,17 @@ const EventsPage = () => {
     data.response.body.items &&
     data.response.body.items.item;
 
+  const springFestivals = displayData
+    ? displayData
+        .filter(
+          (event) => event.title.includes('꽃') || event.title.includes('봄')
+        )
+        .slice(
+          (listCurrentPage - 1) * eventsPerPage,
+          listCurrentPage * eventsPerPage
+        )
+    : [];
+
   const currentFestivals = displayData
     ? displayData
         .filter((event) => event.cat2 === 'A0207')
@@ -101,7 +113,24 @@ const EventsPage = () => {
   return (
     <Container>
       <Row>
-        <EventRecommendSlide />
+        <div className='title-area'>
+          <div className="title-box">
+            <p>봄 축제</p>
+            <div class='hash-tag'>
+              <span class='hash-item'>#봄</span>
+              <span class='hash-item'>#축제</span>
+              <span class='hash-item'>#벚꽃</span>
+              <span class='hash-item'>#TOP4</span>
+            </div>
+          </div>
+          <Row className='list-area'>
+            {springFestivals.slice(0, 4).map((event, index) => (
+              <Col key={index} lg={3} md={3} xs={6}>
+                <EventList event={event} />
+              </Col>
+            ))}
+          </Row>
+        </div>
       </Row>
       <Row>
         <div className='sub-menu'>
@@ -142,7 +171,7 @@ const EventsPage = () => {
         </div>
       </Row>
       {selectedMenu === '축제' ? (
-        <div>
+        <div className="list-area">
           <Row className='card-area'>
             {currentFestivals.map((event) => (
               <Col key={event.contentid} lg={4} md={6} xs={12}>
@@ -174,6 +203,20 @@ const EventsPage = () => {
           )}
         </div>
       )}
+      <Row>
+        <section className='article-banner'>
+          <a
+            href='https://culture.seoul.go.kr/culture/culture/cultureEvent/list.do?searchCate=FESTIVAL&amp;menuNo=200010'
+            target='_blank'
+            title='새창 열림'
+          >
+            <img
+              src={moreEventImage}
+              alt='I SEOUL U 서울문화포털 (더 많은 축제/행사정보 확인하기)'
+            />
+          </a>
+        </section>
+      </Row>
       <ScrollToTopButton />
     </Container>
   );
