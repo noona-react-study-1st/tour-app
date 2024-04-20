@@ -1,0 +1,17 @@
+.main-weather-banner-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-top: 5em;
+  margin-bottom: 1.5em;
+}
+.main-weather-area{
+    margin-bottom: 10em;
+}
+@media (max-width: 800px) {
+  .main-weather-banner-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+}

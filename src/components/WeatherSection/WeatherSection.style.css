@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 28rem;
+  padding-left: 24rem;
 }
 
 .weather-slider ul li {
@@ -68,39 +68,43 @@
 .weather-icon {
   height: 66px;
   width: 66px;
+  /* height: 1000px;
+  width: 1000px; */
   background-repeat: no-repeat;
-  background-size: 500px;
+  background-size: 300px;
+  background-position-x: -155px;
+  background-position-y: -137px;
 }
 
 .weather-icon.sunny {
-  background-position-x: -130px;
-  background-position-y: -50px;
+  background-position-x: -225px;
+  background-position-y: -10px;
 }
 .weather-icon.sun-with-cloud {
-  background-position-x: -212px;
-  background-position-y: -50px;
+  background-position-x: -85px;
+  background-position-y: -10px;
 }
 .weather-icon.cloudy {
-  background-position-x: -46px;
-  background-position-y: -50px;
+  background-position-x: -14px;
+  background-position-y: -70px;
 }
 .weather-icon.rainy {
-  background-position-x: -130px;
-  background-position-y: -150px;
+  background-position-x: -155px;
+  background-position-y: -137px;
 }
 .weather-icon.rain-with-snow {
-  background-position-x: -45px;
-  background-position-y: -240px;
+  background-position-x: -80px;
+  background-position-y: -137px;
 }
 .weather-icon.snow {
-  background-position-x: -212px;
-  background-position-y: -150px;
+  background-position-x: -12px;
+  background-position-y: -137px;
 }
 .weather-icon.moon {
-  background-position-x: -212px;
-  background-position-y: -244px;
+  background-position-x: -3px;
+  background-position-y: -10px;
 }
 .weather-icon.moon-with-cloud {
-  background-position-x: -299px;
-  background-position-y: -50px;
+  background-position-x: -156px;
+  background-position-y: -10px;
 }

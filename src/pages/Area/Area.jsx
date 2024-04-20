@@ -1,4 +1,4 @@
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import CarouselSection from '../../components/CarouselSection/CarouselSection';
 import CityDetailSection from '../../components/CityDetailSection/CityDetailSection';
 import { contentTypeId } from '../../constants/area';
@@ -7,7 +7,7 @@ import WeatherSection from '../../components/WeatherSection/WeatherSection';
 
 export default function AreaPage() {
   return (
-    <Container>
+    <main>
       <Row>
         <CarouselSection />
       </Row>
@@ -26,6 +26,6 @@ export default function AreaPage() {
       <Row className='d-flex justify-content-center mb-5'>
         <CardList contentTypeId={contentTypeId.sleep} />
       </Row>
-    </Container>
+    </main>
   );
 }

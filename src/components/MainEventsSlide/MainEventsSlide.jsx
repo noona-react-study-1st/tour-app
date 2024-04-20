@@ -20,7 +20,7 @@ const MainEventsSlide = () => {
 
   return (
     <Container>
-      <div className='title'>놓칠 수 없는 행사</div>
+      <div className='main-events-banner-title'>놓칠 수 없는 행사</div>
       {itemList && (
         <Carousel
           infinite={true}

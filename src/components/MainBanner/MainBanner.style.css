@@ -53,19 +53,19 @@
   }
   .banner-img-area {
     width: 80%;
-    height: 300px;
+    height: 60%;
     background-repeat: no-repeat;
     background-position: center;
     background-color: black;
     overflow: hidden;
     position: absolute;
-    top: 45%;
+    top: 36%;
     transform: translateY(-50%);
     cursor: pointer;
   }
   .banner-text-area {
     position: absolute;
-    bottom: 2em;
+    bottom: 2.6em;
     text-align: left;
     margin-left: 2em;
     margin-right: 2em;
