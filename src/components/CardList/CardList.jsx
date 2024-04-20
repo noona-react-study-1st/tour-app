@@ -32,7 +32,7 @@ export default function CardList({ contentTypeId }) {
   }, [area]);
 
   useEffect(() => {
-    if (!isLoading && !isError) {
+    if (data) {
       if (pageNo === 1) {
         setItems(data.response.body.items.item);
       } else {
@@ -42,7 +42,7 @@ export default function CardList({ contentTypeId }) {
         ]);
       }
     }
-  }, [data, pageNo, isLoading, isError]);
+  }, [data, pageNo]);
 
   let contentType = '';
 
@@ -133,7 +133,11 @@ export default function CardList({ contentTypeId }) {
             <div className='img-skeleton' />
           )}
           <Card.Body>
-            <Card.Title>{item.title}</Card.Title>
+            <Card.Title>
+              {item.title.length < 11
+                ? item.title
+                : item.title.substring(0, 11) + '...'}
+            </Card.Title>
             <Card.Text>{getAddress(item.addr1)}</Card.Text>
           </Card.Body>
         </Card>

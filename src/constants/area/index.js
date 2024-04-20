@@ -1,20 +1,20 @@
-import seoulImg from '../../assets/areaImage/seoul.jpeg';
-import incheonImg from '../../assets/areaImage/incheon.jpeg';
-import daejeonImg from '../../assets/areaImage/daejeon.jpeg';
-import daeguImg from '../../assets/areaImage/daegu.jpeg';
-import gyeonggiImg from '../../assets/areaImage/gyeonggi.jpeg';
-import busanImg from '../../assets/areaImage/busan.jpeg';
-import ulsanImg from '../../assets/areaImage/ulsan.jpeg';
-import gwangjuImg from '../../assets/areaImage/gwangju.jpeg';
-import gangwonImg from '../../assets/areaImage/gangwon.jpeg';
-import chungbukImg from '../../assets/areaImage/chungbuk.jpeg';
-import chungnamImg from '../../assets/areaImage/chungnam.jpeg';
-import gyeongbukImg from '../../assets/areaImage/gyeongbuk.jpeg';
-import gyeongnamImg from '../../assets/areaImage/gyeongnam.jpeg';
-import jeonbukImg from '../../assets/areaImage/jeonbuk.jpeg';
-import jeonnamImg from '../../assets/areaImage/jeonnam.jpeg';
-import jejuImg from '../../assets/areaImage/jeju.jpeg';
-import sejongImg from '../../assets/areaImage/sejong.jpeg';
+import seoulImg from '../../assets/area/seoul.jpeg';
+import incheonImg from '../../assets/area/incheon.jpeg';
+import daejeonImg from '../../assets/area/daejeon.jpeg';
+import daeguImg from '../../assets/area/daegu.jpeg';
+import gyeonggiImg from '../../assets/area/gyeonggi.jpeg';
+import busanImg from '../../assets/area/busan.jpeg';
+import ulsanImg from '../../assets/area/ulsan.jpeg';
+import gwangjuImg from '../../assets/area/gwangju.jpeg';
+import gangwonImg from '../../assets/area/gangwon.jpeg';
+import chungbukImg from '../../assets/area/chungbuk.jpeg';
+import chungnamImg from '../../assets/area/chungnam.jpeg';
+import gyeongbukImg from '../../assets/area/gyeongbuk.jpeg';
+import gyeongnamImg from '../../assets/area/gyeongnam.jpeg';
+import jeonbukImg from '../../assets/area/jeonbuk.jpeg';
+import jeonnamImg from '../../assets/area/jeonnam.jpeg';
+import jejuImg from '../../assets/area/jeju.jpeg';
+import sejongImg from '../../assets/area/sejong.jpeg';
 
 export const cities = [
   {
