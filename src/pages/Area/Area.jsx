@@ -14,7 +14,7 @@ export default function AreaPage() {
       <Row className='d-flex justify-content-center'>
         <CityDetailSection />
       </Row>
-      <Row>
+      <Row className='d-flex justify-content-center mt-4'>
         <WeatherSection />
       </Row>
       <Row className='d-flex justify-content-center'>
@@ -23,7 +23,7 @@ export default function AreaPage() {
       <Row className='d-flex justify-content-center'>
         <CardList contentTypeId={contentTypeId.food} />
       </Row>
-      <Row className='d-flex justify-content-center'>
+      <Row className='d-flex justify-content-center mb-5'>
         <CardList contentTypeId={contentTypeId.sleep} />
       </Row>
     </Container>

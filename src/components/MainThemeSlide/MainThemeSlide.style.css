@@ -14,16 +14,14 @@
   align-items: center;
   padding-bottom: 4em;
 }
-
-/*slider div view "one of 3 slides"*/
 .slider {
   width: 40vmin;
   height: 9vmin;
   margin: 1em;
   overflow: hidden;
   text-align: center;
+  border-radius: 80px;
 }
-/*the slide div view*/
 .slider .slide {
   padding: 6%;
   margin-bottom: 9vmin;
@@ -48,30 +46,28 @@
   color: white;
 }
 
-/*every div slide has 9vmin height and margin bottom = 18vim*/
-/*we need to go to the first silde from the last slide = 18*2 = -26vmin*/
 @keyframes change-slider {
   0% {
     margin-top: -54vmin;
-  } /*first no slide will show*/
+  }
   5% {
     margin-top: -36vmin;
-  } /*the first slide 18*2 = -36vmin from the thid slide*/
+  }
   33% {
     margin-top: -36vmin;
-  } /*delay*/
+  }
   38% {
     margin-top: -18vmin;
-  } /*the second slide = -18vmin from the thid slide*/
+  }
   66% {
     margin-top: -18vmin;
-  } /*delay*/
+  }
   71% {
     margin-top: 0%;
-  } /*go to the third slide */
+  }
   100% {
     margin-top: 0%;
-  } /*delay*/
+  }
 }
 
 .nature-card {
@@ -96,15 +92,38 @@
   }
   .slider {
     width: 70vmin;
-    height: 20vmin;
-    margin: 1 auto;
+    height: 18vmin;
+    margin: 1em;
     overflow: hidden;
     text-align: center;
   }
   .slider .slide {
     padding: 6%;
-    margin-bottom: 9vmin;
-    height: 20vmin;
+    margin-bottom: 18vmin;
+    height: 18vmin;
     text-align: center;
+  }
+  @keyframes change-slider {
+    0% {
+      margin-top: -108vmin;
+    }
+    5% {
+      margin-top: -72vmin;
+    }
+    33% {
+      margin-top: -72vmin;
+    }
+    38% {
+      margin-top: -36vmin;
+    }
+    66% {
+      margin-top: -36vmin;
+    }
+    71% {
+      margin-top: 0%;
+    }
+    100% {
+      margin-top: 0%;
+    }
   }
 }
