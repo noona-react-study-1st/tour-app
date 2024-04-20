@@ -25,6 +25,10 @@
   font-size: 2em;
   font-weight: 600;
 }
+.weather-info-text {
+  font-size: 1.1em;
+  font-weight: 600;
+}
 .weather-info {
   background-color: #f0f8ff;
   border-radius: 20px;
@@ -62,17 +66,17 @@
   .weather-info {
     background-color: #f0f8ff;
     border-radius: 20px;
-    height: 250px;
-    margin-top: 1em;
+    height: 200px;
+    margin-top: 2em;
     margin-bottom: 1em;
   }
   .align-items-center {
-    height: 250px;
+    height: 200px;
   }
   .weather-summary-box {
     margin-bottom: 17em;
   }
-  .weather-btn-area{
+  .weather-btn-area {
     margin-bottom: 1em;
   }
 }
