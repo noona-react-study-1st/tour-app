@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./MainAirStatus.style.css";
-const AirItem = ({ data }) => {
+
+const DetailAirComp = ({ data }) => {
   const [pm10, setPm10] = useState();
   const [pm25, setPm25] = useState();
   const [o3, setO3] = useState();
@@ -56,4 +56,4 @@ const AirItem = ({ data }) => {
   );
 };
 
-export default AirItem;
+export default DetailAirComp;
