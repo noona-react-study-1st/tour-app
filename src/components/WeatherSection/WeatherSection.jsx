@@ -6,7 +6,7 @@ import {
   getWeatherIconClass,
 } from '../../constants/weather';
 import './WeatherSection.style.css';
-import weatherIcon from '../../assets/weather/Weather-Icons.jpg';
+import weatherIcon from '../../assets/weather/weather-icon.png';
 
 export default function WeatherSection() {
   const { weatherArea } = useWeatherStore();
