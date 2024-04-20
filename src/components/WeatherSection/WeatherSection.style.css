@@ -1,0 +1,106 @@
+.weather-section {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  width: 80%;
+}
+
+.forecast-section {
+  width: 100%;
+  grid-column: span 3 / span 3;
+}
+
+.weather-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.weather-slider ul {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 28rem;
+}
+
+.weather-slider ul li {
+  list-style: none;
+  text-align: center;
+  width: 3rem;
+}
+
+.temp-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.weather-temp-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-temp-box div {
+  padding: 0.5rem;
+}
+
+.etc-box {
+  display: flex;
+  justify-content: center;
+}
+
+.etc-box div {
+  padding: 0 1rem;
+}
+
+.weather-state-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-icon {
+  height: 66px;
+  width: 66px;
+  background-repeat: no-repeat;
+  background-size: 500px;
+}
+
+.weather-icon.sunny {
+  background-position-x: -130px;
+  background-position-y: -50px;
+}
+.weather-icon.sun-with-cloud {
+  background-position-x: -212px;
+  background-position-y: -50px;
+}
+.weather-icon.cloudy {
+  background-position-x: -46px;
+  background-position-y: -50px;
+}
+.weather-icon.rainy {
+  background-position-x: -130px;
+  background-position-y: -150px;
+}
+.weather-icon.rain-with-snow {
+  background-position-x: -45px;
+  background-position-y: -240px;
+}
+.weather-icon.snow {
+  background-position-x: -212px;
+  background-position-y: -150px;
+}
+.weather-icon.moon {
+  background-position-x: -212px;
+  background-position-y: -244px;
+}
+.weather-icon.moon-with-cloud {
+  background-position-x: -299px;
+  background-position-y: -50px;
+}
