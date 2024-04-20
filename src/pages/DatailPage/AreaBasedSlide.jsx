@@ -28,9 +28,14 @@ const AreaBasedSlide = ({ areaCode, sigungucode }) => {
       items: 3,
       slidesToSlide: 1, // optional, default to 1.
     },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 2,
+      slidesToSlide: 1,
+    },
   };
   return (
-    <div className="areaBasedSlideWrap py-4">
+    <div className="areaBasedSlideWrap py-4 no-print">
       <h3>주변 정보</h3>
       {items && (
         <Carousel

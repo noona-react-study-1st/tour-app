@@ -36,15 +36,18 @@ const DetailIntro = ({ contentTypeId }) => {
   console.log(contentTypeId, introTypeTitle);
 
   return (
-    <ul className="introWrap">
-      {introData &&
+    <ul className="introWrap ">
+      {introData !== undefined &&
         Object.keys(introTypeTitle).map((title, index) => {
-          if (introData[title] === "") {
+          if (introData[title] === "" || introData[title] === "0") {
             return false;
           } else {
             return (
               <li key={index} className="px-2">
-                {introTypeTitle[title]} : {introData[title]}
+                {introTypeTitle[title]}: {introData[title]}
+                {/* {introData[title].includes("<br>")
+                  ? introData[title].replace(/<br\s*\/?>/gi, "")
+                  : introData[title]} */}
               </li>
             );
           }
