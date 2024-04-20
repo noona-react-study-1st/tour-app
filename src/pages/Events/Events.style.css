@@ -45,8 +45,8 @@
 }
 
 .article-banner {
-  margin-top: 50px;
-  margin-bottom: 100px;
+  margin-top: 70px;
+  margin-bottom: 30px;
 }
 
 .article-banner img {
@@ -137,4 +137,34 @@
 
 .list-area {
   margin-bottom:50px;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .title-box {
+    display: block;
+  }
+  .title-box p{
+    width: fit-content;
+  }
+  .article-banner {
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+}
+/* 모바일 */
+@media (max-width: 430px) {
+  .title-box {
+    display: block;
+  }
+  .title-box p{
+    width: fit-content;
+  }
+  .article-banner {
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+  .arrange-area {
+    font-size:medium;
+  }
 }

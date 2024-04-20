@@ -23,7 +23,7 @@ const EventCard = ({ event }) => {
         <div>
           {event.eventstartdate} ~ {event.eventenddate}
         </div>
-        <div>{event.addr1}</div>
+        <a>{event.addr1}</a>
       </div>
     </div>
   );

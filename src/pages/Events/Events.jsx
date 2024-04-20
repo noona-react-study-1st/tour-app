@@ -125,7 +125,7 @@ const EventsPage = () => {
           </div>
           <Row className='list-area'>
             {springFestivals.slice(0, 4).map((event, index) => (
-              <Col key={index} lg={3} md={3} xs={6}>
+              <Col key={index} lg={3} md={6} xs={6}>
                 <EventList event={event} />
               </Col>
             ))}
