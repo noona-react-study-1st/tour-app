@@ -25,21 +25,6 @@ const DetailBanner = () => {
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
     },
-    tabletLg: {
-      breakpoint: { max: 1600, min: 1024 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 760 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 760, min: 0 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-    },
   };
   if (isLoading) {
     <div className="detailBannerItem">
@@ -58,53 +43,31 @@ const DetailBanner = () => {
   }
 
   return (
-    <div className="detailBannerItem  no-print">
-      {imgData ? (
-        <Carousel
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={3000}
-          itemClass="detailBannerItem"
-          responsive={responsive}
-          arrows={false}
-          showDots={true}
-        >
-          {imgData?.map((image, index) => (
-            <div
-              className="image"
-              key={index}
-              style={{
-                backgroundImage: `url(${image.originimgurl})`,
-              }}
-            ></div>
-          ))}
-        </Carousel>
-      ) : imgData === undefined || !imgData ? (
-        <div className="image loading">
-          <RotatingSquare
-            visible={true}
-            height="100"
-            width="100"
-            color="#dedeff"
-            ariaLabel="rotating-square-loading"
-            wrapperStyle={{}}
-            wrapperClass="loading"
-          />
-        </div>
-      ) : (
-        <div className="image loading">
-          <RotatingSquare
-            visible={true}
-            height="100"
-            width="100"
-            color="#dedeff"
-            ariaLabel="rotating-square-loading"
-            wrapperStyle={{}}
-            wrapperClass="loading"
-          />
+    <>
+      {imgData && (
+        <div className="detailBannerItem no-print">
+          <Carousel
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={3000}
+            itemClass="detailBannerItem"
+            responsive={responsive}
+            arrows={false}
+            showDots={true}
+          >
+            {imgData.map((image, index) => (
+              <div
+                className="image"
+                key={index}
+                style={{
+                  backgroundImage: `url(${image.originimgurl})`,
+                }}
+              ></div>
+            ))}
+          </Carousel>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
