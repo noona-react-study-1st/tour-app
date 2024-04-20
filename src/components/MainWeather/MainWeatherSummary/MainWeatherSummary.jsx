@@ -11,6 +11,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import weatherIcon from "../../../assets/weather/Weather-Icons.jpg";
 import AirItem from "../../MainAirStatus/AirItem";
 
+
 export default function WeatherSection() {
   const { weatherArea, setCity } = useWeatherStore();
   const { baseDate, baseTime, nX, nY } = weatherArea;
@@ -66,7 +67,9 @@ export default function WeatherSection() {
           <Col className="weather-icon-area" lg={6} xs={6}>
             {" "}
             <div
-              className={`weather-icon ${getWeatherIconClass(weatherState)}`}
+              className={`weather-icon ${getWeatherIconClass(
+                weatherState
+              )}`}
               style={{
                 backgroundImage: `url("${weatherIcon}")`,
               }}
