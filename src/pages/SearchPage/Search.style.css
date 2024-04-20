@@ -10,12 +10,15 @@
   text-align: center;
 }
 
+.centered-content img{
+ margin: 40px;
+}
+
 .no-result img {
   height: 180px;
   width: 180px;
 }
 
 .no-result p {
-  margin-top: 40px;
   font-size: x-large;
 }
