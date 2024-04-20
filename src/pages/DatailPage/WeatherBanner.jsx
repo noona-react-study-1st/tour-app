@@ -33,7 +33,7 @@ const WeatherBanner = ({ areaCode, lon, lat }) => {
 
   console.log("airData", airData, areaTxt);
   return (
-    <div className="weatherBanner">
+    <div className="weatherBanner no-print">
       <div className="weatherInfo">
         <img
           src={`https://openweathermap.org/img/wn/${weatherData?.weather[0].icon}.png`}

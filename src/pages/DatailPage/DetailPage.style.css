@@ -1,5 +1,7 @@
+@charset "UTF-8";
 .detailPageWrap {
   color: #333;
+  padding: 15px 0 100px;
 }
 .detailPageWrap h2 {
   text-align: center;
@@ -42,8 +44,8 @@
 .detailNav li.shortMenu {
   display: flex;
   align-items: center;
-  gap: 20px;
-  justify-content: flex-end;
+  gap: 30px;
+  justify-content: center;
 }
 .detailNav li.shortMenu span:hover {
   color: #3f51b5;
@@ -52,7 +54,6 @@
 .detailBannerItem {
   width: 100%;
   height: 627px;
-  margin-bottom: 2rem;
   border-radius: 1rem;
 }
 .detailBannerItem .image {
@@ -64,11 +65,14 @@
   position: relative;
 }
 .detailBannerItem .image.loading {
-  border: 1px solid #ccc;
-  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 768px) {
+  .detailBannerItem {
+    height: 300px;
+  }
 }
 
 .introWrap {
@@ -82,6 +86,11 @@
 }
 .introWrap.info {
   border-top: 1px solid #ccc;
+}
+@media (max-width: 768px) {
+  .introWrap li {
+    width: 100%;
+  }
 }
 
 .titleBox {
@@ -110,7 +119,7 @@ a {
   width: 120px;
   display: block;
   position: fixed;
-  top: 130px;
+  top: 200px;
   right: 10px;
   border: 1px solid rgba(233, 233, 255, 0.8);
   border-radius: 10px;
@@ -165,10 +174,10 @@ a {
 }
 
 .areaBasedSlideWrap {
-  height: 500px;
+  height: 300px;
 }
 .areaBasedSlideWrap h3 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 }
 
@@ -200,7 +209,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
 }
 .areaBasedSlider .image h4 {
   color: #fff;
@@ -208,10 +217,70 @@ a {
   z-index: 1;
   font-size: 16px;
   margin-bottom: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .areaBasedSlider .image p {
   color: #fff;
   z-index: 1;
   font-size: 12px;
   margin-bottom: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .areaBasedSlider {
+    height: 180px;
+  }
+  .areaBasedSlider .image {
+    padding: 20px 5px;
+  }
+}
+
+pre {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow: auto;
+}
+
+.shareItem {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0;
+}
+.shareItem li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.kakaoLogo {
+  width: 30px;
+  height: 30px;
+}
+
+@page {
+  size: A4;
+  margin: 1cm;
+  margin-top: 2cm;
+  margin-bottom: 2cm;
+}
+@media print {
+  nav,
+  .no-print {
+    display: none; /* 네비게이션과 원치 않는 요소 숨기기 */
+  }
 }

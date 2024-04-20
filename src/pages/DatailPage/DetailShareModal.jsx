@@ -1,8 +1,18 @@
-import { faComment, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Modal } from "react-bootstrap";
+import { useEffect } from "react";
+import { shareKakao } from "../../utils/sharekakao";
+import kakaoLogo from "../../assets/detailImage/kakaoLogo.png";
 
 const DetailShareModal = (props) => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://developers.kakao.com/sdk/js/kakao.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => document.body.removeChild(script);
+  }, []);
   return (
     <Modal
       {...props}
@@ -15,9 +25,18 @@ const DetailShareModal = (props) => {
       </Modal.Header>
       <Modal.Body>
         <ul className="shareItem">
-          <li>
+          <li
+            onClick={() =>
+              shareKakao(
+                `http://localhost:5173/detail/${props.contentId}`,
+                props.title
+              )
+            }
+          >
             kakao
-            <FontAwesomeIcon icon={faComment} />
+            <span>
+              <img className="kakaoLogo" src={kakaoLogo} alt={"Kakao Logo"} />
+            </span>
           </li>
           <li>
             url 복사

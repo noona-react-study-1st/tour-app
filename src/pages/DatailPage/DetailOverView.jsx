@@ -25,13 +25,18 @@ const DetailOverView = ({ commonData }) => {
         {homepageUrl !== "" && (
           <div>
             <Link to={homepageUrl} target="_blank" className="gohome">
-              홈페이지 바로가기{" "}
+              홈페이지 바로가기
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </Link>
           </div>
         )}
 
-        <div>{`${commonData.overview}`}</div>
+        <div>
+          {commonData.overview}
+          {/* {commonData.overview?.includes("<br>")
+            ? commonData.overview?.replace(/<br\s*\/?>/gi, "")
+            : commonData.overview} */}
+        </div>
         <div>
           {commonData.telname !== "" && commonData.telname}
           {commonData.tel !== "" && `(${commonData.tel})`}
