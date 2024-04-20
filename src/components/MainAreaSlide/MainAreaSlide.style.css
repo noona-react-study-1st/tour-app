@@ -1,4 +1,4 @@
-.title {
+.main-area-banner-title  {
   font-size: 1.5em;
   font-weight: 700;
   margin-top: 3em;
@@ -53,5 +53,11 @@
 @media (max-width: 800px) {
   .carousel-item-padding-40-px {
     margin: 2.5em;
+  }
+  .main-area-banner-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 1em;
+    margin-bottom: 0;
   }
 }

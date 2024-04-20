@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  height: 100%;
+  margin-bottom: 20px;
+  height: 310px;
 }
 
 .theme-detail-card .card-title,
@@ -21,4 +21,9 @@
 
 #detail-card {
   margin-bottom: 10px;
+}
+
+.card-body {
+  padding-bottom: 0px;
+  align-items: center;
 }

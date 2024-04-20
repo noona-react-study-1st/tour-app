@@ -25,9 +25,10 @@ const DetailPetTour = ({ contentTypeId }) => {
       {infoData !== undefined &&
         Object.keys(PetTourType).map((title) => {
           return infoData.map((info, index) => {
+            // const sanitizedString = removeTagsFromString(info[title]);
             return (
               <li key={index} className="px-2">
-                {PetTourType[title]}: {info[title]}
+                {PetTourType[title]}: {PetTourType[title]}
                 {/* {PetTourType[title].includes("<br>")
                   ? PetTourType[title].replace(/<br\s*\/?>/gi, "")
                   : PetTourType[title]} */}
