@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-multi-carousel';
 import ThemeSliderCard from './ThemeSliderCard';
-import './ThemeSlider.style.css';
+import styles from './ThemeSlider.module.css';
 import { Container } from 'react-bootstrap';
 // import { responsive } from '../../constants/MainResponsive';
 
@@ -10,16 +10,16 @@ const ThemeSlider = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 1,
+      items: 2,
       slidesToSlide: 1,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
+      breakpoint: { max: 1024, min: 768 },
+      items: 2,
       slidesToSlide: 1,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 768, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -52,20 +52,20 @@ const ThemeSlider = () => {
   ];
 
   return (
-    <div className='theme-slider'>
+    <div className={styles.themeSlider}>
       <Carousel
         swipeable={true}
         draggable={true}
-        showDots={true}
+        showDots={false}
         responsive={responsive}
         infinite={true}
         autoPlay={true}
         autoPlaySpeed={4000}
         keyBoardControl={true}
         transitionDuration={500}
-        containerClass='carousel-container'
-        dotListClass='custom-dot-list-style'
-        itemClass='carousel-item-padding-40-px'
+        containerClass='theme-carousel-container'
+        // dotListClass='custom-dot-list-style'
+        itemClass={styles.themeCarouselItem}
       >
         {cards.map((card, index) => (
           <ThemeSliderCard

@@ -10,7 +10,7 @@ const ThemeSliderCard = ({ imageUrl, promoText, title }) => {
       }}
       className='theme-slider-card'
     >
-      <div className='overlay'>
+      <div className='theme-overlay'>
         <div className='slider-card-txt'>
           <h4>{promoText}</h4>
           <h2>{title}</h2>

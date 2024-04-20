@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { api } from '../utils/http';
 import { useNavigate } from 'react-router-dom';
-import { Button, Row, Col, Container } from 'react-bootstrap';
+import { Button, Row, Col, Container, Spinner } from 'react-bootstrap';
 import ThemeCard from './Theme/ThemeCard';
 import ThemeSlider from './Theme/ThemeSlider';
 import './Theme/ThemePage.style.css';
@@ -65,7 +65,7 @@ const ThemePage = () => {
           },
         })
         .then((response) => {
-          setItems(response.data.response.body.items.item);
+          setItems(response.data.response.body.items?.item || []);
           setIsLoadingItems(false);
         })
         .catch((err) => {
@@ -96,8 +96,6 @@ const ThemePage = () => {
     return <p>{error}</p>;
   }
 
-  // 산업관광 > 자동차 클릭 시 에러
-
   return (
     <Container>
       <ThemeSlider />
@@ -116,7 +114,7 @@ const ThemePage = () => {
         {selectedCat2 && (
           <div>
             {isLoadingSubCate ? (
-              <p>Loading 소분류...</p>
+              <Spinner />
             ) : (
               subCate.map((subCategory) => (
                 <Button
@@ -135,18 +133,26 @@ const ThemePage = () => {
         {selectedCat3 && (
           <Row>
             {isLoadingItems ? (
-              <p>Loading 상세 리스트...</p>
+              <Spinner />
+            ) : items.length === 0 ? (
+              <p>데이터가 없습니다</p>
             ) : (
-              items.map((item) => (
-                <Col md={6} lg={4} key={item.contentid}>
-                  <ThemeCard
-                    image={item.firstimage}
-                    title={item.title}
-                    address={formatAddress(item.addr1)}
-                    onClick={() => handleDetailClick(item.contentid)}
-                  />
-                </Col>
-              ))
+              items
+                .filter((item) => item.firstimage)
+                .map((item, index, array) => (
+                  <Col
+                    md={array.length === 1 ? 12 : 6}
+                    lg={array.length === 1 ? 12 : 4}
+                    key={item.contentid}
+                  >
+                    <ThemeCard
+                      image={item.firstimage}
+                      title={item.title}
+                      address={formatAddress(item.addr1)}
+                      onClick={() => handleDetailClick(item.contentid)}
+                    />
+                  </Col>
+                ))
             )}
           </Row>
         )}
