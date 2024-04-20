@@ -18,9 +18,12 @@
 }
 .search-btn {
   background-color: #3f51b5;
+  border-color:#3f51b5;
 }
 .search-btn:hover {
   background-color: #3f51b5;
+  border-color:#3f51b5;
+  color:#dedeff;
 }
 .nav {
   font-size: 1.3em;
