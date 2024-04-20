@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function CardList({ contentTypeId }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -129,11 +130,17 @@ export default function CardList({ contentTypeId }) {
         <Card onClick={() => navigate(`/detail/${item.contentid}`)}>
           {item.firstimage2 ? (
             <>
-              <Card.Img src={item.firstimage2} />
-              <div className='shadow' />
+              <motion.img
+                src={item.firstimage2}
+                className='card-img'
+                whileHover={{ scale: 1.1, filter: 'brightness(0.7)' }}
+              />
             </>
           ) : (
-            <div className='img-skeleton' />
+            <motion.div
+              className='img-skeleton'
+              whileHover={{ filter: 'brightness(0.5)' }}
+            />
           )}
           <Card.Body>
             <Card.Title>
