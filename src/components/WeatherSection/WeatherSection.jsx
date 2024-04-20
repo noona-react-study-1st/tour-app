@@ -7,12 +7,18 @@ import {
 } from '../../constants/weather';
 import './WeatherSection.style.css';
 import weatherIcon from '../../assets/weather/weather-icon.png';
+import { Spinner } from 'react-bootstrap';
 
 export default function WeatherSection() {
   const { weatherArea } = useWeatherStore();
   const { baseDate, baseTime, nX, nY } = weatherArea;
 
-  const { data } = useFetchWeatherInfoQuery({ baseDate, baseTime, nX, nY });
+  const { data, isLoading, isError, error } = useFetchWeatherInfoQuery({
+    baseDate,
+    baseTime,
+    nX,
+    nY,
+  });
 
   const currDate = new Date();
   const currHHMM = currDate.getHours() * 100 + currDate.getMinutes();
@@ -30,9 +36,24 @@ export default function WeatherSection() {
       return arr.findIndex((row) => +row.fcstTime - currHHMM >= 0);
     }
   }
+  if (isLoading) {
+    content = (
+      <section className='forecast-skeleton'>
+        <Spinner />
+      </section>
+    );
+  }
+
+  if (isError) {
+    content = (
+      <section className='forecast-skeleton'>
+        <span>{error.message}</span>
+      </section>
+    );
+  }
 
   if (data) {
-    const itemsArray = data.response.body.items.item;
+    const itemsArray = data?.response.body.items.item;
 
     const tmpData = itemsArray.filter((row) => row.category === 'TMP');
     const skyData = itemsArray.filter((row) => row.category === 'SKY');
@@ -55,10 +76,10 @@ export default function WeatherSection() {
     // console.log(tmpData.slice(startIndex, startIndex + 24));
 
     content = (
-      <>
+      <section className='forecast-section'>
         <div className='weather-temp-box'>
           <div className='temp-box'>
-            <div>기온 {tmpData[startIndex].fcstValue}°C</div>
+            <div className='curr-temp'>{tmpData[startIndex].fcstValue}°C</div>
             <div>
               {Math.round(maxTemp[0].fcstValue)}°C /{' '}
               {Math.round(minTemp[0].fcstValue)}°C
@@ -80,30 +101,30 @@ export default function WeatherSection() {
         </div>
         <div className='weather-slider overflow-auto'>
           <ul>
-            <li style={{ width: '5rem' }}>시간</li>
+            <li style={{ width: '5rem', fontWeight: '700' }}>시간</li>
             {tmpData.slice(startIndex, startIndex + 24).map((row, index) => (
               <li key={index}>{row.fcstTime.substring(0, 2)}시</li>
             ))}
           </ul>
           <ul>
-            <li style={{ width: '5rem' }}>기온</li>
+            <li style={{ width: '5rem', fontWeight: '700' }}>기온</li>
             {tmpData.slice(startIndex, startIndex + 24).map((row, index) => (
               <li key={index}>{row.fcstValue}°C</li>
             ))}
           </ul>
           <ul>
-            <li style={{ width: '5rem' }}>강수확률</li>
+            <li style={{ width: '5rem', fontWeight: '700' }}>강수확률</li>
             {rainProb.slice(startIndex, startIndex + 24).map((row, index) => (
               <li key={index}>{row.fcstValue}%</li>
             ))}
           </ul>
         </div>
-      </>
+      </section>
     );
   }
   return (
     <div className='weather-section'>
-      <section className='forecast-section'>{content}</section>
+      {content}
       <section></section>
     </div>
   );
