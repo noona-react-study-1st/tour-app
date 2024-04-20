@@ -3,6 +3,7 @@ import CarouselSection from '../../components/CarouselSection/CarouselSection';
 import CityDetailSection from '../../components/CityDetailSection/CityDetailSection';
 import { contentTypeId } from '../../constants/area';
 import CardList from '../../components/CardList/CardList';
+import WeatherSection from '../../components/WeatherSection/WeatherSection';
 
 export default function AreaPage() {
   return (
@@ -12,6 +13,9 @@ export default function AreaPage() {
       </Row>
       <Row className='d-flex justify-content-center'>
         <CityDetailSection />
+      </Row>
+      <Row>
+        <WeatherSection />
       </Row>
       <Row className='d-flex justify-content-center'>
         <CardList contentTypeId={contentTypeId.tour} />
