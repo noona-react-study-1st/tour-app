@@ -9,22 +9,28 @@ const SearchPage = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
 
-  const keyword = encodeURIComponent(query.get('q'));
+  const keyword = query.get('q');
   console.log('keyword', keyword);
 
   const { data, isLoading, isError, error } = useFetchSearchQuery(keyword);
 
   return (
     <Container>
-      <Row className='card-area'>
-        {data?.map((data) => (
-          <Col key={data.contentid} lg={4} md={6} xs={12}>
-            <SearchCard data={data} />
-          </Col>
-        ))}
-      </Row>
+      {isLoading && <Spinner animation='border' />}
+      {isError && <Alert variant='danger'>{error}</Alert>}
+      {!data && !isLoading && <p>{keyword} 검색 결과가 없습니다.</p>}
+      {data && data.length > 0 && (
+        <Row className='card-area'>
+          {data.map((data) => (
+            <Col key={data.contentid} lg={4} md={6} xs={12}>
+              <SearchCard data={data} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </Container>
   );
 };
+
 
 export default SearchPage;
