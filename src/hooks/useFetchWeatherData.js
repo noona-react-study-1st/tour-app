@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { weatherApi } from "../utils/http";
+import { openWeatherApi } from "../utils/http";
 
 function fetchWeatherData(lat, lon) {
-  return weatherApi.get(`/weather?lat=${lat}&lon=${lon}`);
+  return openWeatherApi.get(`/weather?lat=${lat}&lon=${lon}`);
 }
 
 export function useFetchWeatherDataQuery(lat, lon) {
