@@ -8,7 +8,7 @@ import {
 } from '../../../constants/weather';
 import './MainWeatherSummary.style.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import weatherIcon from '../../../assets/weather/Weather-Icons.jpg';
+import weatherIcon from '../../../assets/weather/weather-icon.png';
 
 export default function WeatherSection() {
   const { weatherArea, setCity } = useWeatherStore();
@@ -62,25 +62,27 @@ export default function WeatherSection() {
     content = (
       <Container>
         <Row className='align-items-center'>
-          <Col className='weather-icon-area' lg={6} xs={6}>
+          <Col className='weather-icon-area' lg={5} xs={6}>
             {' '}
             <div
-              className={`weather-icon ${getWeatherIconClass(weatherState)}`}
+              className={`weather-icon ${getWeatherIconClass(
+                weatherState
+              )}`}
               style={{
                 backgroundImage: `url("${weatherIcon}")`,
               }}
             />
           </Col>
-          <Col lg={6} xs={6}>
+          <Col lg={7} xs={6}>
             <div className='temp-title'>
-              {weatherState} {tmpData[startIndex].fcstValue}°C
+              {tmpData[startIndex].fcstValue}°C {weatherState} 
             </div>
             <div>
               {Math.round(maxTemp[0].fcstValue)}°C /{' '}
               {Math.round(minTemp[0].fcstValue)}°C
             </div>
-            <div>풍속{windData[startIndex].fcstValue} m/s</div>
-            <div>습도{rainProb[startIndex].fcstValue}%</div>
+            <div>풍속 {windData[startIndex].fcstValue} m/s</div>
+            <div>습도 {rainProb[startIndex].fcstValue}%</div>
             <div>미세먼지 정보 추가</div>
           </Col>
         </Row>
@@ -91,7 +93,7 @@ export default function WeatherSection() {
   return (
     <div className='weather-summary-box'>
       <Row className='align-items-center'>
-        <Col lg={4} xs={12}>
+        <Col lg={6} xs={12} className='weather-btn-area'>
           <div>
             {cities.map((city, index) => {
               return (
@@ -106,7 +108,7 @@ export default function WeatherSection() {
             })}
           </div>
         </Col>
-        <Col lg={8} xs={12}>
+        <Col lg={6} xs={12}>
           <div className='weather-info'>{content}</div>
         </Col>
       </Row>

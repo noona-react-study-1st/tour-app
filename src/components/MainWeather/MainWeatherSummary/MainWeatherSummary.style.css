@@ -1,9 +1,7 @@
 .weather-summary-box {
-  /* background-color: aliceblue; */
-  height: 300px;
+  height: 250px;
   display: flex;
   justify-content: center;
-  margin-bottom: 1em;
 }
 .city-btn {
   background-color: transparent;
@@ -30,16 +28,25 @@
 .weather-info {
   background-color: #f0f8ff;
   border-radius: 20px;
-  height: 300px;
+  height: 200px;
 }
 .align-items-center {
-  height: 300px;
+  height: 200px;
 }
-.weather-icon-area{
-    display: flex;
-    justify-content: center;
+.weather-icon-area {
+  display: flex;
+  justify-content: center;
 }
-
+.main-weather-icon {
+  height: 250px;
+  width: 250px;
+  /* height: 1000px;
+    width: 1000px; */
+  background-repeat: no-repeat;
+  background-size: 700px;
+  background-position-x: -320px;
+  background-position-y: -280px;
+}
 @media (max-width: 800px) {
   .city-btn {
     background-color: transparent;
@@ -55,11 +62,17 @@
   .weather-info {
     background-color: #f0f8ff;
     border-radius: 20px;
-    height: 200px;
+    height: 250px;
     margin-top: 1em;
     margin-bottom: 1em;
   }
-  .align-items-center{
-    height: 200px;
+  .align-items-center {
+    height: 250px;
+  }
+  .weather-summary-box {
+    margin-bottom: 17em;
+  }
+  .weather-btn-area{
+    margin-bottom: 1em;
   }
 }
