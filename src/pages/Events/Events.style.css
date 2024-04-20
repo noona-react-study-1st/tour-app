@@ -22,6 +22,7 @@
 .arrange-area {
   display: flex;
   justify-content: flex-end;
+  font-size:large;
   text-align: center;
   align-items: flex-end;
 }
@@ -59,7 +60,7 @@
 }
 
 .title-area {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .title-area p {
   font-size: x-large;

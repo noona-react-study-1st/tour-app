@@ -40,10 +40,24 @@
   height: 100%;
   display: none;
   flex-flow: column;
-  justify-content: space-between;
+  justify-content: center;
   color: var(--white);
-  background-color: rgba(117, 125, 232, 0.78); 
+  /*background-color: rgba(117, 125, 232, 0.78); */
+  background-color:rgba(63, 81, 181, 0.7);
   border-radius: 10px;
+}
+
+.list-info-hover div{
+  font-size: large;
+  font-weight:500;
+  color: white;
+  text-align:center;
+}
+
+.list-info-hover .title{
+  margin-bottom:5px;
+  font-weight:600;
+  font-size: x-large;
 }
 
 .list:hover .list-info {

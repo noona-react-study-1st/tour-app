@@ -20,7 +20,12 @@ const EventList = ({ event }) => {
         className='list-img'
       >
         <div className='list-info'>{event.title}</div>
-        <div className='list-info-hover'></div>
+        <div className='list-info-hover'>
+          <div className="title">{event.title}</div>
+          <div>{event.addr1}</div>
+          <div>{event.eventstartdate}~{event.eventenddate}</div>
+          <div>{event.tel}</div>
+          </div>
       </div>
     </div>
   );
