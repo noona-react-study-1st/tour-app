@@ -143,13 +143,11 @@ export default function DetailPage() {
           lat={commonData.mapy}
         />
       )}
-      <Row>
+      <Row ref={content1Ref} id="content01">
         <h2 className="no-print">{commonData?.title}</h2>
       </Row>
 
-      <Row ref={content1Ref} id="content01">
-        {commonData && <DetailBanner contentTypeId={contentTypeId} />}
-      </Row>
+      <Row>{commonData && <DetailBanner title={commonData?.title} />}</Row>
 
       <ul className="detailNav no-print">
         <li onClick={onContent1Click}>소개</li>

@@ -18,10 +18,10 @@ const DetailOverView = ({ commonData }) => {
   }
   const homepageUrl = extractUrl(commonData.homepage);
   // console.log(homepageUrl);
+  // const sanitizedString = removeTagsFromString(commonData.overview);
   return (
     <>
-      <h2>{commonData.title}</h2>
-      <div className="py-4">
+      <div className="p-4 overviewWrap">
         {homepageUrl !== "" && (
           <div>
             <Link to={homepageUrl} target="_blank" className="gohome">
@@ -31,11 +31,9 @@ const DetailOverView = ({ commonData }) => {
           </div>
         )}
 
-        <div>
+        <div className="overview">
+          {/* {sanitizedString} */}
           {commonData.overview}
-          {/* {commonData.overview?.includes("<br>")
-            ? commonData.overview?.replace(/<br\s*\/?>/gi, "")
-            : commonData.overview} */}
         </div>
         <div>
           {commonData.telname !== "" && commonData.telname}

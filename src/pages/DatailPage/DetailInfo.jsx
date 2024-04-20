@@ -38,22 +38,46 @@ const DetailInfo = ({ contentTypeId }) => {
   console.log(contentTypeId, infoTypeTitle, Object.keys(infoTypeTitle));
 
   return (
-    <ul className="introWrap info">
-      {infoData !== undefined &&
-        Object.keys(infoTypeTitle).map((title) => {
-          return infoData.map((info, index) => {
-            // console.log(infoTypeTitle[title], info[title]);
-            return (
-              <li key={index} className="px-2">
-                {infoTypeTitle[title]} : {info[title]}
-                {/* {info[title].includes("<br>")
-                  ? info[title].replace(/<br\s*\/?>/gi, "")
-                  : info[title]} */}
-              </li>
-            );
-          });
-        })}
-    </ul>
+    <>
+      {infoData && (
+        <>
+          {contentTypeId === "25" ? (
+            <span>코스</span>
+          ) : contentTypeId === "32" ? (
+            <span>숙소</span>
+          ) : (
+            <ul className="introWrap info type0">
+              {infoData.map((info, index) =>
+                Object.keys(infoTypeTitle).map((title) => {
+                  // const sanitizedString = removeTagsFromString(info[title]);
+                  return (
+                    <li key={title + index} className="px-2">
+                      {info[title]}
+                    </li>
+                  );
+                })
+              )}
+            </ul>
+          )}
+        </>
+      )}
+    </>
   );
 };
 export default DetailInfo;
+
+//  {infoData !== undefined &&
+//    Object.keys(infoTypeTitle).map((title) => {
+//      return infoData.map((info, index) => {
+//        const sanitizedString = removeTagsFromString(info[title]);
+//        return (
+//          <li key={index} className="px-2">
+//            {infoTypeTitle[title]} :{sanitizedString}
+//            {/* {infoTypeTitle[title]} : {info[title]} */}
+//            {/* {info[title].includes("<br>")
+//              ? info[title].replace(/<br\s*\/?>/gi, "")
+//              : info[title]} */}
+//          </li>
+//        );
+//      });
+//    })}
