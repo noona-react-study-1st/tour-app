@@ -1,7 +1,11 @@
 import data from '../../data/forecast_info.json';
 
 export function getXYCoordsBySigunguName(sigunguName) {
-  const foundIndex = data.findIndex((item) => item['2단계'] === sigunguName);
+  const foundIndex = data.findIndex((item) => {
+    if (item['2단계']) {
+      return item['2단계'].includes(sigunguName);
+    }
+  });
   const nX = data[foundIndex]['격자 X'];
   const nY = data[foundIndex]['격자 Y'];
 
@@ -9,6 +13,28 @@ export function getXYCoordsBySigunguName(sigunguName) {
 }
 
 export function getXYCoordsByCityName(cityName) {
+  switch (cityName) {
+    case '충북':
+      cityName = '충청북도';
+      break;
+    case '충남':
+      cityName = '충청남도';
+      break;
+    case '경북':
+      cityName = '경상북도';
+      break;
+    case '경남':
+      cityName = '경상남도';
+      break;
+    case '전북':
+      cityName = '전라북도';
+      break;
+    case '전남':
+      cityName = '전라남도';
+      break;
+    default:
+      cityName;
+  }
   const foundIndex = data.findIndex((item) => item['1단계'].includes(cityName));
   const nX = data[foundIndex]['격자 X'];
   const nY = data[foundIndex]['격자 Y'];

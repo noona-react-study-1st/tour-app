@@ -53,7 +53,7 @@ export default function WeatherSection() {
   }
 
   if (data) {
-    const itemsArray = data?.response.body.items.item;
+    const itemsArray = data.response.body.items.item;
 
     const tmpData = itemsArray.filter((row) => row.category === 'TMP');
     const skyData = itemsArray.filter((row) => row.category === 'SKY');
@@ -73,7 +73,7 @@ export default function WeatherSection() {
     } else {
       weatherState = precipitationType[rainType[startIndex].fcstValue];
     }
-    // console.log(tmpData.slice(startIndex, startIndex + 24));
+    // console.log(itemsArray);
 
     content = (
       <section className='forecast-section'>
