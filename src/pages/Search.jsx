@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchSearchQuery } from '../hooks/useFetchSearch';
 import LoadingSpinner from '../common/LoadingSpinner/LoadingSpinner';
 import SearchCard from '../pages/SearchPage/SearchCard';
+import img from '../assets/etc/sad.png';
+import "../pages/SearchPage/Search.style.css"
 
 const SearchPage = () => {
   const location = useLocation();
@@ -23,12 +25,19 @@ const SearchPage = () => {
     <Container>
       {isLoading && <Spinner animation='border' />}
       {isError && <Alert variant='danger'>{error}</Alert>}
-      {!data && !isLoading && <p>{keyword} 검색 결과가 없습니다.</p>}
+      {!data && !isLoading && (
+        <div className="no-result">
+           <div className="centered-content">
+          <img src={img} alt='No result' />
+          <p>'{keyword}' 검색 결과가 없습니다.</p>
+           </div>
+        </div>
+      )}
       {data && data.length > 0 && (
         <Row className='card-area'>
-          {data.map((data) => (
-            <Col key={data.contentid} lg={4} md={6} xs={12}>
-              <SearchCard data={data} />
+          {data.map((item) => (
+            <Col key={item.contentid} lg={4} md={6} xs={12}>
+              <SearchCard data={item} />
             </Col>
           ))}
         </Row>
@@ -36,6 +45,5 @@ const SearchPage = () => {
     </Container>
   );
 };
-
 
 export default SearchPage;
