@@ -1,0 +1,69 @@
+.main-area-banner-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-top: 3em;
+  margin-bottom: 0.6em;
+}
+.area-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-top: 2em;
+  line-height: 1.3em;
+}
+.area-sub-title {
+  font-size: 1em;
+}
+.carousel-item-padding-40-px {
+  margin: 3px;
+}
+.area-card {
+  width: 250px;
+  height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  position: relative;
+  margin-right: 1em;
+  margin-left: 1em;
+  cursor: pointer;
+  transition: transform 0.5s;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.area-card:hover {
+  transform: translateY(-15px);
+  transition: transform 0.5s;
+  z-index: 2;
+}
+.area-card::before {
+  content: '';
+  background: linear-gradient(to top, black, transparent);
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 20vh;
+  width: 250px;
+  border-radius: 10px;
+}
+.text-area {
+  position: absolute;
+  bottom: 15px;
+  color: white;
+  padding: 1em;
+}
+@media (max-width: 800px) {
+  .carousel-item-padding-40-px {
+    margin: 2em 40px;
+  }
+  .main-area-banner-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .area-card {
+    margin-top: 0;
+  }
+}

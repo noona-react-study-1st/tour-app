@@ -1,0 +1,170 @@
+.sub-menu {
+  display: flex;
+}
+
+.sub-menu div {
+  display: flex;
+  height: 60px;
+  font-size: x-large;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.selected-sub-menu {
+  border-bottom: 2.5px solid #757de8;
+  font-weight: 600 !important;
+}
+
+.arrange-area {
+  display: flex;
+  justify-content: flex-end;
+  font-size: large;
+  text-align: center;
+  align-items: flex-end;
+}
+
+.arrange-area div {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.selected-sort {
+  font-weight: 600;
+}
+
+.card-area {
+  margin-top: 22px;
+}
+
+.pagination {
+  margin-top: 50px;
+}
+
+.article-banner {
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.article-banner img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.title-img-area {
+  display: flex;
+}
+
+.title-area {
+  margin-top: 40px;
+}
+.title-area p {
+  font-size: x-large;
+  font-weight: 600;
+  margin-right: 30px;
+  border-bottom: 2.5px solid #757de8;
+}
+
+.title-box {
+  display: flex;
+}
+
+.hash-item {
+  padding: 5px 15px;
+  opacity: 0.85;
+  background-color: #757de8;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  margin: 0 5px 10px 0;
+  display: inline-flex; 
+  align-items: flex-start; 
+}
+
+@keyframes anime_textup {
+  0% {
+    top: 0;
+  }
+  20% {
+    top: -0.2rem;
+  }
+  40% {
+    top: 0;
+  }
+  60% {
+    top: 0;
+  }
+  80% {
+    top: 0;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.hash-tag {
+  display: inline-block; 
+}
+
+.hash-tag span {
+  position: relative;
+  animation: anime_textup 1.5s infinite;
+}
+
+.hash-tag span:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.hash-tag span:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.hash-tag span:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+.hash-tag span:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+
+.hash-tag span:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+
+.list-area {
+  margin-bottom: 50px;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .title-box {
+    display: block;
+  }
+  .title-box p {
+    width: fit-content;
+  }
+  .article-banner {
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+}
+/* 모바일 */
+@media (max-width: 430px) {
+  .title-box {
+    display: block;
+  }
+  .title-box p {
+    width: fit-content;
+  }
+  .article-banner {
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+  .arrange-area {
+    font-size: medium;
+  }
+}

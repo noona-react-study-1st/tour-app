@@ -1,0 +1,35 @@
+.event-card {
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.event-img {
+  height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+  border-radius: 15px;
+}
+
+.event-card:hover {
+  transform: scale(1.05) translateZ(20px);
+  z-index: 2;
+}
+
+.event-info p {
+  font-size: large;
+  font-weight: 520;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.event-info a {
+  color: #7e7e7e !important;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+}
+/* 모바일 */
+@media (max-width: 430px) {
+}

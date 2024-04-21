@@ -1,0 +1,103 @@
+.list {
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.list-img {
+  width: 300px;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.4s;
+  border-radius: 10px;
+  box-shadow: 0px -70px 50px 0 #00000093 inset;
+  position: relative;
+}
+
+.list-img:hover {
+  z-index: 2;
+}
+
+.list-info {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: medium;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-info-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-flow: column;
+  justify-content: center;
+  background-color: rgba(63, 81, 181, 0.7);
+  border-radius: 10px;
+}
+
+.list-info-hover div {
+  font-size: large;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
+
+.list-info-hover .title {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: x-large;
+}
+
+.list:hover .list-info {
+  display: none;
+}
+
+.list:hover .list-info-hover {
+  display: flex;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .list-img {
+    width: 240px;
+    height: 240px;
+  }
+  .list-info {
+    font-size: medium;
+  }
+  .list-info-hover div {
+    font-size: smaller;
+    font-weight: 400;
+  }
+  .list-info-hover .title {
+    font-size: medium;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 430px) {
+  .list-img {
+    width: 170px;
+    height: 170px;
+  }
+  .list-info {
+    font-size: small;
+  }
+  .list-info-hover div {
+    font-size: smaller;
+    font-weight: 400;
+  }
+  .list-info-hover .title {
+    font-size: medium;
+  }
+}

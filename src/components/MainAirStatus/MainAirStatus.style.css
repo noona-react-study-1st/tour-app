@@ -1,0 +1,48 @@
+.airStatus ul {
+  padding: 0;
+  margin: 0;
+  width: 100px;
+}
+.airStatus li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 5px;
+}
+.airStatus li p {
+  text-align: center;
+  margin: 0;
+  min-width: 50px;
+}
+.airStatus li span {
+  border-radius: 4px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 14px;
+}
+.airStatus li span::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  display: block;
+  background: #0c0cbe;
+}
+.airStatus li span.good::before {
+  background: #0c0cbe;
+}
+.airStatus li span.normal::before {
+  background: #0bc20b;
+}
+.airStatus li span.bad::before {
+  background: #da9f0c;
+}
+.airStatus li span.tooBad::before {
+  background: #d40606;
+}
