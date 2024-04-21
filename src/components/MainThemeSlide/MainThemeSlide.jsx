@@ -38,14 +38,14 @@ const ThemeSlide = () => {
     <Container>
       <div className='theme-title'>어떤 여행을 원하시나요?</div>
       <div class='wrap'>
-        <div class='slider'>
-          <div class='a01 slide' onClick={()=>moveToDetailPage()}>
+        <div className='slider'>
+          <div className='a01 slide' onClick={()=>moveToDetailPage()}>
             <h2>🍀자연 속 힐링</h2>
           </div>
-          <div class='a05 slide'onClick={()=>moveToDetailPage()}>
+          <div className='a05 slide'onClick={()=>moveToDetailPage()}>
             <h2>🍜맛집 탐방</h2>
           </div>
-          <div class='a03 slide'onClick={()=>moveToDetailPage()}>
+          <div className='a03 slide'onClick={()=>moveToDetailPage()}>
             <h2>🤿다이나믹 레포츠</h2>
           </div>
         </div>
