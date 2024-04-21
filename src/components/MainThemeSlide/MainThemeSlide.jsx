@@ -2,7 +2,6 @@ import React from 'react';
 import './MainThemeSlide.style.css';
 import 'react-multi-carousel/lib/styles.css';
 import Container from 'react-bootstrap/Container';
-import { useFetchAreaCatQuery } from '../../hooks/useFetchAreaCat';
 import { useNavigate } from 'react-router-dom';
 
 export const responsive = {

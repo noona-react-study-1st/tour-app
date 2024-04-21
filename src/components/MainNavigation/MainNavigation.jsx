@@ -8,9 +8,28 @@ import Navbar from 'react-bootstrap/Navbar';
 import './MainNavigation.style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import tourLogo from '../../assets/mainlmage/tourLogo.png'
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import tourLogo from '../../assets/mainlmage/tourLogo.png';
+import { useEffect } from 'react';
 
 export default function MainNavigation() {
+  //모바일 화면시 로그인 변경
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    function updateWindowDimensions() {
+      const mobile = window.innerWidth < 800;
+      setIsMobile(mobile);
+    }
+
+    window.addEventListener('resize', updateWindowDimensions);
+    updateWindowDimensions(); // 컴포넌트가 마운트될 때 초기 실행
+    return () => {
+      window.removeEventListener('resize', updateWindowDimensions);
+    };
+  }, []);
+
+  //검색
   const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
 
@@ -28,7 +47,7 @@ export default function MainNavigation() {
           <img
             src={tourLogo}
             width={280}
-            style={{marginRight:'30px'}}
+            style={{ marginRight: '30px' }}
             alt='logo'
             className='mo-logo'
           />
@@ -40,7 +59,9 @@ export default function MainNavigation() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href='/theme' className='menu-item'>테마</Nav.Link>
+            <Nav.Link href='/theme' className='menu-item'>
+              테마
+            </Nav.Link>
             <Nav.Link href='/area'>지역</Nav.Link>
             <Nav.Link href='/events'>행사</Nav.Link>
           </Nav>
@@ -57,6 +78,18 @@ export default function MainNavigation() {
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form>
+          {isMobile ? (
+            <div className='login-area'>
+              <div className='login-btn'>
+                <FontAwesomeIcon icon={faUser} />{' '}
+              </div>
+              <div className='login-text'> 로그인하고 더 많은 정보 확인하기💜 </div>
+            </div>
+          ) : (
+            <div className='login-btn'>
+              <FontAwesomeIcon icon={faUser} />{' '}
+            </div>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
