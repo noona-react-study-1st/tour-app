@@ -1,8 +1,8 @@
-.main-area-banner-title  {
+.main-area-banner-title {
   font-size: 1.5em;
   font-weight: 700;
   margin-top: 3em;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.6em;
 }
 .area-title {
   font-size: 1.1em;
@@ -24,9 +24,12 @@
   background-size: cover;
   border-radius: 10px;
   position: relative;
-  margin-right: 2em;
+  margin-right: 1em;
+  margin-left: 1em;
   cursor: pointer;
   transition: transform 0.5s;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 .area-card:hover {
   transform: translateY(-15px);
@@ -52,12 +55,15 @@
 }
 @media (max-width: 800px) {
   .carousel-item-padding-40-px {
-    margin: 2.5em;
+    margin: 2em 40px;
   }
   .main-area-banner-title {
     font-size: 1.5em;
     font-weight: 700;
-    margin-top: 1em;
+    margin-top: 0;
     margin-bottom: 0;
+  }
+  .area-card {
+    margin-top: 0;
   }
 }

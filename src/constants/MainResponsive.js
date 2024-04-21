@@ -3,7 +3,6 @@ export const responsive = {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
       SlidesToSlide : 4 ,
-      PartialVisibilityGutter : 1015 
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -12,5 +11,7 @@ export const responsive = {
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
+      SlidesToSlide : 1 ,
+      PartialVisibilityGutter : 350
     },
   };

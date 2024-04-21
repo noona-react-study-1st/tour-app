@@ -31,6 +31,7 @@ const MainAreaSlide = () => {
           responsive={responsive}
           autoPlay={true}
           autoPlaySpeed={3000}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
         >
           {itemList?.map((item, index) => (
             <div

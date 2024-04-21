@@ -1,8 +1,8 @@
 .main-events-banner-title {
   font-size: 1.5em;
   font-weight: 700;
-  margin-top: 5em;
-  margin-bottom: 1.5em;
+  margin-top: 4em;
+  margin-bottom: 0.6em;
 }
 .events-title {
   font-size: 1.1em;
@@ -20,9 +20,12 @@
   background-size: cover;
   border-radius: 10px;
   position: relative;
-  margin-right: 2em;
+  margin-right: 1em;
+  margin-left: 1em;
   cursor: pointer;
   transition: transform 0.5s;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 .events-card:hover {
   transform: translateY(-15px);
@@ -33,25 +36,28 @@
 .carousel-item-padding-40-px {
   margin: 3px;
 }
-.text-events{
-    position: absolute;
-    right: -5px;
-    bottom: -15px;
-    padding: 1em;
-    width: 220px;
-    height: 150px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.text-events {
+  position: absolute;
+  right: -5px;
+  bottom: -15px;
+  padding: 1em;
+  width: 220px;
+  height: 150px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 800px) {
-  .carousel-item-padding-40-px{
-      margin: 3em;
-    }
-    .main-events-banner-title {
-      font-size: 1.5em;
-      font-weight: 700;
-      margin-top: 1em;
-      margin-bottom: 0;
-    }
+  .carousel-item-padding-40-px {
+    margin: 2em 40px;
+  }
+  .main-events-banner-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+  .events-card {
+    margin-top: 0;
+  }
 }

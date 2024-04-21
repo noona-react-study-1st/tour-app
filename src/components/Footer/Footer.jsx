@@ -77,8 +77,8 @@ const Footer = () => {
           </div>
         </div>
         <ul className='footer-menu-list'>
-          {footerMenuList.map((menu) => (
-            <li>{menu}</li>
+          {footerMenuList.map((menu, index) => (
+            <li key={index}>{menu}</li>
           ))}
         </ul>
         <div className='footer-info'></div>
