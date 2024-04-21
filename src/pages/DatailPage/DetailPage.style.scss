@@ -1,6 +1,7 @@
 .detailPageWrap {
   color: #333;
-  padding: 15px 0 100px;
+  padding: 15px 10px 100px;
+  word-break: break-all;
   h2 {
     text-align: center;
     position: relative;
@@ -20,6 +21,9 @@
       transform: translateX(-50%);
       z-index: -1;
     }
+  }
+  @media (max-width: 768px) {
+    padding: 15px 10px 50px;
   }
 }
 .detailNav {
@@ -48,6 +52,15 @@
       }
     }
   }
+  @media (max-width: 798px) {
+    top: 95px;
+  }
+  @media (max-width: 425px) {
+    li.shortMenu {
+      gap: 0;
+      justify-content: space-around;
+    }
+  }
 }
 .overviewWrap {
   width: 100%;
@@ -61,7 +74,12 @@
     margin-top: 10px;
   }
   @media (max-width: 768px) {
-    width: calc(100vw - 20px);
+    width: 100%;
+  }
+  @media (max-width: 600px) {
+    .overview {
+      font-size: 16px;
+    }
   }
 }
 .detailBannerItem {
@@ -93,8 +111,9 @@
 .introWrap {
   display: flex;
   flex-wrap: wrap;
-  padding: 20px 0;
+  padding: 20px 10px;
   width: 100%;
+
   li {
     width: 50%;
     list-style: none;
@@ -196,9 +215,137 @@
       }
     }
   }
+  &.typeCourse {
+    border-top: none;
+    display: flex;
+    padding-left: 10px;
+    background: #f2f2f2;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    &::after,
+    &::before {
+      content: "";
+      width: calc(100% - 40px);
+      height: 3px;
+      border-bottom: 3px dashed #ccc;
+      position: absolute;
+      top: 34px;
+      left: 20px;
+    }
+    &::after {
+      top: initial;
+      bottom: 20px;
+    }
+    ul {
+      padding-left: 0;
+      padding: 0 10px;
+      width: 33%;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+      li {
+        width: 100%;
+        padding-left: 0;
+        &::before {
+          display: none;
+        }
+        &.num {
+          span {
+            text-align: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            line-height: 30px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            transition: all 0.3s;
+          }
+        }
+        &.subname {
+          padding: 20px 0;
+          span {
+            width: auto;
+            margin: 0 auto;
+            font-weight: 500;
+            padding: 10px 10px;
+            color: #757de8;
+            background: #fff;
+            border: 1px solid #757de8;
+            text-align: center;
+            // background: #757de8;
+            // color: #fff;
+            border-radius: 23px;
+            transition: all 0.3s;
+          }
+        }
+        &.overview {
+          border: 1px solid #757de8;
+          box-shadow: 2px 3px 9px 3px rgba(87, 88, 89, 0.25);
+          padding: 10px;
+          font-size: 14px;
+          border-radius: 10px;
+          position: relative;
+          background: #fff;
+          &::before {
+            content: "";
+            display: block;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border-radius: 5px 0 0 0;
+            border: 1px solid #3f51b5;
+            border-right: none;
+            border-bottom: none;
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: rotate(45deg) translateX(-50%);
+          }
+        }
+      }
+      &:hover {
+        transform: translateY(-10px);
+        li {
+          &.num span {
+            border-color: #757de8;
+            color: #3f51b5;
+          }
+          &.subname span {
+            background: #757de8;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
   @media (max-width: 768px) {
     li {
       width: 100%;
+    }
+    &.typeCourse {
+      ul {
+        width: 50%;
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    &.typeHotel {
+      ul {
+        flex-wrap: wrap;
+        li {
+          width: auto;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    &.typeCourse {
+      ul {
+        width: 100%;
+      }
     }
   }
   @media (max-width: 425px) {
@@ -237,7 +384,7 @@ a {
   width: 120px;
   display: block;
   position: fixed;
-  top: 200px;
+  bottom: 200px;
   right: 10px;
   border: 1px solid rgba(233, 233, 255, 0.8);
   border-radius: 10px;

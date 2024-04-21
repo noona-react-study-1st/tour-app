@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { InfoType } from "../../constants/detail/InfoType";
 import { useEffect, useState } from "react";
 import { useFetchDetailInfoQuery } from "../../hooks/useFetchDetailInfo";
@@ -43,12 +43,38 @@ const DetailInfo = ({ contentTypeId }) => {
     }
     return text;
   }
+
+  const navigate = useNavigate();
+  const goToDetailPage = (contentId) => {
+    navigate(`/detail/${contentId}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       {infoData !== undefined && (
         <>
           {contentTypeId === "25" ? (
-            <span>코스</span>
+            <ul className="introWrap info typeCourse">
+              {infoData.map((info) => (
+                <>
+                  <ul
+                    key={info.subcontentid}
+                    onClick={() => goToDetailPage(info?.subcontentid)}
+                  >
+                    <li className="num">
+                      <span>{Number(info.subnum) + 1}</span>
+                    </li>
+                    <li className="subname">
+                      <span>{info.subname}</span>
+                    </li>
+                    <li className="overview">
+                      <div>{removeBrTags(info.subdetailoverview)}</div>
+                    </li>
+                  </ul>
+                </>
+              ))}
+            </ul>
           ) : contentTypeId === "32" ? (
             <ul className="introWrap info typeHotel">
               {infoData.map((info, index) => (
