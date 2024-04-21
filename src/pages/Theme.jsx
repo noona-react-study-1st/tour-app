@@ -84,6 +84,11 @@ const ThemePage = () => {
     setSelectedCat3(cat3);
   };
 
+  const handleCardClick = (cat2, cat3) => {
+    setSelectedCat2(cat2);
+    setSelectedCat3(cat3);
+  };
+
   const formatAddress = (address) => {
     return address.split(' ').slice(0, 3).join(' ');
   };
@@ -98,7 +103,7 @@ const ThemePage = () => {
 
   return (
     <Container>
-      <ThemeSlider />
+      <ThemeSlider onClick={handleCardClick} />
       <div className='theme-bt-container'>
         <div>
           {cate.map((category) => (

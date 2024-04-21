@@ -3,10 +3,8 @@ import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-multi-carousel';
 import ThemeSliderCard from './ThemeSliderCard';
 import styles from './ThemeSlider.module.css';
-import { Container } from 'react-bootstrap';
-// import { responsive } from '../../constants/MainResponsive';
 
-const ThemeSlider = () => {
+const ThemeSlider = ({ onClick }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -28,26 +26,34 @@ const ThemeSlider = () => {
     {
       imageUrl:
         'http://tong.visitkorea.or.kr/cms/resource/37/2009137_image2_1.jpg',
-      promoText: '홍보 문구 홍보 문구',
+      promoText: '전통과 문화가 살아 숨쉬는 곳',
       title: '민속마을',
+      cat2: 'A0201',
+      cat3: 'A02010600',
     },
     {
       imageUrl:
         'http://tong.visitkorea.or.kr/cms/resource/78/2639278_image2_1.jpg',
-      promoText: '홍보 문구 홍보 문구',
+      promoText: '자연 속 힐링 공간',
       title: '치유의 숲',
+      cat2: 'A0202',
+      cat3: 'A02020500',
     },
     {
       imageUrl:
         'http://tong.visitkorea.or.kr/cms/resource/15/2802615_image2_1.jpg',
-      promoText: '홍보 문구 홍보 문구',
+      promoText: '상상력이 현실이 되는 곳',
       title: '과학 체험관',
+      cat2: 'A0204',
+      cat3: 'A02040900',
     },
     {
       imageUrl:
         'http://tong.visitkorea.or.kr/cms/resource/61/2795361_image2_1.jpg',
-      promoText: '홍보 문구 홍보 문구',
+      promoText: '피로 회복이 필요하다면',
       title: '이색 찜질방',
+      cat2: 'A0202',
+      cat3: 'A02020400',
     },
   ];
 
@@ -73,6 +79,9 @@ const ThemeSlider = () => {
             imageUrl={card.imageUrl}
             promoText={card.promoText}
             title={card.title}
+            cat2={card.cat2}
+            cat3={card.cat3}
+            onClick={onClick}
           />
         ))}
       </Carousel>
