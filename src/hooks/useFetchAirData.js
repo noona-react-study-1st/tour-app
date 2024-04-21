@@ -7,7 +7,7 @@ function fetchAirData(area) {
 }
 
 export function useFetchAirDataQuery(area) {
-  console.log("area", area);
+  // console.log("area", area);
   return useQuery({
     queryKey: ["air-data", area],
     queryFn: () => fetchAirData(area),

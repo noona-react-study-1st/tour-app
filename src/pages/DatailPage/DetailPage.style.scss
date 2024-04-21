@@ -9,6 +9,9 @@
     margin: 0 auto;
     margin-bottom: 20px;
     font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     &::before {
       content: "";
       display: block;
@@ -554,6 +557,9 @@ a {
   }
   @media (max-width: 768px) {
     height: 180px;
+    h4 {
+      font-size: 14px;
+    }
     .image {
       padding: 20px 5px;
     }

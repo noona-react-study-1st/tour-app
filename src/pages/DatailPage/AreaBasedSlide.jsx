@@ -18,7 +18,7 @@ const AreaBasedSlide = ({ areaCode, sigungucode }) => {
       setItems(dataCut);
     }
   }, [data, isLoading, isError]);
-  console.log("area based", data, items);
+  // console.log("area based", data, items);
   const navigate = useNavigate();
   const goToDetailPage = (contentId) => {
     navigate(`/detail/${contentId}`);

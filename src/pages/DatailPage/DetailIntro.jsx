@@ -18,13 +18,13 @@ const DetailIntro = ({ contentTypeId }) => {
     }
   }, [data, isLoading, isError]);
 
-  console.log("intro here", data, introData, contentId, contentTypeId);
+  // console.log("intro here", data, introData, contentId, contentTypeId);
 
   function getIntroTypeTitle(contentTypeId) {
     const introTypeInfo = IntroType.find((type) => {
       return type.contentTypeId === contentTypeId;
     });
-    console.log(introTypeInfo);
+    // console.log(introTypeInfo);
     if (introTypeInfo && introTypeInfo.introTypeTitle) {
       return introTypeInfo.introTypeTitle;
     }
@@ -33,7 +33,7 @@ const DetailIntro = ({ contentTypeId }) => {
   }
 
   const introTypeTitle = getIntroTypeTitle(contentTypeId);
-  console.log(contentTypeId, introTypeTitle);
+  // console.log(contentTypeId, introTypeTitle);
   function removeBrTags(text) {
     if (typeof text === "string") {
       return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string

@@ -18,8 +18,6 @@ const DetailPetTour = ({ contentTypeId }) => {
     }
   }, [data, isLoading, isError]);
 
-  console.log("pet here", data, infoData, contentId, contentTypeId);
-
   function removeBrTags(text) {
     if (typeof text === "string") {
       return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string

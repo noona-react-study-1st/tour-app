@@ -11,6 +11,9 @@
   margin: 0 auto;
   margin-bottom: 20px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .detailPageWrap h2::before {
   content: "";
@@ -519,6 +522,9 @@ a {
 @media (max-width: 768px) {
   .areaBasedSlider {
     height: 180px;
+  }
+  .areaBasedSlider h4 {
+    font-size: 14px;
   }
   .areaBasedSlider .image {
     padding: 20px 5px;
