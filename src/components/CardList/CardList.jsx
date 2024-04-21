@@ -166,7 +166,7 @@ export default function CardList({ contentTypeId }) {
                 <motion.img
                   src={item.firstimage2}
                   className='card-img'
-                  whileHover={{ scale: 1.1, filter: 'brightness(0.7)' }}
+                  whileHover={{ scale: 1.05, filter: 'brightness(0.7)' }}
                   whileTap={{ scale: 0.9 }}
                 />
               </>
