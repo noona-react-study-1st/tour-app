@@ -84,8 +84,8 @@ export default function WeatherSection() {
             <div>습도{rainProb[startIndex].fcstValue}%</div>
             <div>
               미세먼지 정보 추가
-              {/* 미세먼지 정보 - 
-              <MainAirStatus cityName={weatherArea.cityName} /> */}
+              {/* 미세먼지 정보 - */}
+              <MainAirStatus cityName={weatherArea.cityName} />
             </div>
           </Col>
         </Row>
