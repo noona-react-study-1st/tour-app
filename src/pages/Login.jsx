@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../pages/SearchPage/Common.style.css';
 
@@ -8,15 +8,11 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    console.log('Username:', username);
-    console.log('Password:', password);
-    // 로그인 처리 후, 메인 페이지로 이동합니다.
-    navigate('/'); // 메인 페이지로 이동합니다.
+    navigate('/'); 
   };
 
   const handleSignUp = () => {
-    // 회원가입 처리 후, 메인 페이지로 이동합니다.
-    navigate('/'); // 메인 페이지로 이동합니다.
+    navigate('/'); 
   };
 
   return (

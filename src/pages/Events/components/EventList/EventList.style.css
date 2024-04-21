@@ -20,15 +20,15 @@
 
 .list-info {
   position: absolute;
-  bottom: 10px; 
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   font-size: medium;
-  font-weight:500;
+  font-weight: 500;
   color: white;
   text-align: center;
-  white-space: nowrap; 
-  overflow: hidden; 
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -41,29 +41,29 @@
   display: none;
   flex-flow: column;
   justify-content: center;
-  background-color:rgba(63, 81, 181, 0.7);
+  background-color: rgba(63, 81, 181, 0.7);
   border-radius: 10px;
 }
 
-.list-info-hover div{
+.list-info-hover div {
   font-size: large;
-  font-weight:500;
+  font-weight: 500;
   color: white;
-  text-align:center;
+  text-align: center;
 }
 
-.list-info-hover .title{
-  margin-bottom:5px;
-  font-weight:600;
+.list-info-hover .title {
+  margin-bottom: 5px;
+  font-weight: 600;
   font-size: x-large;
 }
 
 .list:hover .list-info {
-  display: none; /* hover 시에는 숨김 */
+  display: none;
 }
 
 .list:hover .list-info-hover {
-  display: flex; /* hover 시에만 보이도록 설정 */
+  display: flex;
 }
 
 /* 태블릿 */
@@ -75,11 +75,11 @@
   .list-info {
     font-size: medium;
   }
-  .list-info-hover div{
+  .list-info-hover div {
     font-size: smaller;
-    font-weight:400;
+    font-weight: 400;
   }
-  .list-info-hover .title{
+  .list-info-hover .title {
     font-size: medium;
   }
 }
@@ -93,11 +93,11 @@
   .list-info {
     font-size: small;
   }
-  .list-info-hover div{
+  .list-info-hover div {
     font-size: smaller;
-    font-weight:400;
+    font-weight: 400;
   }
-  .list-info-hover .title{
+  .list-info-hover .title {
     font-size: medium;
   }
 }

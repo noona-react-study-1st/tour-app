@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,6 +10,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import tourLogo from '../../assets/mainlmage/tourLogo.png';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function MainNavigation() {
   //모바일 화면시 로그인 변경

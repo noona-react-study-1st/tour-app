@@ -32,10 +32,6 @@
   transition: transform 0.5s;
   z-index: 2;
 }
-
-.carousel-item-padding-40-px {
-  margin: 3px;
-}
 .text-events {
   position: absolute;
   right: -5px;

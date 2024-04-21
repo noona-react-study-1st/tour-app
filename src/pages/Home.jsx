@@ -6,7 +6,6 @@ import MainWeather from '../components/MainWeather/MainWeather';
 import ScrollToTop from '../common/ScrollToTop/ScrollToTopButton'
 
 export default function HomePage() {
-  // 메인 페이지
   return <>
   <MainBanner/>
   <MainThemeSlide/>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Common.style.css';
 
@@ -10,7 +9,7 @@ const SearchCard = ({ data }) => {
     window.scrollTo(0, 0);
   };
 
-  console.log("searchdata",data)
+  console.log('searchdata', data);
 
   return (
     <div className='event-card' onClick={moveToDetailPage}>

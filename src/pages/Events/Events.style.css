@@ -22,7 +22,7 @@
 .arrange-area {
   display: flex;
   justify-content: flex-end;
-  font-size:large;
+  font-size: large;
   text-align: center;
   align-items: flex-end;
 }
@@ -81,8 +81,8 @@
   color: white;
   font-weight: 700;
   margin: 0 5px 10px 0;
-  display: inline-flex; /* hash-item을 인라인 플렉스 박스로 설정 */
-  align-items: flex-start; /* 요소를 수직으로 상단에 정렬 */
+  display: inline-flex; 
+  align-items: flex-start; 
 }
 
 @keyframes anime_textup {
@@ -107,7 +107,7 @@
 }
 
 .hash-tag {
-  display: inline-block; /* hash-tag를 인라인 블록 요소로 설정 */
+  display: inline-block; 
 }
 
 .hash-tag span {
@@ -136,7 +136,7 @@
 }
 
 .list-area {
-  margin-bottom:50px;
+  margin-bottom: 50px;
 }
 
 /* 태블릿 */
@@ -144,7 +144,7 @@
   .title-box {
     display: block;
   }
-  .title-box p{
+  .title-box p {
     width: fit-content;
   }
   .article-banner {
@@ -157,7 +157,7 @@
   .title-box {
     display: block;
   }
-  .title-box p{
+  .title-box p {
     width: fit-content;
   }
   .article-banner {
@@ -165,6 +165,6 @@
     margin-bottom: 0px;
   }
   .arrange-area {
-    font-size:medium;
+    font-size: medium;
   }
 }

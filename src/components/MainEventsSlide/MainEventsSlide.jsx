@@ -1,4 +1,3 @@
-import React from 'react';
 import { responsive } from '../../constants/MainResponsive';
 import Container from 'react-bootstrap/Container';
 import Carousel from 'react-multi-carousel';
@@ -9,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const MainEventsSlide = () => {
   const eventStartDate = '20240401';
   const { data } = useFetchEventsLatelyQuery({ eventStartDate });
-  console.log('event', data);
   const itemList = data?.response.body.items.item;
 
   const navigate = useNavigate();

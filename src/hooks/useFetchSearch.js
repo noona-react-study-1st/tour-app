@@ -6,7 +6,6 @@ function fetchSearch(keyword) {
 }
 
 export function useFetchSearchQuery(keyword) {
- console.log("fetchsearch")
   return useQuery({
     queryKey: ['search', keyword],
     queryFn: () => fetchSearch(keyword),

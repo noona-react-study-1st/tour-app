@@ -1,9 +1,8 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './EventList.style.css';
 
 const EventList = ({ event }) => {
-  console.log("eventList", event)
+  console.log('eventList', event);
   const navigate = useNavigate();
 
   const moveToDetailPage = () => {
@@ -21,11 +20,13 @@ const EventList = ({ event }) => {
       >
         <div className='list-info'>{event.title}</div>
         <div className='list-info-hover'>
-          <div className="title">{event.title}</div>
+          <div className='title'>{event.title}</div>
           <div>{event.addr1}</div>
-          <div>{event.eventstartdate}~{event.eventenddate}</div>
-          <div>{event.tel}</div>
+          <div>
+            {event.eventstartdate}~{event.eventenddate}
           </div>
+          <div>{event.tel}</div>
+        </div>
       </div>
     </div>
   );

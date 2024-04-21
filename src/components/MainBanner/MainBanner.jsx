@@ -1,4 +1,3 @@
-import React from 'react';
 import './MainBanner.style.css';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import { useFetchAreaLatelyQuery } from '../../hooks/useFetchAreaLately';
@@ -32,7 +31,6 @@ const MainBanner = () => {
   const { data, isLoading, isError, error } = useFetchAreaLatelyQuery({
     areaCode,
   });
-  console.log('banner', data);
   const itemList = data?.response.body.items;
 
   const navigate = useNavigate();

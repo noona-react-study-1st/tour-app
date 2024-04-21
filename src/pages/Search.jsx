@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocation } from 'react-router-dom';
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchSearchQuery } from '../hooks/useFetchSearch';
 import LoadingSpinner from '../common/LoadingSpinner/LoadingSpinner';
 import SearchCard from '../pages/SearchPage/SearchCard';
-import ScrollToTopButton from "../common/ScrollToTop/ScrollToTopButton";
+import ScrollToTopButton from '../common/ScrollToTop/ScrollToTopButton';
 import img from '../assets/etc/sad.png';
-import "../pages/SearchPage/Common.style.css"
+import '../pages/SearchPage/Common.style.css';
 
 const SearchPage = () => {
   const location = useLocation();
@@ -27,11 +26,11 @@ const SearchPage = () => {
       {isLoading && <Spinner animation='border' />}
       {isError && <Alert variant='danger'>{error}</Alert>}
       {!data && !isLoading && (
-        <div className="no-result">
-           <div className="centered-content">
-          <img src={img} alt='No result' />
-          <p>'{keyword}' 검색 결과가 없습니다.</p>
-           </div>
+        <div className='no-result'>
+          <div className='centered-content'>
+            <img src={img} alt='No result' />
+            <p>{`${keyword} 검색 결과가 없습니다.`}</p>
+          </div>
         </div>
       )}
       {data && data.length > 0 && (
@@ -43,7 +42,7 @@ const SearchPage = () => {
           ))}
         </Row>
       )}
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </Container>
   );
 };

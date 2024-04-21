@@ -1,4 +1,3 @@
-import React from 'react';
 import './MainAreaSlide.style.css';
 import 'react-multi-carousel/lib/styles.css';
 import Container from 'react-bootstrap/Container';
@@ -11,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 const MainAreaSlide = () => {
   const { data } = useFetchAreaLatelyQuery();
   const itemList = data?.response.body.items.item;
-  console.log('area', itemList);
 
   const navigate = useNavigate();
   const moveToDetailPage = (contentid) => {
