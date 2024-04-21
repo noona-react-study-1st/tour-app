@@ -28,7 +28,7 @@ const responsive = {
 export default function CarouselSection() {
   const { setAreaCode } = useAreaStore();
   const { setCity } = useWeatherStore();
-  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
     <section className='area-carousel-section'>
@@ -55,24 +55,25 @@ export default function CarouselSection() {
                 setAreaCode(city.areaCode, city.name, city.totalCount);
                 setCity(city.name);
               }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
               <motion.img
                 src={city.areaImg}
-                whileHover={{ scale: 1.2, filter: 'brightness(0.4)' }}
+                whileHover={{
+                  border: hoveredCard === index ? '10px solid white' : 'none',
+                }}
                 whileTap={{ scale: 0.9 }}
               />
               <motion.span
                 initial={{ scale: 1, translateY: '0', color: 'white' }}
                 animate={
-                  isHovered
+                  hoveredCard === index
                     ? {
-                        scale: 3.0,
-                        translateY: '-500%',
-                        color: '#dedeff',
+                        scale: 1.5,
+                        translateY: '-50%',
                       }
-                    : {}
+                    : { scale: 1, translateY: '0', color: 'white' }
                 }
                 transition={{ duration: 0.3 }}
               >
