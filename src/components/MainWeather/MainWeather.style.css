@@ -4,9 +4,7 @@
   margin-top: 5em;
   margin-bottom: 1.5em;
 }
-.main-weather-area{
-    margin-bottom: 0;
-}
+
 @media (max-width: 800px) {
   .main-weather-banner-title {
     font-size: 1.5em;

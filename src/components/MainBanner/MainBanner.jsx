@@ -1,4 +1,3 @@
-import React from 'react';
 import './MainBanner.style.css';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import { useFetchAreaLatelyQuery } from '../../hooks/useFetchAreaLately';
