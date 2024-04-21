@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { api } from '../utils/http';
 import { useNavigate } from 'react-router-dom';
 import { Button, Row, Col, Container, Spinner } from 'react-bootstrap';
 import ThemeCard from './Theme/ThemeCard';
 import ThemeSlider from './Theme/ThemeSlider';
+import ScrollToTopButton from '../common/ScrollToTop/ScrollToTopButton';
 import './Theme/ThemePage.style.css';
 
 const ThemePage = () => {
@@ -28,7 +28,7 @@ const ThemePage = () => {
         setIsLoadingSubCate(false);
       })
       .catch((err) => {
-        setError('Error fetching 중분류');
+        setError('Error fetching 중분류',err);
         setIsLoadingSubCate(false);
       });
   }, []);
@@ -45,7 +45,7 @@ const ThemePage = () => {
           setIsLoadingSubCate(false);
         })
         .catch((err) => {
-          setError('Error fetching 소분류');
+          setError('Error fetching 소분류',err);
           setIsLoadingSubCate(false);
         });
     }
@@ -69,7 +69,7 @@ const ThemePage = () => {
           setIsLoadingItems(false);
         })
         .catch((err) => {
-          setError('Error fetching 상세 리스트');
+          setError('Error fetching 상세 리스트',err);
           setIsLoadingItems(false);
         });
     }
@@ -166,6 +166,7 @@ const ThemePage = () => {
           </Row>
         )}
       </div>
+      <ScrollToTopButton />
     </Container>
   );
 };
