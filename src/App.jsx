@@ -17,6 +17,7 @@ function App() {
     {
       path: '/',
       element: <RootLayout />,
+      errorElement: <ErrorPage />,
       children: [
         { index: true, element: <HomePage /> },
         { path: '/theme', element: <ThemePage /> },
@@ -25,7 +26,6 @@ function App() {
         { path: 'detail/:contentId', element: <DetailPage /> },
         { path: '/search', element: <SearchPage /> },
         { path: '/login', element: <LoginPage /> },
-        { path: '/error', element: <ErrorPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],
     },
