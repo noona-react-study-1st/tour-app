@@ -23,6 +23,11 @@
   margin-bottom: 10px;
 }
 
+#detail-card:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
 .theme-card-body-div {
   display: flex;
   flex-direction: column;
