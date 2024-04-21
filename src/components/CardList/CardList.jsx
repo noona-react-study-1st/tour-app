@@ -151,39 +151,42 @@ export default function CardList({ contentTypeId }) {
   }
 
   if (data && !isXML(data)) {
-    const items = data.response.body.items.item;
-    const renderedItems = isOpen
-      ? items.slice(0, 8 * pageNo)
-      : items.slice(0, 4);
+    // console.log(data);
+    if (data.response.body.totalCount > 0) {
+      const items = data.response.body.items.item;
+      const renderedItems = isOpen
+        ? items.slice(0, 8 * pageNo)
+        : items.slice(0, 4);
 
-    content = renderedItems.map((item) => (
-      <li key={item.contentid}>
-        <Card onClick={() => navigate(`/detail/${item.contentid}`)}>
-          {item.firstimage2 ? (
-            <>
-              <motion.img
-                src={item.firstimage2}
-                className='card-img'
-                whileHover={{ scale: 1.1, filter: 'brightness(0.7)' }}
+      content = renderedItems.map((item) => (
+        <li key={item.contentid}>
+          <Card onClick={() => navigate(`/detail/${item.contentid}`)}>
+            {item.firstimage2 ? (
+              <>
+                <motion.img
+                  src={item.firstimage2}
+                  className='card-img'
+                  whileHover={{ scale: 1.1, filter: 'brightness(0.7)' }}
+                />
+              </>
+            ) : (
+              <motion.div
+                className='img-skeleton'
+                whileHover={{ filter: 'brightness(0.5)' }}
               />
-            </>
-          ) : (
-            <motion.div
-              className='img-skeleton'
-              whileHover={{ filter: 'brightness(0.5)' }}
-            />
-          )}
-          <Card.Body>
-            <Card.Title>
-              {item.title.length < 11
-                ? item.title
-                : item.title.substring(0, 11) + '...'}
-            </Card.Title>
-            <Card.Text>{getAddress(item.addr1)}</Card.Text>
-          </Card.Body>
-        </Card>
-      </li>
-    ));
+            )}
+            <Card.Body>
+              <Card.Title>
+                {item.title.length < 11
+                  ? item.title
+                  : item.title.substring(0, 11) + '...'}
+              </Card.Title>
+              <Card.Text>{getAddress(item.addr1)}</Card.Text>
+            </Card.Body>
+          </Card>
+        </li>
+      ));
+    }
   }
 
   return (
