@@ -110,7 +110,9 @@ const ThemePage = () => {
             <Button
               key={category.code}
               onClick={() => handleCategoryClick(category.code)}
-              className='cate-bt'
+              className={`cate-bt ${
+                selectedCat2 === category.code ? 'sel-cate-bt' : ''
+              }`}
             >
               {category.name}
             </Button>
@@ -125,7 +127,9 @@ const ThemePage = () => {
                 <Button
                   key={subCategory.code}
                   onClick={() => handleSubCategoryClick(subCategory.code)}
-                  className='sub-cate-bt'
+                  className={`sub-cate-bt ${
+                    selectedCat3 === subCategory.code ? 'sel-sub-cate-bt' : ''
+                  }`}
                 >
                   {subCategory.name}
                 </Button>

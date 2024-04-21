@@ -39,3 +39,17 @@
 .detail-div > col {
   margin-bottom: 10px;
 }
+
+.sel-sub-cate-bt {
+  background-color: #474da8;
+  color: white;
+  border: 0px;
+  margin: 5px;
+}
+
+.sel-cate-bt {
+  background-color: #293576;
+  color: white;
+  border: 0px;
+  margin: 5px;
+}
