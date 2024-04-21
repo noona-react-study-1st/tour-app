@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 const MainAreaSlide = () => {
   const { data } = useFetchAreaLatelyQuery();
   const itemList = data?.response.body.items.item;
-  console.log('area', itemList);
 
   const navigate = useNavigate();
   const moveToDetailPage = (contentid) => {
