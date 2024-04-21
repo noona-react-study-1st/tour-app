@@ -13,7 +13,9 @@ const AreaBasedSlide = ({ areaCode, sigungucode }) => {
   });
   useEffect(() => {
     if (!isLoading && !isError) {
-      setItems(data.response.body.items.item);
+      const dataCut = data.response.body.items.item.slice(0, 10);
+      // setItems(data.response.body.items.item);
+      setItems(dataCut);
     }
   }, [data, isLoading, isError]);
   console.log("area based", data, items);
