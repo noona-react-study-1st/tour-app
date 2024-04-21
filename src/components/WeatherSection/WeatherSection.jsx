@@ -122,6 +122,7 @@ export default function WeatherSection() {
             </ul>
           </div>
         </section>
+        {/* 미세먼지 추가 by byoul */}
         <div>
           <MainAirStatus cityName={weatherArea.cityName} />
         </div>
