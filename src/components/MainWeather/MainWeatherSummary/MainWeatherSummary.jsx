@@ -15,21 +15,6 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function WeatherSection() {
-  //모바일 화면시 지역선택 변경
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    function updateWindowDimensions() {
-      const mobile = window.innerWidth < 800;
-      setIsMobile(mobile);
-    }
-
-    window.addEventListener('resize', updateWindowDimensions);
-    updateWindowDimensions(); // 컴포넌트가 마운트될 때 초기 실행
-    return () => {
-      window.removeEventListener('resize', updateWindowDimensions);
-    };
-  }, []);
 
   //날씨
   const { weatherArea, setCity } = useWeatherStore();
@@ -123,24 +108,7 @@ export default function WeatherSection() {
   return (
     <div className='weather-summary-box'>
       <Row className='align-items-center me-2' >
-        {isMobile ? (
-          <Col>
-            {' '}
-            <DropdownButton
-              title='여행지 선택'
-              size='lg'
-              className='d-grid btn-lg'
-            >
-              {cities.map((city, index) => {
-                return (
-                  <Dropdown.Item key={index} onClick={() => setCity(city.name)}>
-                    {city.name}
-                  </Dropdown.Item>
-                );
-              })}
-            </DropdownButton>
-          </Col>
-        ) : (
+        
           <Col lg={6} xs={12}>
             <div>
               {cities.map((city, index) => {
@@ -156,7 +124,7 @@ export default function WeatherSection() {
               })}
             </div>
           </Col>
-        )}
+      
         <Col lg={6} xs={12}>
           <div className='weather-info'>{content}</div>
         </Col>
