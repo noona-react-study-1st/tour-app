@@ -40,6 +40,11 @@ export default function MainNavigation() {
     }
   };
 
+  const moveToLoginPage = () => {
+    navigate('/login');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Navbar expand='lg' className='nav-area' sticky='top'>
       <Container>
@@ -79,14 +84,14 @@ export default function MainNavigation() {
             </Button>
           </Form>
           {isMobile ? (
-            <div className='login-area'>
+            <div className='login-area' onClick={moveToLoginPage}>
               <div className='login-btn'>
                 <FontAwesomeIcon icon={faUser} />{' '}
               </div>
               <div className='login-text'> 로그인하고 더 많은 정보 확인하기💜 </div>
             </div>
           ) : (
-            <div className='login-btn'>
+            <div className='login-btn' onClick={moveToLoginPage}>
               <FontAwesomeIcon icon={faUser} />{' '}
             </div>
           )}
