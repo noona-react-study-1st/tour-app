@@ -5,6 +5,7 @@ import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
 import { useFetchSearchQuery } from '../hooks/useFetchSearch';
 import LoadingSpinner from '../common/LoadingSpinner/LoadingSpinner';
 import SearchCard from '../pages/SearchPage/SearchCard';
+import ScrollToTopButton from "../common/ScrollToTop/ScrollToTopButton";
 import img from '../assets/etc/sad.png';
 import "../pages/SearchPage/Search.style.css"
 
@@ -42,6 +43,7 @@ const SearchPage = () => {
           ))}
         </Row>
       )}
+      <ScrollToTopButton/>
     </Container>
   );
 };
