@@ -5,13 +5,13 @@ const AirItem = ({ data }) => {
   const [pm25, setPm25] = useState();
   const [o3, setO3] = useState();
 
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     setO3((data.o3Value * 100).toFixed(2));
     setPm10(data.pm10Value);
     setPm25(data.pm25Value);
   }, [data]);
-  console.log(data, pm10, pm25, o3);
+  // console.log(data, pm10, pm25, o3);
   return (
     <div className="airStatus">
       <ul>

@@ -28,60 +28,69 @@ export default function DetailPage() {
   const content3Ref = useRef(null);
 
   const onContent1Click = () => {
-    content1Ref.current?.scrollIntoView({
+    const elementTop = content1Ref.current.getBoundingClientRect().top;
+    const scrollPosition = window.scrollY;
+    const offset = elementTop + scrollPosition - 140;
+
+    window.scrollTo({
+      top: offset,
       behavior: "smooth",
-      block: "start",
-      inline: "nearest",
     });
   };
-  console.log(content1Ref);
+  // console.log(content1Ref);
   const onContent2Click = () => {
-    content2Ref.current?.scrollIntoView({
+    const elementTop = content2Ref.current.getBoundingClientRect().top;
+    const scrollPosition = window.scrollY;
+    const offset = elementTop + scrollPosition - 140;
+
+    window.scrollTo({
+      top: offset,
       behavior: "smooth",
-      block: "start",
-      inline: "nearest",
     });
   };
   const onContent3Click = () => {
-    content3Ref.current?.scrollIntoView({
+    const elementTop = content3Ref.current.getBoundingClientRect().top;
+    const scrollPosition = window.scrollY;
+    const offset = elementTop + scrollPosition - 140;
+
+    window.scrollTo({
+      top: offset,
       behavior: "smooth",
-      block: "start",
-      inline: "nearest",
     });
   };
-  useEffect(() => {
-    const observer1 = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
-    });
-    const observer2 = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
-    });
-    const observer3 = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
-    });
+  // useEffect(() => {
+  //   const observer1 = new IntersectionObserver(handleIntersection, {
+  //     threshold: 0.5,
+  //   });
+  //   const observer2 = new IntersectionObserver(handleIntersection, {
+  //     threshold: 0.5,
+  //   });
+  //   const observer3 = new IntersectionObserver(handleIntersection, {
+  //     threshold: 0.5,
+  //   });
 
-    if (content1Ref.current) observer1.observe(content1Ref.current);
-    if (content2Ref.current) observer2.observe(content2Ref.current);
-    if (content3Ref.current) observer3.observe(content3Ref.current);
+  //   if (content1Ref.current) observer1.observe(content1Ref.current);
+  //   if (content2Ref.current) observer2.observe(content2Ref.current);
+  //   if (content3Ref.current) observer3.observe(content3Ref.current);
 
-    return () => {
-      if (content1Ref.current) observer1.unobserve(content1Ref.current);
-      if (content2Ref.current) observer2.unobserve(content2Ref.current);
-      if (content3Ref.current) observer3.unobserve(content3Ref.current);
-    };
-  }, []);
+  //   // return () => {
+  //   //   if (content1Ref.current) observer1.unobserve(content1Ref.current);
+  //   //   if (content2Ref.current) observer2.unobserve(content2Ref.current);
+  //   //   if (content3Ref.current) observer3.unobserve(content3Ref.current);
+  //   // };
+  // }, []);
 
-  const handleIntersection = (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        console.log(`Content area ${entry.target.id} is entered`);
-        // Perform actions when the content area is entered
-      } else {
-        console.log(`Content area ${entry.target.id} is exited`);
-        // Perform actions when the content area is exited
-      }
-    });
-  };
+  // const handleIntersection = (entries) => {
+  //   entries.forEach((entry) => {
+  //     if (entry.isIntersecting) {
+  //       // console.log(`Content area ${entry.target.id} is entered`);
+  //       // Perform actions when the content area is entered
+  //     } else {
+  //       // console.log(`Content area ${entry.target.id} is exited`);
+  //       // Perform actions when the content area is exited
+  //     }
+  //   });
+  // };
   const { contentId } = useParams();
   // console.log(contentId);
   const [commonData, setCommonData] = useState();
@@ -99,12 +108,12 @@ export default function DetailPage() {
       setSigungucode(data.response.body.items.item[0].sigungucode);
     }
   }, [data, isLoading, isError]);
-  console.log("effect out", areaCode);
+  // console.log("effect out", areaCode);
 
   const [modalShow, setModalShow] = useState(false);
   const [shareModalShow, setShareModalShow] = useState(false);
 
-  console.log("commonData : ", commonData, "contentTypeId", contentTypeId);
+  // console.log("commonData : ", commonData, "contentTypeId", contentTypeId);
 
   const handlePrint = () => {
     window.print();
@@ -134,6 +143,7 @@ export default function DetailPage() {
       </Row>
     </Container>;
   }
+
   return (
     <Container fluid="lg" className="detailPageWrap">
       {commonData && (

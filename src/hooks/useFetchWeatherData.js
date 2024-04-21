@@ -6,7 +6,7 @@ function fetchWeatherData(lat, lon) {
 }
 
 export function useFetchWeatherDataQuery(lat, lon) {
-  console.log("area", lat, lon);
+  // console.log("area", lat, lon);
   return useQuery({
     queryKey: ["air-data", lat, lon],
     queryFn: () => fetchWeatherData(lat, lon),

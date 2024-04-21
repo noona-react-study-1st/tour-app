@@ -20,7 +20,7 @@ const MainAirStatus = ({ cityName }) => {
     }
   }, [data, isLoading, isError]);
 
-  console.log(data, airData, isLoading, isError);
+  // console.log(data, airData, isLoading, isError);
 
   if (isLoading) {
     return <p>...</p>;

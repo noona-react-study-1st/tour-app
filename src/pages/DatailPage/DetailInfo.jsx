@@ -18,7 +18,7 @@ const DetailInfo = ({ contentTypeId }) => {
     }
   }, [data, isLoading, isError]);
 
-  console.log("info here", data, infoData, contentId, contentTypeId);
+  // console.log("info here", data, infoData, contentId, contentTypeId);
 
   function getInfoTypeTitle(contentTypeId) {
     let infoTypeInfo = InfoType.find((type) => {
@@ -35,7 +35,7 @@ const DetailInfo = ({ contentTypeId }) => {
   }
 
   const infoTypeTitle = getInfoTypeTitle(contentTypeId);
-  console.log(contentTypeId, infoTypeTitle, Object.keys(infoTypeTitle));
+  // console.log(contentTypeId, infoTypeTitle, Object.keys(infoTypeTitle));
 
   function removeBrTags(text) {
     if (typeof text === "string") {
@@ -56,54 +56,50 @@ const DetailInfo = ({ contentTypeId }) => {
         <>
           {contentTypeId === "25" ? (
             <ul className="introWrap info typeCourse">
-              {infoData.map((info) => (
-                <>
-                  <ul
-                    key={info.subcontentid}
-                    onClick={() => goToDetailPage(info?.subcontentid)}
-                  >
-                    <li className="num">
-                      <span>{Number(info.subnum) + 1}</span>
-                    </li>
-                    <li className="subname">
-                      <span>{info.subname}</span>
-                    </li>
-                    <li className="overview">
-                      <div>{removeBrTags(info.subdetailoverview)}</div>
-                    </li>
-                  </ul>
-                </>
+              {infoData.map((info, index) => (
+                <ul
+                  key={index}
+                  onClick={() => goToDetailPage(info?.subcontentid)}
+                >
+                  <li className="num">
+                    <span>{Number(info.subnum) + 1}</span>
+                  </li>
+                  <li className="subname">
+                    <span>{info.subname}</span>
+                  </li>
+                  <li className="overview">
+                    <div>{removeBrTags(info.subdetailoverview)}</div>
+                  </li>
+                </ul>
               ))}
             </ul>
           ) : contentTypeId === "32" ? (
             <ul className="introWrap info typeHotel">
               {infoData.map((info, index) => (
-                <>
-                  <ul
-                    key={info.roomcode}
-                    className={`${info.roomimg1 === "" ? "noneImg" : ""}`}
-                  >
-                    <li
-                      className="roomImg"
-                      style={{
-                        backgroundImage: `url(${info.roomimg1})`,
-                      }}
-                    ></li>
-                    {Object.keys(infoTypeTitle).map((title) => {
-                      if (info[title] === "" || info[title] === "0") {
-                        return false;
-                      } else {
-                        return (
-                          <li key={title + index}>
-                            {/* {info[title]} */}
-                            {infoTypeTitle[title]} : {removeBrTags(info[title])}
-                          </li>
-                        );
-                      }
-                    })}
-                    <li className="roomintro">{info.roomintro}</li>
-                  </ul>
-                </>
+                <ul
+                  key={info.roomcode}
+                  className={`${info.roomimg1 === "" ? "noneImg" : ""}`}
+                >
+                  <li
+                    className="roomImg"
+                    style={{
+                      backgroundImage: `url(${info.roomimg1})`,
+                    }}
+                  ></li>
+                  {Object.keys(infoTypeTitle).map((title) => {
+                    if (info[title] === "" || info[title] === "0") {
+                      return false;
+                    } else {
+                      return (
+                        <li key={title + index}>
+                          {/* {info[title]} */}
+                          {infoTypeTitle[title]} : {removeBrTags(info[title])}
+                        </li>
+                      );
+                    }
+                  })}
+                  <li className="roomintro">{info.roomintro}</li>
+                </ul>
               ))}
             </ul>
           ) : (
