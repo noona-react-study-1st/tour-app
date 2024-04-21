@@ -1,4 +1,4 @@
-import "../pages/SearchPage/Common.style.css"
+import '../pages/SearchPage/Common.style.css';
 
 const ErrorPage = () => {
   return (

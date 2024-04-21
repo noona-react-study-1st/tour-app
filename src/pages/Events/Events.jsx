@@ -114,7 +114,7 @@ const EventsPage = () => {
     <Container>
       <Row>
         <div className='title-area'>
-          <div className="title-box">
+          <div className='title-box'>
             <p>봄 축제</p>
             <div className='hash-tag'>
               <span className='hash-item'>#봄</span>
@@ -171,7 +171,7 @@ const EventsPage = () => {
         </div>
       </Row>
       {selectedMenu === '축제' ? (
-        <div className="list-area">
+        <div className='list-area'>
           <Row className='card-area'>
             {currentFestivals.map((event) => (
               <Col key={event.contentid} lg={4} md={6} xs={12}>

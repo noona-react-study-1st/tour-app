@@ -16,15 +16,15 @@
   z-index: 2;
 }
 
-.event-info p{
-  font-size:large;
-  font-weight:520;
-  margin-top:5px;
-  margin-bottom:0;
+.event-info p {
+  font-size: large;
+  font-weight: 520;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
 .event-info a {
-  color: #7E7E7E !important;
+  color: #7e7e7e !important;
 }
 
 /* 태블릿 */
