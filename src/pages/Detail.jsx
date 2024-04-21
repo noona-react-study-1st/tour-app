@@ -103,9 +103,9 @@ export default function DetailPage() {
   useEffect(() => {
     if (!isLoading && !isError) {
       setCommonData(data.response.body.items.item?.[0]);
-      setContentTypeId(data.response.body.items.item[0].contenttypeid);
-      setAreaCode(data.response.body.items.item[0].areacode);
-      setSigungucode(data.response.body.items.item[0].sigungucode);
+      setContentTypeId(data.response.body.items.item?.[0].contenttypeid);
+      setAreaCode(data.response.body.items.item?.[0].areacode);
+      setSigungucode(data.response.body.items.item?.[0].sigungucode);
     }
   }, [data, isLoading, isError]);
   // console.log("effect out", areaCode);

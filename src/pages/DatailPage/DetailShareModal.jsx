@@ -47,7 +47,7 @@ const DetailShareModal = (props) => {
             <li
               onClick={() =>
                 shareKakao(
-                  `http://localhost:5173/detail/${props.contentId}`,
+                  `https://noona-tour.netlify.app/${props.contentId}`,
                   props.title
                 )
               }
@@ -60,7 +60,7 @@ const DetailShareModal = (props) => {
             <li
               onClick={() =>
                 handleCopyClipBoard(
-                  `http://localhost:5173/detail/${props.contentId}`
+                  `https://noona-tour.netlify.app/detail/${props.contentId}`
                 )
               }
             >

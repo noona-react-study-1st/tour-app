@@ -33,6 +33,13 @@ const WeatherBanner = ({ areaCode, lon, lat }) => {
   return (
     <div className="weatherBanner no-print">
       <div className="weatherInfo">
+        {/* <span
+          className={`weatherIcon weatherIcon${weatherData?.weather[0]?.id
+            ?.toString()
+            ?.charAt(0)} ${
+            weatherData?.weather[0]?.main === "Clear" && "clear"
+          }`}
+        ></span> */}
         <img
           src={`https://openweathermap.org/img/wn/${weatherData?.weather[0].icon}.png`}
           alt=""

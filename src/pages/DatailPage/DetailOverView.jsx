@@ -3,7 +3,7 @@
 // import { Link } from "react-router-dom";
 
 const DetailOverView = ({ commonData }) => {
-  // console.log(commonData.title);
+  // console.log(commonData);
   // function extractUrl(text) {
   //   const startIdx = text.indexOf("http"); // 'http' 문자열이 시작하는 인덱스 찾기
   //   if (startIdx !== -1) {
@@ -26,25 +26,18 @@ const DetailOverView = ({ commonData }) => {
   }
   return (
     <>
-      <div className="p-4 overviewWrap">
-        {/* {homepageUrl !== "" && (
-          <div>
-            <Link to={homepageUrl} target="_blank" className="gohome">
-              홈페이지 바로가기
-              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-            </Link>
+      {commonData.overview !== "" && (
+        <div className="p-4 overviewWrap">
+          <div className="overview">
+            {commonData !== undefined && removeBrTags(commonData.overview)}
           </div>
-        )} */}
 
-        <div className="overview">
-          {/* {commonData.overview} */}
-          {commonData !== undefined && removeBrTags(commonData.overview)}
+          <div>
+            {commonData.telname !== "" && commonData.telname}
+            {commonData.tel !== "" && `(${commonData.tel})`}
+          </div>
         </div>
-        <div>
-          {commonData.telname !== "" && commonData.telname}
-          {commonData.tel !== "" && `(${commonData.tel})`}
-        </div>
-      </div>
+      )}
     </>
   );
 };

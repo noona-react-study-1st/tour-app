@@ -40,6 +40,15 @@
   .detailPageWrap {
     padding: 15px 10px 50px;
   }
+  .detailPageWrap .react-multi-carousel-dot-list .react-multi-carousel-dot button {
+    width: 10px;
+    height: 10px;
+  }
+  .detailPageWrap .react-multi-carousel-dot-list .react-multi-carousel-dot--active button {
+    width: 20px;
+    border-radius: 10px;
+    background: rgba(12, 12, 190, 0.7);
+  }
 }
 
 .detailNav {
@@ -406,6 +415,22 @@ a {
   gap: 10px;
   align-items: center;
   justify-content: center;
+}
+.weatherBanner .weatherInfo .weatherIcon {
+  display: block;
+  height: 66px;
+  width: 66px;
+  background-repeat: no-repeat;
+  background-size: 280px;
+  background-image: url(../../assets/weather/weather-icon.png);
+}
+.weatherBanner .weatherInfo .weatherIcon.weatherBg_2 {
+  background-position-x: -14px;
+  background-position-y: -71px;
+}
+.weatherBanner .weatherInfo .weatherIcon.weatherBg_8 {
+  background-position-x: -14px;
+  background-position-y: -71px;
 }
 .weatherBanner .airStatus ul {
   padding: 0;
