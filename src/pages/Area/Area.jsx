@@ -4,13 +4,12 @@ import CityDetailSection from '../../components/CityDetailSection/CityDetailSect
 import { contentTypeId } from '../../constants/area';
 import CardList from '../../components/CardList/CardList';
 import WeatherSection from '../../components/WeatherSection/WeatherSection';
+import ScrollToTopButton from '../../common/ScrollToTop/ScrollToTopButton';
 
 export default function AreaPage() {
   return (
     <main>
-      <Row>
-        <CarouselSection />
-      </Row>
+      <CarouselSection />
       <Row className='d-flex justify-content-center'>
         <CityDetailSection />
       </Row>
@@ -26,6 +25,7 @@ export default function AreaPage() {
       <Row className='d-flex justify-content-center mb-5'>
         <CardList contentTypeId={contentTypeId.sleep} />
       </Row>
+      <ScrollToTopButton />
     </main>
   );
 }
