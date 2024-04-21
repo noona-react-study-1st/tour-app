@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocation } from 'react-router-dom';
 import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
@@ -30,7 +29,7 @@ const SearchPage = () => {
         <div className="no-result">
            <div className="centered-content">
           <img src={img} alt='No result' />
-          <p>'{keyword}' 검색 결과가 없습니다.</p>
+          <p>{`${keyword} 검색 결과가 없습니다.`}</p>
            </div>
         </div>
       )}

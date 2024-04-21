@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Row, Col, Container, Spinner, Alert } from 'react-bootstrap';
+import { Row, Col, Container, Alert } from 'react-bootstrap';
 import { useFetchEventQuery } from '../../hooks/useFetchEvent';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import EventCard from '../Events/components/EventCard/EventCard';
@@ -116,11 +116,11 @@ const EventsPage = () => {
         <div className='title-area'>
           <div className="title-box">
             <p>봄 축제</p>
-            <div class='hash-tag'>
-              <span class='hash-item'>#봄</span>
-              <span class='hash-item'>#축제</span>
-              <span class='hash-item'>#벚꽃</span>
-              <span class='hash-item'>#TOP4</span>
+            <div className='hash-tag'>
+              <span className='hash-item'>#봄</span>
+              <span className='hash-item'>#축제</span>
+              <span className='hash-item'>#벚꽃</span>
+              <span className='hash-item'>#TOP4</span>
             </div>
           </div>
           <Row className='list-area'>

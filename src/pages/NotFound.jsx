@@ -1,4 +1,3 @@
-import React from 'react';
 import img from '../assets/etc/thinking.png';
 import "../pages/SearchPage/Common.style.css"
 
