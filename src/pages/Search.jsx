@@ -7,7 +7,7 @@ import LoadingSpinner from '../common/LoadingSpinner/LoadingSpinner';
 import SearchCard from '../pages/SearchPage/SearchCard';
 import ScrollToTopButton from "../common/ScrollToTop/ScrollToTopButton";
 import img from '../assets/etc/sad.png';
-import "../pages/SearchPage/Search.style.css"
+import "../pages/SearchPage/Common.style.css"
 
 const SearchPage = () => {
   const location = useLocation();
