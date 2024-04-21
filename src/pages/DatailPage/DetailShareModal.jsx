@@ -64,7 +64,7 @@ const DetailShareModal = (props) => {
                 )
               }
             >
-              <div>
+              <div className="copyIcon">
                 <FontAwesomeIcon icon={faCopy} />
               </div>
               url 복사

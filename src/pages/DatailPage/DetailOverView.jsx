@@ -18,7 +18,12 @@ const DetailOverView = ({ commonData }) => {
   }
   const homepageUrl = extractUrl(commonData.homepage);
   // console.log(homepageUrl);
-  // const sanitizedString = removeTagsFromString(commonData.overview);
+  function removeBrTags(text) {
+    if (typeof text === "string") {
+      return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string
+    }
+    return text;
+  }
   return (
     <>
       <div className="p-4 overviewWrap">
@@ -32,8 +37,8 @@ const DetailOverView = ({ commonData }) => {
         )}
 
         <div className="overview">
-          {/* {sanitizedString} */}
-          {commonData.overview}
+          {/* {commonData.overview} */}
+          {commonData !== undefined && removeBrTags(commonData.overview)}
         </div>
         <div>
           {commonData.telname !== "" && commonData.telname}
