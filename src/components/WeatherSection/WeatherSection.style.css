@@ -1,14 +1,14 @@
 .weather-section {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  /* display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem; */
   width: 80%;
   margin-top: 1rem;
 }
 
 .forecast-section {
   width: 100%;
-  grid-column: span 3 / span 3;
+  /* grid-column: span 10 / span 10; */
   padding: 1rem;
   background: rgb(195, 255, 249);
   background: radial-gradient(
@@ -54,6 +54,7 @@
   align-items: center;
   padding: 1rem;
   width: 100%;
+  overflow: auto;
 }
 
 .weather-slider ul {
@@ -61,7 +62,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 24rem;
+  padding-left: 8rem;
 }
 
 .weather-slider ul li {
@@ -143,4 +144,19 @@
 .weather-icon.moon-with-cloud {
   background-position-x: -156px;
   background-position-y: -10px;
+}
+
+.air-section {
+  position: absolute;
+  right: 2rem;
+  top: 930px;
+}
+
+@media screen and (max-width: 768px) {
+  .weather-section {
+    width: 90%;
+  }
+  .weather-slider ul {
+    padding-left: 57rem;
+  }
 }
