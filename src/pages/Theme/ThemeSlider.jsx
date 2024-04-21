@@ -1,4 +1,3 @@
-import React from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-multi-carousel';
 import ThemeSliderCard from './ThemeSliderCard';
@@ -70,7 +69,6 @@ const ThemeSlider = ({ onClick }) => {
         keyBoardControl={true}
         transitionDuration={500}
         containerClass='theme-carousel-container'
-        // dotListClass='custom-dot-list-style'
         itemClass={styles.themeCarouselItem}
       >
         {cards.map((card, index) => (

@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -15,7 +14,7 @@ const Footer = () => {
     '개인정보처리방침',
     '이용약관',
     '저작권정책',
-    '고객서비스 현장',
+    '고객서비스 헌장',
     '전자우편무단수집거부',
     'Q&A',
     '찾아오시는 길',
@@ -41,10 +40,16 @@ const Footer = () => {
                 >
                   TourAPI4.0
                 </NavDropdown.Item>
-                <NavDropdown.Item href='https://apis.map.kakao.com/web/' target='_blank'>
+                <NavDropdown.Item
+                  href='https://apis.map.kakao.com/web/'
+                  target='_blank'
+                >
                   카카오맵
                 </NavDropdown.Item>
-                <NavDropdown.Item href='https://www.data.go.kr/data/15084084/openapi.do' target='_blank'>
+                <NavDropdown.Item
+                  href='https://www.data.go.kr/data/15084084/openapi.do'
+                  target='_blank'
+                >
                   날씨
                 </NavDropdown.Item>
               </NavDropdown>
