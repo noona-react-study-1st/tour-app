@@ -19,7 +19,7 @@ const MainEventsSlide = () => {
   };
 
   return (
-    <Container>
+    <Container className='events-area'>
       <div className='main-events-banner-title'>놓칠 수 없는 행사</div>
       {itemList && (
         <Carousel
@@ -30,6 +30,7 @@ const MainEventsSlide = () => {
           responsive={responsive}
           autoPlay={true}
           autoPlaySpeed={3000}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
         >
           {itemList?.map((item, index) => (
             <div
