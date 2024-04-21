@@ -17,9 +17,9 @@ const WeatherBanner = ({ areaCode, lon, lat }) => {
 
   const [airData, setAirData] = useState();
   const { data, isLoading, isError } = useFetchAirDataQuery(areaTxt);
-  console.log(data, isLoading, isError);
+  // console.log(data, isLoading, isError);
   const { data: weatherData } = useFetchWeatherDataQuery(lat, lon);
-  console.log("weatherData-", weatherData);
+  // console.log("weatherData-", weatherData);
 
   useEffect(() => {
     if (!isLoading && !isError) {
@@ -27,7 +27,6 @@ const WeatherBanner = ({ areaCode, lon, lat }) => {
     }
   }, [data, isLoading, isError]);
 
-  console.log(data, airData, isLoading, isError);
   if (isLoading) {
     <p>...</p>;
   }

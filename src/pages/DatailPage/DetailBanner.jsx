@@ -17,7 +17,7 @@ const DetailBanner = () => {
     }
   }, [data, isLoading, isError]);
 
-  console.log(isLoading, imgData);
+  // console.log(isLoading, imgData);
 
   const responsive = {
     desktop: {
