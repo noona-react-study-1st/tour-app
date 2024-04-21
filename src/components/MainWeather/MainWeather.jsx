@@ -1,4 +1,3 @@
-import React from 'react';
 import './MainWeather.style.css';
 import { Container } from 'react-bootstrap';
 import MainWeatherSummary from './MainWeatherSummary/MainWeatherSummary';

@@ -1,4 +1,3 @@
-import React from 'react';
 import './MainAreaSlide.style.css';
 import 'react-multi-carousel/lib/styles.css';
 import Container from 'react-bootstrap/Container';

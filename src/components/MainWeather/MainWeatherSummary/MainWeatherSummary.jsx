@@ -10,9 +10,6 @@ import './MainWeatherSummary.style.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import weatherIcon from '../../../assets/weather/weather-icon.png';
 import MainAirStatus from '../../MainAirStatus/MainAirStatus';
-import React, { useState, useEffect } from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function WeatherSection() {
 
@@ -107,8 +104,7 @@ export default function WeatherSection() {
 
   return (
     <div className='weather-summary-box'>
-      <Row className='align-items-center me-2' >
-        
+      <Row className='align-items-center me-2' >       
           <Col lg={6} xs={12}>
             <div>
               {cities.map((city, index) => {
@@ -124,7 +120,6 @@ export default function WeatherSection() {
               })}
             </div>
           </Col>
-      
         <Col lg={6} xs={12}>
           <div className='weather-info'>{content}</div>
         </Col>
