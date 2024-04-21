@@ -33,4 +33,7 @@
   .image-container img {
     width: 15rem;
   }
+  .area-carousel-section {
+    padding: 2rem;
+  }
 }
