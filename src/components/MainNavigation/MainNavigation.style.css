@@ -32,7 +32,23 @@
 .mo-toggle-btn {
   border: none;
 }
-
+.login-btn{
+  color: #3f51b5;
+  margin-left: 1em;
+  cursor: pointer;
+}
+.login-area{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 1.5em;
+  width: 100%;
+  padding: 1em;
+  background-color:  #f6f6ff;
+}
+.login-text{
+  margin-left: 0.6em;
+}
 @media (max-width: 800px) {
   .logo {
     margin-right: 0;
@@ -40,6 +56,8 @@
   }
   .mo-logo{
     width: 230px
-
+  }
+  .nav{
+    margin-left: 1.5em;
   }
 }
