@@ -42,6 +42,21 @@
   }
   @media (max-width: 768px) {
     padding: 15px 10px 50px;
+    .react-multi-carousel-dot-list {
+      .react-multi-carousel-dot {
+        button {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      .react-multi-carousel-dot--active {
+        button {
+          width: 20px;
+          border-radius: 10px;
+          background: rgba(12, 12, 190, 0.7);
+        }
+      }
+    }
   }
 }
 .detailNav {
@@ -432,6 +447,36 @@ a {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  .weatherInfo {
+    .weatherIcon {
+      display: block;
+      height: 66px;
+      width: 66px;
+      background-repeat: no-repeat;
+      background-size: 280px;
+      background-image: url(../../assets/weather/weather-icon.png);
+      &.weatherBg_2 {
+        background-position-x: -14px;
+        background-position-y: -71px;
+      }
+      &.weatherBg_3 {
+        // background-image: url(./resource/images/rain.jpg);
+      }
+      &.weatherBg_5 {
+        // background-image: url(./resource/images/rain.jpg);
+      }
+      &.weatherBg_6 {
+      }
+      &.weatherBg_7 {
+      }
+      &.weatherBg_8 {
+        background-position-x: -14px;
+        background-position-y: -71px;
+      }
+      &.clear {
+      }
+    }
+  }
   .airStatus {
     ul {
       padding: 0;
