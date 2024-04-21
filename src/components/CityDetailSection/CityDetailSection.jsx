@@ -11,9 +11,9 @@ import { motion } from 'framer-motion';
 export default function CityDetailSection() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { area, setSigunguCode } = useAreaStore();
   const { setSigungu } = useWeatherStore();
-  const isMobileOrTablet = window.innerWidth <= 768;
 
   const { data, isLoading, isError, error } = useFetchAreaCodeQuery(
     area.areaCode,
@@ -23,6 +23,20 @@ export default function CityDetailSection() {
   useEffect(() => {
     setIsOpen(false);
   }, [data]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.addEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const isMobile = windowWidth < 768;
 
   if (isLoading) {
     return (
@@ -48,8 +62,8 @@ export default function CityDetailSection() {
         <div className='city-detail-btn'>
           <h3>{area.name}</h3>
           <span>
-            {((area.totalCount > 10 && !isMobileOrTablet) ||
-              (area.totalCount > 5 && isMobileOrTablet)) && (
+            {((area.totalCount > 10 && !isMobile) ||
+              (area.totalCount > 5 && isMobile)) && (
               <Button
                 variant='outline-dark'
                 onClick={() => setIsOpen((prev) => !prev)}
@@ -71,10 +85,10 @@ export default function CityDetailSection() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className={`${
-                  !isMobileOrTablet && city.rnum > 10 && !isOpen ? 'hidden' : ''
-                }${
-                  isMobileOrTablet && city.rnum > 5 && !isOpen ? 'hidden' : ''
-                } ${activeIndex === index && 'active'}`}
+                  !isMobile && city.rnum > 10 && !isOpen ? 'hidden' : ''
+                }${isMobile && city.rnum > 5 && !isOpen ? 'hidden' : ''} ${
+                  activeIndex === index && 'active'
+                }`}
                 key={city.rnum}
                 onClick={() => {
                   setSigunguCode(city.code);

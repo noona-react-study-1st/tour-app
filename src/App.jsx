@@ -8,6 +8,7 @@ import AreaPage from './pages/Area/Area';
 import EventsPage from './pages/Events/Events';
 import DetailPage from './pages/Detail';
 import SearchPage from './pages/Search';
+import LoginPage from './pages/Login';
 import ErrorPage from './pages/Error';
 import NotFoundPage from './pages/NotFound';
 
@@ -23,6 +24,7 @@ function App() {
         { path: '/events', element: <EventsPage /> },
         { path: 'detail/:contentId', element: <DetailPage /> },
         { path: '/search', element: <SearchPage /> },
+        { path: '/login', element: <LoginPage /> },
         { path: '/error', element: <ErrorPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],

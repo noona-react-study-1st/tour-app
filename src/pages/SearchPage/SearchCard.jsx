@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Search.style.css';
+import './Common.style.css';
 
 const SearchCard = ({ data }) => {
   const navigate = useNavigate();
