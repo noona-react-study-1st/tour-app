@@ -3,7 +3,7 @@ import useKakaoLoader from "../../hooks/useKakaoLoader";
 import { Link } from "react-router-dom";
 
 const DetailMap = ({ coordX, coordY, title }) => {
-  console.log(coordX, coordY);
+  console.log("map", coordX, coordY);
   useKakaoLoader();
 
   return (

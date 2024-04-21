@@ -37,22 +37,58 @@ const DetailInfo = ({ contentTypeId }) => {
   const infoTypeTitle = getInfoTypeTitle(contentTypeId);
   console.log(contentTypeId, infoTypeTitle, Object.keys(infoTypeTitle));
 
+  function removeBrTags(text) {
+    if (typeof text === "string") {
+      return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string
+    }
+    return text;
+  }
   return (
     <>
-      {infoData && (
+      {infoData !== undefined && (
         <>
           {contentTypeId === "25" ? (
             <span>코스</span>
           ) : contentTypeId === "32" ? (
-            <span>숙소</span>
+            <ul className="introWrap info typeHotel">
+              {infoData.map((info, index) => (
+                <>
+                  <ul
+                    key={info.roomcode}
+                    className={`${info.roomimg1 === "" ? "noneImg" : ""}`}
+                  >
+                    <li
+                      className="roomImg"
+                      style={{
+                        backgroundImage: `url(${info.roomimg1})`,
+                      }}
+                    ></li>
+                    {Object.keys(infoTypeTitle).map((title) => {
+                      if (info[title] === "" || info[title] === "0") {
+                        return false;
+                      } else {
+                        return (
+                          <li key={title + index}>
+                            {/* {info[title]} */}
+                            {infoTypeTitle[title]} : {removeBrTags(info[title])}
+                          </li>
+                        );
+                      }
+                    })}
+                    <li className="roomintro">{info.roomintro}</li>
+                  </ul>
+                </>
+              ))}
+            </ul>
           ) : (
             <ul className="introWrap info type0">
               {infoData.map((info, index) =>
                 Object.keys(infoTypeTitle).map((title) => {
                   // const sanitizedString = removeTagsFromString(info[title]);
                   return (
-                    <li key={title + index} className="px-2">
-                      {info[title]}
+                    <li key={title + index}>
+                      {/* {info[title]} */}
+                      {removeBrTags(info[title])}
                     </li>
                   );
                 })

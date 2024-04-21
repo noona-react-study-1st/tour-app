@@ -34,9 +34,14 @@ const DetailIntro = ({ contentTypeId }) => {
 
   const introTypeTitle = getIntroTypeTitle(contentTypeId);
   console.log(contentTypeId, introTypeTitle);
-
+  function removeBrTags(text) {
+    if (typeof text === "string") {
+      return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string
+    }
+    return text;
+  }
   return (
-    <ul className="introWrap ">
+    <ul className="introWrap typeIntro">
       {introData !== undefined &&
         Object.keys(introTypeTitle).map((title, index) => {
           if (introData[title] === "" || introData[title] === "0") {
@@ -44,11 +49,9 @@ const DetailIntro = ({ contentTypeId }) => {
           } else {
             // const sanitizedString = removeTagsFromString(introData[title]);
             return (
-              <li key={index} className="px-2">
-                {introTypeTitle[title]}: {introData[title]}
-                {/* {introData[title].includes("<br>")
-                  ? introData[title].replace(/<br\s*\/?>/gi, "")
-                  : introData[title]} */}
+              <li key={index}>
+                {/* {introTypeTitle[title]}: {introData[title]} */}
+                {introTypeTitle[title]} : {removeBrTags(introData[title])}
               </li>
             );
           }

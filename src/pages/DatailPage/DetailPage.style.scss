@@ -94,21 +94,105 @@
   display: flex;
   flex-wrap: wrap;
   padding: 20px 0;
-
+  width: 100%;
   li {
     width: 50%;
     list-style: none;
     margin-bottom: 5px;
+    display: flex;
+    padding-left: 15px;
+    position: relative;
+    &::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: #3f51b5;
+      border-radius: 2.5px;
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: 0;
+    }
+  }
+  &.typeIntro {
+    li::before {
+      content: "";
+      width: 3px;
+      height: 15px;
+      background: #3f51b5;
+      display: block;
+      position: absolute;
+      top: 4px;
+      left: 0;
+    }
   }
   &.info {
     border-top: 1px solid #ccc;
   }
   &.type0 {
     li {
-      width: calc(100% - 200px);
+      width: calc(100% - 100px);
       &:nth-child(2n-1) {
-        width: 200px;
+        width: 100px;
+      }
+      &:nth-child(2n) {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+  &.typePet {
+    flex-direction: column;
+    border-top: 1px solid #ccc;
+    li {
+      width: 100%;
+    }
+  }
+  &.typeHotel {
+    ul {
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+      border-radius: 10px;
+      padding: 10px;
+      padding-left: 170px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      li {
+        // width: calc(50% - 85px);
+        width: 50%;
+        font-size: 14px;
+        &.roomImg {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: 150px;
+          height: 100px;
+          padding: 0;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          background-color: rgb(117, 125, 232, 0.2);
+          border-radius: 10px;
+          overflow: hidden;
+          &::before {
+            display: none;
+          }
+        }
+        &.roomintro {
+          width: 100%;
+          font-size: 14px;
+        }
+      }
+      &.noneImg {
         padding-left: 20px;
+        li {
+          &.roomImg {
+            display: none;
+          }
+        }
       }
     }
   }
@@ -135,8 +219,8 @@
   background: #fff;
   position: absolute;
   width: 200px;
-  top: -10px;
-  left: -10px;
+  top: -15px;
+  left: -24px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.3);
   a {
@@ -300,22 +384,34 @@ pre {
 .shareModalWrap {
   .modal-header {
     border-bottom: 0;
-    p {
-      font-size: 18px !important;
-      font-weight: 500 !important;
-      text-align: center;
-      color: red($color: #000000);
-    }
+  }
+  .modal-body {
+    padding-top: 0;
   }
 }
-
+.shareBox {
+  position: relative;
+  padding: 30px 10px 40px;
+  border: 3px solid #3f51b5;
+  border-radius: 10px;
+  p {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    text-align: center;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 10px;
+    background: #fff;
+  }
+}
 .shareItem {
   padding: 0;
   margin: 0;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 50px 0;
 
   li {
     list-style: none;
@@ -326,13 +422,35 @@ pre {
     flex: 1;
     text-align: center;
     cursor: pointer;
+    flex-direction: column;
+  }
+  .copyIcon {
+    font-size: 20px;
+    color: #757de8;
+  }
+  .kakaoLogo {
+    width: 30px;
+    height: 30px;
   }
 }
-.kakaoLogo {
-  width: 30px;
-  height: 30px;
-}
 
+.toastBox {
+  width: 150px;
+  border: 1px solid #3f51b5;
+  background: rgba(117, 125, 232, 0.3);
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  &.on {
+    display: block;
+  }
+}
 @page {
   size: A4;
   margin: 1cm;
