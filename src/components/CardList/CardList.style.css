@@ -26,10 +26,6 @@
   border-radius: 0.25rem 0.25rem 0 0;
 }
 
-.shadow:hover {
-  opacity: 0.3;
-}
-
 .card-img {
   height: 10rem;
   border-radius: 0.25rem 0.25rem 0 0;
@@ -41,6 +37,8 @@
 
 .card:hover {
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
 @media screen and (max-width: 768px) {

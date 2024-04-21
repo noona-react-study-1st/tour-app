@@ -16,7 +16,12 @@
   z-index: 2;
 }
 
+.event-card:hover p{
+  border-bottom: 1px solid black;
+}
+
 .event-info p {
+  display: inline-block;
   font-size: large;
   font-weight: 520;
   margin-top: 5px;
