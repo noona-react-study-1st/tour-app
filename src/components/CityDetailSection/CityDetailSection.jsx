@@ -77,7 +77,7 @@ export default function CityDetailSection() {
             )}
           </span>
         </div>
-        <motion.ul layout className='city-detail-list'>
+        <motion.ul className='city-detail-list'>
           {data.response.body.items.item.map((city, index) => {
             return (
               <motion.li
