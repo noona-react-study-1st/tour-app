@@ -61,7 +61,7 @@ export default function CarouselSection() {
               <motion.img
                 src={city.areaImg}
                 whileHover={{
-                  border: hoveredCard === index ? '10px solid white' : 'none',
+                  filter: hoveredCard === index ? 'brightness(0.7)' : 'none',
                 }}
                 whileTap={{ scale: 0.9 }}
               />
