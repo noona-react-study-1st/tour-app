@@ -11,11 +11,12 @@
   gap: 5px;
   font-size: 13px;
   text-align: center;
+  margin-top: 5px;
 }
 .airStatus li p {
   text-align: center;
   margin: 0;
-  width: 50px;
+  min-width: 50px;
 }
 .airStatus li span {
   border-radius: 4px;
@@ -23,6 +24,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  line-height: 14px;
 }
 .airStatus li span::before {
   content: "";

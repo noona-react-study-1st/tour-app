@@ -16,7 +16,7 @@ const AirItem = ({ data }) => {
     <div className="airStatus">
       <ul>
         <li>
-          미세
+          <p>미세</p>
           {pm10 < 31 ? (
             <span className="good">좋음</span>
           ) : pm10 < 81 ? (
@@ -24,11 +24,15 @@ const AirItem = ({ data }) => {
           ) : pm10 < 151 ? (
             <span className="bad">나쁨</span>
           ) : (
-            <span className="tooBad">나쁨</span>
+            <span className="tooBad">
+              매우
+              <br />
+              나쁨
+            </span>
           )}
         </li>
         <li>
-          초미세
+          <p>초미세</p>
           {pm25 < 16 ? (
             <span className="good">좋음</span>
           ) : pm25 < 36 ? (
@@ -36,11 +40,15 @@ const AirItem = ({ data }) => {
           ) : pm25 < 76 ? (
             <span className="bad">나쁨</span>
           ) : (
-            <span className="tooBad">나쁨</span>
+            <span className="tooBad">
+              매우
+              <br />
+              나쁨
+            </span>
           )}
         </li>
         <li>
-          오존
+          <p>오존</p>
           {o3 < 3 ? (
             <span className="good">좋음</span>
           ) : o3 < 9 ? (
@@ -48,7 +56,11 @@ const AirItem = ({ data }) => {
           ) : o3 < 15 ? (
             <span className="bad">나쁨</span>
           ) : (
-            <span className="tooBad">나쁨</span>
+            <span className="tooBad">
+              매우
+              <br />
+              나쁨
+            </span>
           )}
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { InfoType } from "../../constants/detail/InfoType";
 import { useEffect, useState } from "react";
 import { useFetchDetailInfoQuery } from "../../hooks/useFetchDetailInfo";
@@ -37,22 +37,84 @@ const DetailInfo = ({ contentTypeId }) => {
   const infoTypeTitle = getInfoTypeTitle(contentTypeId);
   console.log(contentTypeId, infoTypeTitle, Object.keys(infoTypeTitle));
 
+  function removeBrTags(text) {
+    if (typeof text === "string") {
+      return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string
+    }
+    return text;
+  }
+
+  const navigate = useNavigate();
+  const goToDetailPage = (contentId) => {
+    navigate(`/detail/${contentId}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
-      {infoData && (
+      {infoData !== undefined && (
         <>
           {contentTypeId === "25" ? (
-            <span>코스</span>
+            <ul className="introWrap info typeCourse">
+              {infoData.map((info) => (
+                <>
+                  <ul
+                    key={info.subcontentid}
+                    onClick={() => goToDetailPage(info?.subcontentid)}
+                  >
+                    <li className="num">
+                      <span>{Number(info.subnum) + 1}</span>
+                    </li>
+                    <li className="subname">
+                      <span>{info.subname}</span>
+                    </li>
+                    <li className="overview">
+                      <div>{removeBrTags(info.subdetailoverview)}</div>
+                    </li>
+                  </ul>
+                </>
+              ))}
+            </ul>
           ) : contentTypeId === "32" ? (
-            <span>숙소</span>
+            <ul className="introWrap info typeHotel">
+              {infoData.map((info, index) => (
+                <>
+                  <ul
+                    key={info.roomcode}
+                    className={`${info.roomimg1 === "" ? "noneImg" : ""}`}
+                  >
+                    <li
+                      className="roomImg"
+                      style={{
+                        backgroundImage: `url(${info.roomimg1})`,
+                      }}
+                    ></li>
+                    {Object.keys(infoTypeTitle).map((title) => {
+                      if (info[title] === "" || info[title] === "0") {
+                        return false;
+                      } else {
+                        return (
+                          <li key={title + index}>
+                            {/* {info[title]} */}
+                            {infoTypeTitle[title]} : {removeBrTags(info[title])}
+                          </li>
+                        );
+                      }
+                    })}
+                    <li className="roomintro">{info.roomintro}</li>
+                  </ul>
+                </>
+              ))}
+            </ul>
           ) : (
             <ul className="introWrap info type0">
               {infoData.map((info, index) =>
                 Object.keys(infoTypeTitle).map((title) => {
                   // const sanitizedString = removeTagsFromString(info[title]);
                   return (
-                    <li key={title + index} className="px-2">
-                      {info[title]}
+                    <li key={title + index}>
+                      {/* {info[title]} */}
+                      {removeBrTags(info[title])}
                     </li>
                   );
                 })
@@ -65,19 +127,3 @@ const DetailInfo = ({ contentTypeId }) => {
   );
 };
 export default DetailInfo;
-
-//  {infoData !== undefined &&
-//    Object.keys(infoTypeTitle).map((title) => {
-//      return infoData.map((info, index) => {
-//        const sanitizedString = removeTagsFromString(info[title]);
-//        return (
-//          <li key={index} className="px-2">
-//            {infoTypeTitle[title]} :{sanitizedString}
-//            {/* {infoTypeTitle[title]} : {info[title]} */}
-//            {/* {info[title].includes("<br>")
-//              ? info[title].replace(/<br\s*\/?>/gi, "")
-//              : info[title]} */}
-//          </li>
-//        );
-//      });
-//    })}

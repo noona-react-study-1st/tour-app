@@ -55,12 +55,11 @@ const MainBanner = () => {
           infinite={true}
           autoPlay={true}
           autoPlaySpeed={2000}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
         >
           <div className='banner-area'>
             <Container>
-              <div
-                className='banner-img-area'
-              >
+              <div className='banner-img-area'>
                 <img
                   className='img-area'
                   src={`${itemList?.item[5].firstimage}`}
@@ -69,16 +68,19 @@ const MainBanner = () => {
               </div>
               <div className='banner-text-area'>
                 <h1>{itemList?.item[5].title}</h1>
-                <button className='detail-btn' onClick={() => moveToDetailPage(itemList?.item[5].contentid)}>자세히보기</button>
+                <button
+                  className='detail-btn'
+                  onClick={() => moveToDetailPage(itemList?.item[5].contentid)}
+                >
+                  자세히보기
+                </button>
               </div>
             </Container>
           </div>
 
           <div className='banner-area'>
             <Container>
-              <div
-                className='banner-img-area'
-              >
+              <div className='banner-img-area'>
                 <img
                   className='img-area'
                   src={`${itemList?.item[4].firstimage}`}
@@ -87,16 +89,19 @@ const MainBanner = () => {
               </div>
               <div className='banner-text-area'>
                 <h1>{itemList?.item[4].title}</h1>
-                <button className='detail-btn' onClick={() => moveToDetailPage(itemList?.item[4].contentid)}>자세히보기</button>
+                <button
+                  className='detail-btn'
+                  onClick={() => moveToDetailPage(itemList?.item[4].contentid)}
+                >
+                  자세히보기
+                </button>
               </div>
             </Container>
           </div>
 
           <div className='banner-area'>
             <Container>
-              <div
-                className='banner-img-area'
-              >
+              <div className='banner-img-area'>
                 <img
                   className='img-area'
                   src={`${itemList?.item[2].firstimage}`}
@@ -105,7 +110,12 @@ const MainBanner = () => {
               </div>
               <div className='banner-text-area'>
                 <h1>{itemList?.item[2].title}</h1>
-                <button className='detail-btn' onClick={() => moveToDetailPage(itemList?.item[2].contentid)}>자세히보기</button>
+                <button
+                  className='detail-btn'
+                  onClick={() => moveToDetailPage(itemList?.item[2].contentid)}
+                >
+                  자세히보기
+                </button>
               </div>
             </Container>
           </div>

@@ -20,20 +20,27 @@ const DetailPetTour = ({ contentTypeId }) => {
 
   console.log("pet here", data, infoData, contentId, contentTypeId);
 
+  function removeBrTags(text) {
+    if (typeof text === "string") {
+      return text.replace(/<br\s*\/?>/gi, ""); // Replace <br> tags with an empty string
+    }
+    return text;
+  }
+
   return (
-    <ul className="introWrap no-print">
+    <ul className="introWrap no-print typePet">
       {infoData !== undefined &&
         Object.keys(PetTourType).map((title) => {
           return infoData.map((info, index) => {
-            // const sanitizedString = removeTagsFromString(info[title]);
-            return (
-              <li key={index} className="px-2">
-                {PetTourType[title]}: {PetTourType[title]}
-                {/* {PetTourType[title].includes("<br>")
-                  ? PetTourType[title].replace(/<br\s*\/?>/gi, "")
-                  : PetTourType[title]} */}
-              </li>
-            );
+            if (info[title] === "" || info[title] === "0") {
+              return false;
+            } else {
+              return (
+                <li key={index}>
+                  {PetTourType[title]} : {removeBrTags(info[title])}
+                </li>
+              );
+            }
           });
         })}
     </ul>
