@@ -1,4 +1,3 @@
-import React from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-multi-carousel';
 import ThemeSliderCard from './ThemeSliderCard';
@@ -25,7 +24,7 @@ const ThemeSlider = ({ onClick }) => {
   const cards = [
     {
       imageUrl:
-        'http://tong.visitkorea.or.kr/cms/resource/37/2009137_image2_1.jpg',
+        'http://tong.visitkorea.or.kr/cms/resource/62/1946562_image2_1.jpg',
       promoText: '전통과 문화가 살아 숨쉬는 곳',
       title: '민속마을',
       cat2: 'A0201',
@@ -70,7 +69,6 @@ const ThemeSlider = ({ onClick }) => {
         keyBoardControl={true}
         transitionDuration={500}
         containerClass='theme-carousel-container'
-        // dotListClass='custom-dot-list-style'
         itemClass={styles.themeCarouselItem}
       >
         {cards.map((card, index) => (

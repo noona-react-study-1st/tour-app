@@ -1,4 +1,3 @@
-import React from 'react';
 import './ThemeSliderCard.style.css';
 
 const ThemeSliderCard = ({
