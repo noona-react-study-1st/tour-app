@@ -29,6 +29,7 @@
 .detail-div {
   display: flex;
   justify-content: center;
+  margin-top: 35px;
 }
 
 /* .detail-div > .row {

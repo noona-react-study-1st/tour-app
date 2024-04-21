@@ -15,10 +15,12 @@ const ThemeCard = ({ image, title, address, onClick }) => {
           src={image}
           style={{ height: '200px', objectFit: 'cover' }}
         />
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{address}</Card.Text>
-        </Card.Body>
+        <div className='theme-card-body-div'>
+          <Card.Body>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text>{address}</Card.Text>
+          </Card.Body>
+        </div>
       </Card>
     </div>
   );
