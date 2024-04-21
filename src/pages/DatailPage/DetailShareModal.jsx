@@ -47,7 +47,7 @@ const DetailShareModal = (props) => {
             <li
               onClick={() =>
                 shareKakao(
-                  `https://noona-tour.netlify.app/${props.contentId}`,
+                  `https://noona-tour.netlify.app/detail/${props.contentId}`,
                   props.title
                 )
               }
