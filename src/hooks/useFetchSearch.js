@@ -2,7 +2,7 @@ import { api } from '../utils/http';
 import { useQuery } from '@tanstack/react-query';
 
 function fetchSearch(keyword) {
-  return api.get(`/searchKeyword1?&keyword=${keyword}&arrange=O`);
+  return api.get(`/searchKeyword1?&keyword=${keyword}&arrange=O&numOfRows=100`);
 }
 
 export function useFetchSearchQuery(keyword) {

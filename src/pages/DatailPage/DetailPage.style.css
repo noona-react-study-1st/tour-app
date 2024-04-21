@@ -1,7 +1,8 @@
 @charset "UTF-8";
 .detailPageWrap {
   color: #333;
-  padding: 15px 0 100px;
+  padding: 15px 10px 100px;
+  word-break: break-all;
 }
 .detailPageWrap h2 {
   text-align: center;
@@ -22,6 +23,11 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+}
+@media (max-width: 768px) {
+  .detailPageWrap {
+    padding: 15px 10px 50px;
+  }
 }
 
 .detailNav {
@@ -50,6 +56,17 @@
 .detailNav li.shortMenu span:hover {
   color: #3f51b5;
 }
+@media (max-width: 798px) {
+  .detailNav {
+    top: 95px;
+  }
+}
+@media (max-width: 425px) {
+  .detailNav li.shortMenu {
+    gap: 0;
+    justify-content: space-around;
+  }
+}
 
 .overviewWrap {
   width: 100%;
@@ -65,7 +82,12 @@
 }
 @media (max-width: 768px) {
   .overviewWrap {
-    width: calc(100vw - 20px);
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .overviewWrap .overview {
+    font-size: 16px;
   }
 }
 
@@ -99,7 +121,7 @@
 .introWrap {
   display: flex;
   flex-wrap: wrap;
-  padding: 20px 0;
+  padding: 20px 10px;
   width: 100%;
 }
 .introWrap li {
@@ -192,8 +214,123 @@
 .introWrap.typeHotel ul.noneImg li.roomImg {
   display: none;
 }
+.introWrap.typeCourse {
+  border-top: none;
+  display: flex;
+  padding-left: 10px;
+  background: #f2f2f2;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: center;
+}
+.introWrap.typeCourse::after, .introWrap.typeCourse::before {
+  content: "";
+  width: calc(100% - 40px);
+  height: 3px;
+  border-bottom: 3px dashed #ccc;
+  position: absolute;
+  top: 34px;
+  left: 20px;
+}
+.introWrap.typeCourse::after {
+  top: initial;
+  bottom: 20px;
+}
+.introWrap.typeCourse ul {
+  padding-left: 0;
+  padding: 0 10px;
+  width: 33%;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+}
+.introWrap.typeCourse ul li {
+  width: 100%;
+  padding-left: 0;
+}
+.introWrap.typeCourse ul li::before {
+  display: none;
+}
+.introWrap.typeCourse ul li.num span {
+  text-align: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  line-height: 30px;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  transition: all 0.3s;
+}
+.introWrap.typeCourse ul li.subname {
+  padding: 20px 0;
+}
+.introWrap.typeCourse ul li.subname span {
+  width: auto;
+  margin: 0 auto;
+  font-weight: 500;
+  padding: 10px 10px;
+  color: #757de8;
+  background: #fff;
+  border: 1px solid #757de8;
+  text-align: center;
+  border-radius: 23px;
+  transition: all 0.3s;
+}
+.introWrap.typeCourse ul li.overview {
+  border: 1px solid #757de8;
+  box-shadow: 2px 3px 9px 3px rgba(87, 88, 89, 0.25);
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  position: relative;
+  background: #fff;
+}
+.introWrap.typeCourse ul li.overview::before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 5px 0 0 0;
+  border: 1px solid #3f51b5;
+  border-right: none;
+  border-bottom: none;
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: rotate(45deg) translateX(-50%);
+}
+.introWrap.typeCourse ul:hover {
+  transform: translateY(-10px);
+}
+.introWrap.typeCourse ul:hover li.num span {
+  border-color: #757de8;
+  color: #3f51b5;
+}
+.introWrap.typeCourse ul:hover li.subname span {
+  background: #757de8;
+  color: #fff;
+}
 @media (max-width: 768px) {
   .introWrap li {
+    width: 100%;
+  }
+  .introWrap.typeCourse ul {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .introWrap.typeHotel ul {
+    flex-wrap: wrap;
+  }
+  .introWrap.typeHotel ul li {
+    width: auto;
+    padding-right: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .introWrap.typeCourse ul {
     width: 100%;
   }
 }
@@ -232,7 +369,7 @@ a {
   width: 120px;
   display: block;
   position: fixed;
-  top: 200px;
+  bottom: 200px;
   right: 10px;
   border: 1px solid rgba(233, 233, 255, 0.8);
   border-radius: 10px;
